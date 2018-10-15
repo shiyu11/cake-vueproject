@@ -4,7 +4,7 @@
 
 <script>
     export default {
-        name: "4"
+        name: "WriteOrder"
     }
 </script>
 
