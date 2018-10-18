@@ -1,7 +1,7 @@
 <template>
   <div class="p-size">
     <div v-if="type==0">
-      <span class="p-price">￥298.00</span>
+      <span class="p-price"><span>￥</span>{{father.pprice}} <span>/磅</span> </span>
       <ul>
         <li><img src="../../assets/sweet.png" alt="">适合3-4人分享</li>
         <li><img src="../../assets/sweet.png" alt="">含5套餐具</li>
@@ -9,7 +9,7 @@
       </ul>
     </div>
     <div v-else-if="type==1">
-      <span class="p-price">￥1298.00</span>
+      <span class="p-price"><span>￥</span>{{father.pprice*2}}</span>
       <ul>
         <li><img src="../../assets/sweet.png" alt="">适合7-8人分享</li>
         <li><img src="../../assets/sweet.png" alt="">含10套餐具</li>
@@ -17,7 +17,7 @@
       </ul>
     </div>
     <div v-else-if="type==2">
-      <span class="p-price">￥2298.00</span>
+      <span class="p-price"><span>￥</span>{{father.pprice*3}}</span>
       <ul>
         <li><img src="../../assets/sweet.png" alt="">适合11-12人分享</li>
         <li><img src="../../assets/sweet.png" alt="">含15套餐具</li>
@@ -25,7 +25,7 @@
       </ul>
     </div>
     <div v-else>
-      <span class="p-price">￥3298.00</span>
+      <span class="p-price"><span>￥</span>{{father.pprice*4}}</span>
       <ul>
         <li><img src="../../assets/sweet.png" alt="">适合15-20人分享</li>
         <li><img src="../../assets/sweet.png" alt="">含20套餐具</li>
@@ -71,7 +71,8 @@
       show: function (index) {
         this.type = index;
       }
-    }
+    },
+    props:['father']
 
 
   }
@@ -102,7 +103,7 @@
 
   li {
     font-size: 20px;
-    color: #ccc;
+    color:#696969;
 
   }
 

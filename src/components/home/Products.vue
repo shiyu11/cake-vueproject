@@ -1,10 +1,6 @@
 <template>
   <div>
-    <ul class="list-group">
-      <li>
-        <my-oneproduct></my-oneproduct>
-      </li>
-    </ul>
+   <h2>dkddddd</h2>
   </div>
 </template>
 
@@ -14,10 +10,20 @@
         name: "Products",
       components:{
           'my-oneproduct':OneProduct
+      },
+      data(){
+          return{
+
+          }
       }
     }
 </script>
 
+
+<style>
+  ul{list-style: none}
+
+</style>
 <style scoped>
 
 </style>
