@@ -21,6 +21,7 @@
         <el-checkbox label="我已阅读并同意保护协议" name="type"></el-checkbox>
       </el-form>
     </div>
+
 </template>
 
 <script>

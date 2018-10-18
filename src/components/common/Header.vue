@@ -119,10 +119,10 @@
         //   this.$router.push({path: '/product'})
         // }
         else if (key == '最新活动') {
-          this.$router.push({path: '/activity'})
+          this.$router.push({path: '/event'})
         }
         else if (key == '会员中心') {
-          this.$router.push({path: '/user'})
+          this.$router.push({path: '/usercenter/UserTime'})
         } else if (key == 'about') {
           this.$router.push({path: '/'})
         } else if (key == '登录') {
