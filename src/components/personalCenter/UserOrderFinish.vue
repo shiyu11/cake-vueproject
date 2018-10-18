@@ -1,10 +1,12 @@
 <template>
+  <div>
 
+  </div>
 </template>
 
 <script>
     export default {
-        name: "7"
+        name: "UserOrderFinish"
     }
 </script>
 
