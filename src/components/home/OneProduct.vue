@@ -1,13 +1,8 @@
-<!--<template>-->
-<!--<div>-->
-<!--<img src="../../assets/p1.jpg" alt="">-->
-<!--<router-link to="/productDetail/1" tag="button">详情</router-link>-->
-<!--<button >加入购物车</button>-->
-<!--</div>-->
-<!--</template>-->
+
+<!--场合是定的数字，保留-->
+<!--接口获取所有的蛋糕数据-->
 <template>
-  <div>
-    <h2>我是场合{{myoccasion}}</h2>
+<div>
     <div>
     <span class="changtitle" >
         <span class="maxtitle">{{occasion[myoccasion-1].occa}}</span><span class="mintitle">&nbsp;/专区</span>
@@ -17,12 +12,11 @@
           <img :src="occasion[myoccasion-1].pic" class="image">
         </el-col>
       </el-row>
-      <my-products></my-products>
     </div>
 
     <div class="dwidth">
     <el-row  class="space" justify="center" :gutter="20" >
-      <el-col :sm="8" :md="6" :lg="6" :xl="6" v-for="(onep,index) in products" v-if="onep.occasion==myoccasion">
+      <el-col :sm="8" :md="6" :lg="6" :xl="6" v-for="(onep,index) in products" v-if="onep.occasion==myoccasion"  >
         <el-card :body-style="{ padding: '2px' }" class="space">
           <!--<img src="../../assets/p1.jpg" class="image">-->
           <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
@@ -48,10 +42,7 @@
               <span class="pname"><span>￥</span>{{onep.pprice}}</span>
               </el-col>
               <el-col :span="12">
-
-                <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>
-
-
+                <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" data-dismiss="modal">加入购物车</button>
               </el-col>
             </div>
             </el-row>
@@ -61,246 +52,43 @@
     </el-row>
   </div>
 
+<!--模态框-->
     <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
       <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-          ...
+        <div class="modal-content mymodal">
+          <span class="buytitle">选择您要订购的磅数</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <hr>
+          <my-addcart></my-addcart>
         </div>
       </div>
     </div>
 
-  </div>
+</div>
 </template>
 
 <script>
-  import ProductSize from '../productdetails/ProductSize'
+  import addcart from '../home/addcart'
+  import axios from 'axios'
+
   export default {
     data() {
       return {
         myoccasion: this.$route.params.occasion,
         occasion:[
-          {"occa":"新品","pic":require("../../assets/newlong.jpg")},
-          {"occa":"儿童","pic":require("../../assets/childlong.jpg")},
-          {"occa":"生日","pic":require("../../assets/birthlong.jpg")},
-          {"occa":"聚会","pic":require("../../assets/togetherlong.jpg")},
+          {"occa":"新品","pic":require("../../assets/home/newlong.jpg")},
+          {"occa":"儿童","pic":require("../../assets/home/childlong.jpg")},
+          {"occa":"生日","pic":require("../../assets/home/birthlong.jpg")},
+          {"occa":"聚会","pic":require("../../assets/home/togetherlong.jpg")},
         ],
+
         products: [
-          {
-            "pname": "1黛西的旅行",
-            "ppic": require("../../assets/p1.jpg"),
-            "pprice": "255",
-            "pid": 1,
-            "occasion": 1,
-            "taste": "慕斯",
-            "dpic": require("../../assets/d1.jpg"),
-            "xpic": require("../../assets/x1.jpg")
-          },
-          {
-            "pname": "2蔓越莓红丝绒",
-            "ppic": require("../../assets/p2.jpg"),
-            "pprice": "285",
-            "pid": 2,
-            "occasion": 2,
-            "taste":"慕斯",
-            "dpic": require("../../assets/d2.jpg"),
-            "xpic": require("../../assets/x2.jpg")
-          },
-          {
-            "pname": "3蓝莓轻乳拿破仑",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 3,
-            "occasion": 3,
-            "taste":"慕斯",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "4蓝莓轻乳拿破仑2",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 4,
-            "occasion": 4,
-            "taste":"慕斯",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "5蓝莓轻乳拿破仑3",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 5,
-            "occasion": 2,
-            "taste":"鲜奶",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "6黛西的旅行",
-            "ppic": require("../../assets/p1.jpg"),
-            "pprice": "255",
-            "pid": 6,
-            "occasion": 1,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d1.jpg"),
-            "xpic": require("../../assets/x1.jpg")
-          },
-          {
-            "pname": "7蔓越莓红丝绒",
-            "ppic": require("../../assets/p2.jpg"),
-            "pprice": "285",
-            "pid": 7,
-            "occasion": 1,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d2.jpg"),
-            "xpic": require("../../assets/x2.jpg")
-          },
-          {
-            "pname": "8蓝莓轻乳拿破仑",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 8,
-            "occasion": 3,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "9蓝莓轻乳拿破仑2",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 9,
-            "occasion": 4,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "10蓝莓轻乳拿破仑3",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 10,
-            "occasion": 4,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "11黛西的旅行",
-            "ppic": require("../../assets/p1.jpg"),
-            "pprice": "255",
-            "pid": 11,
-            "occasion": 3,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d1.jpg"),
-            "xpic": require("../../assets/x1.jpg")
-          },
-          {
-            "pname": "12蔓越莓红丝绒",
-            "ppic": require("../../assets/p2.jpg"),
-            "pprice": "285",
-            "pid": 12,
-            "occasion": 1,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d2.jpg"),
-            "xpic": require("../../assets/x2.jpg")
-          },
-          {
-            "pname": "13蓝莓轻乳拿破仑",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 13,
-            "occasion": 2,
-            "taste": "鲜奶",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "14蓝莓轻乳拿破仑2",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 14,
-            "occasion": 4,
-            "taste": "巧克力",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "15蓝莓轻乳拿破仑3",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 15,
-            "occasion": 1,
-            "taste":"巧克力",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "16黛西的旅行",
-            "ppic": require("../../assets/p1.jpg"),
-            "pprice": "255",
-            "pid": 16,
-            "occasion": 3,
-            "taste":"巧克力",
-            "dpic": require("../../assets/d1.jpg"),
-            "xpic": require("../../assets/x1.jpg")
-          },
-          {
-            "pname": "17蔓越莓红丝绒",
-            "ppic": require("../../assets/p2.jpg"),
-            "pprice": "285",
-            "pid": 17,
-            "occasion": 4,
-            "taste":"巧克力",
-            "dpic": require("../../assets/d2.jpg"),
-            "xpic": require("../../assets/x2.jpg")
-          },
-          {
-            "pname": "18蓝莓轻乳拿破仑",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 18,
-            "occasion": 2,
-            "taste": "芝士",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "19蓝莓轻乳拿破仑2",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 19,
-            "occasion": 3,
-            "taste": "芝士",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "20蓝莓轻乳拿破仑3",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 20,
-            "occasion": 1,
-            "taste": "芝士",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
-          {
-            "pname": "21蓝莓轻乳拿破仑4",
-            "ppic": require("../../assets/p3.jpg"),
-            "pprice": "555",
-            "pid": 21,
-            "occasion": 4,
-            "taste": "芝士",
-            "dpic": require("../../assets/d3.jpg"),
-            "xpic": require("../../assets/x3.jpg")
-          },
         ],
-        showproducts:[]
+        // products:null
       }
     },
     components:{
-      'my-productsize':ProductSize
+      'my-addcart':addcart
     },
     watch:{
       '$route':function(to,from){
@@ -309,11 +97,17 @@
     },
     methods: {
 
-      },
+    },
     computed:{
 
-    }
-
+    },
+    mounted: function () {
+      let _this = this
+      axios.get(`http://localhost:3000/product`).then(function (result) {
+        _this.products = result.data.data;
+        console.log(result.data)
+      })
+    },
 
   }
 </script>
@@ -380,6 +174,16 @@
   .ptaste{
     color:#B0916A;
     font-size:15px ;
+    border: 1px solid #B0916A;
+    margin-top: 5px;
+  }
+  .buytitle{
+    font-size:20px;
+
+  }
+  .mymodal{
+    width:400px;
+    padding:10px;
   }
 
 </style>

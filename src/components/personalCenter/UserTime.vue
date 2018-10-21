@@ -2,12 +2,18 @@
   <div class="el-container">
     <div class="bg bg-blur"></div>
   <div class="icon-1 content content-front">
-    <div id="Date">{{now}}</div>
-      <h3>欢迎您</h3>
+      <h3>欢迎您{{users.uname}}</h3>
       <h3>来到品味·梦幻蛋糕</h3>
-      <button @click="goData">完善个人资料</button>
-      <p>会员级别:</p>
-      <span>我的订单:</span><button @click="goOrder" style="float: right">全部订单</button>
+      <button @click="goData" style="float: right">完善个人资料</button>
+      <p>会员级别:{{users.level}}</p>
+    <div>
+      <p>我的订单:
+        <span @click="goOrderAfter" style="text-decoration: underline">待收货{{order.state}}</span><br>
+        <span @click="goOrderFinish" style="margin-left: 69px;text-decoration: underline">已完成{{order.state}}</span>
+        <button @click="goOrder" style="float: right">全部订单>></button>
+      </p>
+
+    </div>
   </div>
   </div>
 </template>
@@ -17,7 +23,14 @@
         name: "UserTime",
       data:function(){
           return{
-            now:''
+            now:'',
+            users:[
+              {uname:'哈哈',
+              level:'V2',
+              }],
+            order:[{
+              state:'1'
+            }]
           }
       },
       methods:{
@@ -26,35 +39,27 @@
           },
         goOrder(){
             this.$router.push({path:'/usercenter/Myorder'})
+        },
+        goOrderAfter(){
+            this.$router.push({path:'/usercenter/Myorder/after'})
+        },
+        goOrderFinish(){
+          this.$router.push({path:'/usercenter/Myorder/finish'})
         }
       },
-      created(){
-          let _this  = this;
-        setInterval(function(){
-          var date=new Date();
-          var year=date.getFullYear(); //获取当前年份
-          var mon=date.getMonth()+1; //获取当前月份
-          var da=date.getDate(); //获取当前日
-          var day=date.getDay(); //获取当前星期几
-          var h=date.getHours(); //获取小时
-          var m=date.getMinutes(); //获取分钟
-          var s=date.getSeconds(); //获取秒
-          _this.now='今天是:'+year+'年'+mon+'月'+da+'日'+'星期'+day+' ' +h+':'+m+':'+s;
-          console.log(_this.now)
-        },1000)
-      }
     }
 
 </script>
 
 <style scoped>
   .el-container .icon-1{
-    color: #da9f1d;
+    color: #B0916A;
+    right: 50px;
   }
  .el-container .icon-1 p{
-   color: #da9f1d;
+   color: #B0916A;
   text-align: left;
-   font-size: 18px;
+   font-size: 15px;
    font-weight: normal;
    line-height: 200%;
 }
@@ -63,11 +68,11 @@
     margin: 30px;
     margin-left: 60px;
   }
-  .content {
-    color: #ffffff;
-  }
+  /*.content {*/
+    /*color: #ffffff;*/
+  /*}*/
   .bg {
-    background: url("../../assets/timg.jpg");
+    background: url("../../../static/images/hmhpic/timg.jpg");
     height:600px;
     width: 800px;
   }
@@ -77,17 +82,21 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    -webkit-filter: blur(9px);
-    -moz-filter: blur(9px);
-    -o-filter: blur(9px);
-    -ms-filter: blur(9px);
-    filter: blur(9px);
+    /*-webkit-filter: blur(5px);*/
+    /*-moz-filter: blur(5px);*/
+    /*-o-filter: blur(5px);*/
+    /*-ms-filter: blur(5px);*/
+    /*filter: blur(5px);*/
   }
   .content-front {
     position:absolute;
-    left: 170px;
+    left: 270px;
     right: 10px;
+    top: 34px;
     height:600px;
     text-align: left;
+  }
+  button{
+    line-height: 10px;
   }
 </style>

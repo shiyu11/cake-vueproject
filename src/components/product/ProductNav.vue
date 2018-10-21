@@ -1,3 +1,4 @@
+<!--调用所有商品信息-->
 <template>
   <div>
       <ul class="nav nav-tabs nav-justified">

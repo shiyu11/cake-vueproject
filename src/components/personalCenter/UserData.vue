@@ -1,7 +1,7 @@
 <template>
     <div class="el-container">
       <div class="form-1">
-        <h4>个人资料</h4>
+        <h3>个人资料</h3>
         <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm demo-dynamic" >
           <el-form-item label="姓名" prop="name">
             <el-input v-model="ruleForm.name" style="width: 220px;"></el-input>
@@ -13,7 +13,7 @@
           </el-form-item>
           <el-form-item label="性别" prop="sex">
             <el-radio-group v-model="ruleForm.sex">
-              <el-radio label="男" value="1"><em></em></el-radio>
+              <el-radio label="男" value="1" ></el-radio>
               <el-radio label="女" value="2"></el-radio>
             </el-radio-group>
           </el-form-item>
@@ -114,23 +114,33 @@
   .el-container {
     height: 980px;
     width: 780px;
-    background: url("../../assets/bg-1.png") no-repeat;
+    background: url("../../../static/images/hmhpic/bg-1.png") no-repeat;
     margin: 20px;
-    margin-left: 80px;
+    margin-left: 60px;
     position: absolute;
   }
   .form-1{
     position: relative;
-    top: 141px;
+    top: 140px;
     left: 50px;
   }
   label{text-align: left}
-  em{
-    position: absolute;
-    left: 0;
-    z-index: 1;
-    width: 45px;
-    height: 45px;
-    background: url("../../assets/ok.png") no-repeat;
+  .el-form-item span{
+    color: lightslategrey;
+    font-size: 12px;
+  }
+  .el-checkbox-group{
+
+  }
+  .el-checkbox label{
+    color: red !important;
+  }
+
+  .el-col{
+
+
+  }
+  span{
+    font-size: 30px;
   }
 </style>

@@ -46,7 +46,7 @@
 <style scoped>
   .el-container{
     border: 2px solid transparent;
-    margin: 20px;
-    margin-left: 60px;
+    margin: 50px;
+    margin-left: 20px;
   }
 </style>

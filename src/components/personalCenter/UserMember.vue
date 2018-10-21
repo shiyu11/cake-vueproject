@@ -1,6 +1,6 @@
 <template>
   <div class="el-container">
-    <h3>您当前的会员等级为：</h3>
+    <h3>您当前的会员等级为：{{users.level}}</h3>
       <div class="member-3"><p>0</p></div>
       <div class="member-4"><p>500</p></div>
       <div class="member-5"><p>1000</p></div>
@@ -18,13 +18,13 @@
       </div>
       <div class="message">
         <ul>
-          <li><el-button type="text" @click="open">纪念日优惠</el-button></li>
-          <li><el-button type="text" @click="open">邀请好友获得奖励</el-button></li>
-          <li><el-button type="text" @click="open">v1免费领取会员卡</el-button></li>
-          <li><el-button type="text" @click="open">v2进入贵宾尊享特价区</el-button></li>
-          <li><el-button type="text" @click="open1">v3尊享永久订购9.8折优惠</el-button></li>
-          <li><el-button type="text" @click="open2">v4尊享永久订购9.5折优惠</el-button></li>
-          <li><el-button type="text" @click="open">v5进入蛋糕五折购买区</el-button></li>
+          <li><el-button type="text" @click="open" style="color: silver">纪念日优惠</el-button></li>
+          <li><el-button type="text" @click="open" style="color: silver">邀请好友获得奖励</el-button></li>
+          <li><el-button type="text" @click="open" style="color: silver">v1免费领取会员卡</el-button></li>
+          <li><el-button type="text" @click="open" style="color: silver">v2进入贵宾尊享特价区</el-button></li>
+          <li><el-button type="text" @click="open1" style="color: #B0916A">v3尊享永久订购9.8折优惠</el-button></li>
+          <li><el-button type="text" @click="open2" style="color: #B0914A">v4尊享永久订购9.5折优惠</el-button></li>
+          <li><el-button type="text" @click="open" style="color: #B0918A">v5进入蛋糕五折购买区</el-button></li>
         </ul>
       </div>
 
@@ -34,6 +34,14 @@
 <script>
     export default {
         name: "UserMember",
+      data(){
+        return{
+          users:[{
+            level:'V2'
+          }],
+
+        }
+      },
       methods:{
         open() {
           this.$alert('即将推出，敬请期待', {
@@ -143,7 +151,8 @@
   }
   .message li{
     list-style: none;
-  }
+    color: red;
+}
 
 
 </style>

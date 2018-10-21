@@ -19,13 +19,13 @@
         </tr>
         <tr>
           <td>
-            <img src="../../assets/1.jpg" style="width:35%">
+            <img src="../../assets/a3.jpg" style="width:25%">
           </td>
           <td>
-            Velour rouge
+            Velour rouge<br/>
             蔓越莓红丝绒
           </td>
-          <td>2磅 4-7人食<br/>
+          <td>2磅<br/>
             标配：10份标配餐具</td>
           <td>￥298.00</td>
           <td>x1</td>
@@ -33,13 +33,13 @@
         </tr>
         <tr>
           <td>
-            <img src="../../assets/2.jpg" style="width:35%">
+            <img src="../../assets/a5.jpg" style="width:25%">
           </td>
           <td>
-            Napoléon aux myrtilles
+            Napoléon aux myrtilles<br/>
             蓝莓轻乳拿破仑
           </td>
-          <td>2磅 4-7人食<br/>
+          <td>2磅<br/>
             标配：10份标配餐具</td>
           <td>￥298.00</td>
           <td>x1</td>

@@ -1,19 +1,20 @@
 <template>
     <div>
       <div class="icon">
-        <h2>会员中心</h2>
-        <img src="../../assets/person1.png" alt="">
+        <img src="../../../static/images/hmhpic/person1.png" alt="">
       </div>
+      <hr style="background-color:silver;height: 1px;border: none;"/>
       <el-row :gutter="20">
         <el-col :span="3">
-          <span id="leaf"></span>
+          <div id="Date">{{now}}</div>
+
           <div class="grid-content bg-purple">
             <el-tabs :tab-position="tabPosition" @tab-click="handleClick" style="height: 400px;">
-              <el-tab-pane label="cake" name="first"></el-tab-pane>
-              <el-tab-pane label="完善个人资料" name="second"></el-tab-pane>
-              <el-tab-pane label="我的订单" name="third"></el-tab-pane>
-              <el-tab-pane label="我的会员" name="fourth"></el-tab-pane>
-              <el-tab-pane label="收货地址" name="fifth"></el-tab-pane>
+              <el-tab-pane label="cake"></el-tab-pane>
+              <el-tab-pane label="完善个人资料"></el-tab-pane>
+              <el-tab-pane label="我的订单"></el-tab-pane>
+              <el-tab-pane label="我的会员"></el-tab-pane>
+              <el-tab-pane label="收货地址" ></el-tab-pane>
             </el-tabs>
             <button @click="toHome">退出登录</button>
           </div>
@@ -37,9 +38,8 @@
         name: "UserCenter",
       data() {
         return {
-          activeName2:'first',
-          tabPosition: 'left'
-
+          tabPosition: 'left',
+          now:''
           // username:''
         };
       },
@@ -63,9 +63,23 @@
             else if (tab.$options.propsData.label=='收货地址') {
               this.$router.push({path:'/usercenter/UserAddress'})
             }
-
-          console.log(tab.$options.propsData.label);
+          //
+          // console.log(tab.$options.propsData.label);
         }
+      },      created(){
+        let _this  = this;
+        setInterval(function(){
+          var date=new Date();
+          var year=date.getFullYear(); //获取当前年份
+          var mon=date.getMonth()+1; //获取当前月份
+          var da=date.getDate(); //获取当前日
+          var day=date.getDay(); //获取当前星期几
+          var h=date.getHours(); //获取小时
+          var m=date.getMinutes(); //获取分钟
+          var s=date.getSeconds(); //获取秒
+          _this.now='今天是:'+year+'年'+mon+'月'+da+'日'+'星期'+day+' ' +h+':'+m+':'+s;
+          // console.log(_this.now)
+        },1000)
       },
       components:{
         'my-user-data':UserData,
@@ -96,11 +110,22 @@
   .icon img{
     width: 280px;
   }
-  span{
-    display:block;
-    width: 31px;
-    height: 36px;
-    background: url(../../assets/cake2-1.png);
+  .icon h2{
+    /*font-family: Axure Handwriting;*/
+    font-family: 'Helvetica';
+    color: #b0916a;
   }
+  .el-tab-pane {
+    color: #767676;
+  }
+  .grid-content{
+    color: #767676;
+  }
+  /*.el-tabs .el-tab-pane label{*/
+    /*color: #767676;*/
+  /*}*/
 
+  /*.el-tabs__item.is-active{*/
+    /*color: red;*/
+  /*}*/
 </style>
