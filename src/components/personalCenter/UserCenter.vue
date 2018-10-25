@@ -5,21 +5,20 @@
       </div>
       <hr style="background-color:silver;height: 1px;border: none;"/>
       <el-row :gutter="20">
-        <el-col :span="3">
+        <el-col :span="4">
           <div id="Date">{{now}}</div>
-
           <div class="grid-content bg-purple">
-            <el-tabs :tab-position="tabPosition" @tab-click="handleClick" style="height: 400px;">
+            <el-tabs :tab-position="tabPosition" @tab-click="handleClick" style="height:70%;">
               <el-tab-pane label="cake"></el-tab-pane>
               <el-tab-pane label="完善个人资料"></el-tab-pane>
               <el-tab-pane label="我的订单"></el-tab-pane>
-              <el-tab-pane label="我的会员"></el-tab-pane>
+              <el-tab-pane label="安全中心"></el-tab-pane>
               <el-tab-pane label="收货地址" ></el-tab-pane>
             </el-tabs>
             <button @click="toHome">退出登录</button>
           </div>
         </el-col>
-        <el-col :span="21">
+        <el-col :span="20">
           <div class="grid-content bg-purple">
           <router-view></router-view>
         </div>
@@ -31,7 +30,7 @@
 <script>
   import UserData from './UserData'
   import UserOrder from './UserOrder'
-  import UserMember from './UserMember'
+  import Userupdatepsd from './Userupdatepsd'
   import UserAddress from './UserAddress'
   import UserTime from './UserTime'
     export default {
@@ -57,8 +56,8 @@
             else if (tab.$options.propsData.label=='我的订单') {
               this.$router.push({path:'/usercenter/Myorder'})
             }
-            else if (tab.$options.propsData.label=='我的会员') {
-              this.$router.push({path:'/usercenter/Mymember'})
+            else if (tab.$options.propsData.label=='安全中心') {
+              this.$router.push({path:'/usercenter/Userupdatepsd'})
             }
             else if (tab.$options.propsData.label=='收货地址') {
               this.$router.push({path:'/usercenter/UserAddress'})
@@ -66,7 +65,8 @@
           //
           // console.log(tab.$options.propsData.label);
         }
-      },      created(){
+      },
+      created(){
         let _this  = this;
         setInterval(function(){
           var date=new Date();
@@ -84,13 +84,30 @@
       components:{
         'my-user-data':UserData,
         'my-user-order':UserOrder,
-        'my-user-member':UserMember,
+        'my-user-updatepsd':Userupdatepsd,
         'my-user-address':UserAddress,
         'my-user-time':UserTime
       }
     }
 
 </script>
+
+
+<style>
+  .el-tabs__item.el-tabs__item.is-active{
+    /*background-color: rgba(207,90,91,0.95);*/
+    /*border: 1px solid rgba(207,90,91,0.95);*/
+  }
+  .el-tabs--left .el-tabs__item.is-left {
+    text-align: center;
+  }
+  .el-tabs__item{
+    font-size: 20px;
+    padding: 8px 26px;
+    height: 56px;
+    color: #B0916A;
+  }
+</style>
 
 <style scoped>
   .container h2{
@@ -115,17 +132,20 @@
     font-family: 'Helvetica';
     color: #b0916a;
   }
+  el-tab-pane{
+    margin-top:100px;
+  }
   .el-tab-pane {
     color: #767676;
   }
   .grid-content{
     color: #767676;
   }
-  /*.el-tabs .el-tab-pane label{*/
-    /*color: #767676;*/
-  /*}*/
-
-  /*.el-tabs__item.is-active{*/
-    /*color: red;*/
-  /*}*/
+  #Date{
+    font-size: 18px;
+    /*font-family: "Axure Handwriting";*/
+    font-family:"Axure Handwriting";
+    font-weight: bold;
+    color: rgba(211,108,90,0.95);
+  }
 </style>

@@ -3,10 +3,6 @@
     <div class="row">
 
       <div>
-        <app-over-list></app-over-list>
-      </div>
-
-      <div>
         <h2 class="h2">订单已完成</h2>
       </div>
       <el-row>
@@ -45,30 +41,30 @@
         </tr>
         <tr>
           <td>
-            <img src="../../assets/a3.jpg" style="width:20%">
+            <img src="../../assets/a3.jpg" style="width:26%">
           </td>
-          <td>
+          <td width="30%">
             Velour rouge<br/>
             蔓越莓红丝绒<br/>
             2磅<br/>
             标配：10份标配餐具<br/>
           </td>
-          <td>x1</td>
-          <td>￥298.00</td>
+          <td width="10%" class="num">x1</td>
+          <td width="15%" class="price">￥298.00</td>
         </tr>
-        <tr>
-          <td>
-            <img src="../../assets/a5.jpg" style="width:20%">
-          </td>
-          <td>
-            Napoléon aux myrtilles<br/>
-            蓝莓轻乳拿破仑<br/>
-            2磅<br/>
-            标配：10份标配餐具<br/>
-          </td>
-          <td>x1</td>
-          <td>￥218.00</td>
-        </tr>
+        <!--<tr>-->
+          <!--<td>-->
+            <!--<img src="../../assets/a5.jpg" style="width:20%">-->
+          <!--</td>-->
+          <!--<td>-->
+            <!--Napoléon aux myrtilles<br/>-->
+            <!--蓝莓轻乳拿破仑<br/>-->
+            <!--2磅<br/>-->
+            <!--标配：10份标配餐具<br/>-->
+          <!--</td>-->
+          <!--<td>x1</td>-->
+          <!--<td>￥218.00</td>-->
+        <!--</tr>-->
         </tbody>
       </table>
 
@@ -80,12 +76,8 @@
 </template>
 
 <script>
-  import OverList from './OverList'
   export default {
     name: "Over",
-    components:{
-      'app-over-list':OverList
-    },
     methods:{
       allOrder(){
         this.$router.push({path:'/usercenter/Myorder'})
@@ -101,5 +93,8 @@
   .h2{
     margin-top: 50px;
     margin-left: 500px;
+  }
+  .num,.price{
+    line-height: 100px;
   }
 </style>

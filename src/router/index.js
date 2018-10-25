@@ -5,17 +5,23 @@ import ProductNav from '@/components/product/ProductNav'
 import ProductDetail from '@/components/productdetails/ProductDetail'
 import OneProduct from '@/components/home/OneProduct'
 import about from '@/components/home/about'
+import yushou from '@/components/product/yushou'
+import theme from '@/components/product/theme'
 
+// 黄
 // 黄
 import UserCenter from '@/components/personalCenter/UserCenter'
 import UserData from '@/components/personalCenter/UserData'
 import UserTime from '../components/personalCenter/UserTime'
 import UserOrder from '../components/personalCenter/UserOrder'
-import UserMember from '../components/personalCenter/UserMember'
+import Userupdatepsd from '../components/personalCenter/Userupdatepsd'
 import UserAddress from '../components/personalCenter/UserAddress'
 import UserOrderAll from '../components/personalCenter/UserOrderAll'
 import UserOrderAfter from '../components/personalCenter/UserOrderAfter'
+import UserOrderReview from '../components/personalCenter/UserOrderReview'
 import UserOrderFinish from '../components/personalCenter/UserOrderFinish'
+
+
 
 // 谭
 import MyCarts from '@/components/carts/MyCarts.vue'
@@ -42,22 +48,25 @@ export default new Router({
     {path:'/product',component:ProductNav},
     {path:'/productDetail/:pid',component:ProductDetail},
     {path:'/productlist/:occasion',component:OneProduct},
+    {path:'/yushou',component:yushou},
+    {path:'/theme',component:theme},
 
     // {path:'/productlist',component:productlist},
 
 
     // 黄
-      {path:'/usercenter',component:UserCenter,children:[
+    {path:'/usercenter',component:UserCenter,children:[
         {path:'Personaldata',component:UserData},
         {path:'UserTime',component:UserTime},
         {path:'Myorder',component:UserOrder,children: [
             {path:'',component:UserOrderAll},
             {path:'after',component:UserOrderAfter},
+            {path:'review',component:UserOrderReview},
             {path:'finish',component:UserOrderFinish}
           ]},
-        {path:'Mymember',component:UserMember},
-        {path:'UserAddress',component:UserAddress}
-       ]},
+        {path:'Userupdatepsd',component:Userupdatepsd},
+        {path:'UserAddress',component:UserAddress},
+      ]},
 
 // 谭
     {path:'/cart',component:MyCarts},

@@ -36,22 +36,22 @@
           <el-col :span="2" class="topq">
             <el-menu-item index="会员中心">会员中心</el-menu-item>
           </el-col>
-          <el-col :span="3" class="topq">
+          <el-col :span="5" class="topq">
             <el-menu-item index="about">配送范围内满100元包邮</el-menu-item>
           </el-col>
-          <el-col :span="2" :offset="2" class="topq">
-            <el-menu-item index="location" >
-              <el-dropdown>
-                       <span class="el-dropdown-link">
-                          城市<i class="el-icon-arrow-down el-icon--right"></i>
-                       </span>
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item>上海</el-dropdown-item>
-                  <el-dropdown-item>苏州</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </el-menu-item>
-          </el-col>
+          <!--<el-col :span="2" :offset="2" class="topq">-->
+            <!--<el-menu-item index="location" >-->
+              <!--<el-dropdown>-->
+                       <!--<span class="el-dropdown-link">-->
+                          <!--城市<i class="el-icon-arrow-down el-icon&#45;&#45;right"></i>-->
+                       <!--</span>-->
+                <!--<el-dropdown-menu slot="dropdown">-->
+                  <!--<el-dropdown-item>上海</el-dropdown-item>-->
+                  <!--<el-dropdown-item>苏州</el-dropdown-item>-->
+                <!--</el-dropdown-menu>-->
+              <!--</el-dropdown>-->
+            <!--</el-menu-item>-->
+          <!--</el-col>-->
           <el-col :span="2" class="topq">
             <el-menu-item index="购物车">购物车</el-menu-item>
           </el-col>

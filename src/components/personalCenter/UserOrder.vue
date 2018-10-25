@@ -3,6 +3,7 @@
       <el-tabs v-model="activeName" @tab-click="handleClick">
         <el-tab-pane label="ALL 所有订单" name="first"></el-tab-pane>
         <el-tab-pane label="AFTER RECEIPT 待收货" name="second"></el-tab-pane>
+        <el-tab-pane label="REVIEW 待评价" name="fourth"></el-tab-pane>
         <el-tab-pane label="FINISH 已完成" name="third"></el-tab-pane>
       </el-tabs>
       <router-view></router-view>
@@ -28,6 +29,9 @@
           }
           else if(tab.$options.propsData.label=='AFTER RECEIPT 待收货'){
             this.$router.push({path:'/usercenter/Myorder/after'})
+          }
+          else if(tab.$options.propsData.label=='REVIEW 待评价'){
+            this.$router.push({path:'/usercenter/Myorder/review'})
           }
           else if(tab.$options.propsData.label=='FINISH 已完成'){
             this.$router.push({path:'/usercenter/Myorder/finish'})

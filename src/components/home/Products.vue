@@ -1,4 +1,5 @@
 <template>
+  <!--首页的口味分类-->
   <div>
     <div class="mian mian1" >
       <el-row>
@@ -31,9 +32,9 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-                        <el-col :span="12">
-                          <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" >加入购物车</button>
-                        </el-col>
+                        <!--<el-col :span="12">-->
+                          <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" >加入购物车</button>-->
+                        <!--</el-col>-->
                       </div>
                     </el-row>
                   </div>
@@ -79,9 +80,9 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-                        <el-col :span="12">
-                          <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>
-                        </el-col>
+                        <!--<el-col :span="12">-->
+                          <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>-->
+                        <!--</el-col>-->
                       </div>
                     </el-row>
                   </div>
@@ -127,9 +128,9 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-                        <el-col :span="12">
-                          <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>
-                        </el-col>
+                        <!--<el-col :span="12">-->
+                          <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>-->
+                        <!--</el-col>-->
                       </div>
                     </el-row>
                   </div>
@@ -174,9 +175,9 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-                        <el-col :span="12">
-                          <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>
-                        </el-col>
+                        <!--<el-col :span="12">-->
+                          <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>-->
+                        <!--</el-col>-->
                       </div>
                     </el-row>
                   </div>
@@ -220,9 +221,9 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-                        <el-col :span="12">
-                          <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" @click="putCart(type)"><a href="#/cart">加入购物车</a></button>
-                        </el-col>
+                        <!--<el-col :span="12">-->
+                          <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" @click="putCart(type)"><a href="#/cart">加入购物车</a></button>-->
+                        <!--</el-col>-->
                       </div>
                     </el-row>
                   </div>
@@ -236,16 +237,16 @@
     </div>
 
     <!--模态框-->
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content mymodal">
-          <span class="buytitle">选择您要订购的磅数</span>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <hr>
-          <my-addcart></my-addcart>
-        </div>
-      </div>
-    </div>
+    <!--<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">-->
+      <!--<div class="modal-dialog modal-sm" role="document">-->
+        <!--<div class="modal-content mymodal">-->
+          <!--<span class="buytitle">选择您要订购的磅数</span>-->
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+          <!--<hr>-->
+          <!--<my-addcart></my-addcart>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
 
 
@@ -329,25 +330,25 @@
       //   }
       // }
       methods:{
-        function (type) {
-          var bangshu = type + 1;
-          var productpid = this.father.pname
-          var shuju = '{' + productpid + ',' + bangshu + '}'
-          console.log(shuju)
-          // console.log(bangshu,productpid)
-          if (sessionStorage.getItem('product')) {
-            var products = sessionStorage.getItem('product');
-            products += (',' + shuju);
-            sessionStorage.setItem('product', products);
-            alert('已经放入购物车中！')
-          } else {
-            //var products = [];
-            //products.push(product); JSON.stringify(products)
-            sessionStorage.setItem('products', shuju);
-          }
+        // function (type) {
+        //   var bangshu = type + 1;
+        //   var productpid = this.father.pname
+        //   var shuju = '{' + productpid + ',' + bangshu + '}'
+        //   console.log(shuju)
+        //   // console.log(bangshu,productpid)
+        //   if (sessionStorage.getItem('product')) {
+        //     var products = sessionStorage.getItem('product');
+        //     products += (',' + shuju);
+        //     sessionStorage.setItem('product', products);
+        //     alert('已经放入购物车中！')
+        //   } else {
+        //     //var products = [];
+        //     //products.push(product); JSON.stringify(products)
+        //     sessionStorage.setItem('products', shuju);
+        //   }
 
         }
-      }
+
     }
 </script>
 
@@ -396,21 +397,9 @@
     line-height: 12px;
   }
 
-  .button {
-    padding: 0;
-    float: right;
-    color: #B0916A;
-  }
-  .buytitle{
-    font-size:20px;
-
-  }
-  .mymodal{
-    width:400px;
-    padding:10px;
-  }
   h2{
     margin-left: 50px;
+    /*font-family:"微软雅黑";*/
   }
 </style>
 <style scoped>

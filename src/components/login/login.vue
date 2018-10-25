@@ -1,126 +1,82 @@
 <template>
-  <div class="loginss">
-  <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="普通登陆" name="first">
 
-      <el-form ref="loginForm" :model="user" :rules="rules">
-        <el-form-item label="用户名:" prop="name">
-          <el-input v-model="user.name" placeholder="请输入用户名"></el-input>
-        </el-form-item>
-
-        <el-form-item label="密码:" prop="password">
-          <el-input v-model="user.password" placfeholder="请输入密码"></el-input>
-        </el-form-item>
-
-        <el-form-item>
-          <el-button type="primary" @click="login">登陆</el-button>
-        </el-form-item>
-
-        <el-row>
-          <el-col :span="12"><el-checkbox label="记住密码" name="type"></el-checkbox></el-col>
-          <el-col :span="6"><p><a rel="#">忘记密码</a></p></el-col>
-          <el-col :span="6"> <p><a rel="#">去注册</a></p></el-col>
-        </el-row>
-
-      </el-form>
-    </el-tab-pane>
-
-
-    <el-tab-pane label="手机验证登陆" name="second">
-      <el-form ref="ruleForm" :model="ruleForm" :rules="rules">
-
-        <el-form-item prop="phoneuser">
-          <el-input v-model="user.phoneuser" placeholder="请输入手机号"></el-input>
-        </el-form-item>
-
-        <el-row>
-            <el-col :span="12">
-              <el-form-item prop="ver">
-                <el-input v-model="user.ver" placeholder="验证码"></el-input>
-              </el-form-item>
-            </el-col>
-
-            <el-col :span="12">
-              <el-button type="primary" @click="">获取验证码</el-button>
-              </el-col>
-        </el-row>
-
-        <el-form-item>
-          <el-button type="primary" @click="">登陆</el-button>
-        </el-form-item>
-
-      </el-form>
-    </el-tab-pane>
-  </el-tabs>
+  <div>
+    <form class="form-horizontal col-xs-pull-3" style="margin-top: 120px">
+      <div class="form-group">
+        <label for="inputPhone3" class="col-sm-2 control-label">手机号：</label>
+        <div class="col-sm-4">
+          <input v-model="username1" type="text" class="form-control" id="inputPhone3" placeholder="请输入手机号">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;码：</label>
+        <div class="col-sm-4">
+          <input v-model="password" type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default" v-on:click="UserLogin()">登录</button>
+        </div>
+      </div>
+    </form>
   </div>
 </template>
+
+
 <script>
+  import axios from 'axios'
   export default {
-    data() {
-      return {
-        activeName: 'second',
-        user: {},
-
-        rules: {
-          name: [
-            {required: true, message: '用户名不能为空', trigger: 'blur'},
-          ],
-         password: [
-            {required: true, message: '密码不能为空', trigger: 'blur'}
-          ],
-          phoneuser: [
-            {required: true, message: '用户名不能为空', trigger: 'blur'},
-          ],
-          ver: [
-            {required: true, message: '密码不能为空', trigger: 'blur'}
-          ],
-        },
-      };
+    name: "Login",
+    data(){
+      return{
+        username1:'',
+        password:'',
+        uid:'',
+        mydata:'',
+        uname:''
+      }
     },
-    methods: {
-      handleClick(tab, event) {
-        console.log(tab, event);
-      },
-      login () {
-        this.$refs.loginForm.validate((valid) => {
-          if (valid) {
-            if (this.user.name === 'admin' && this.user.password === '123') {
-              this.$notify({
-                type: 'success',
-                message: '欢迎你,' + this.user.name + '!',
-                duration: 3000
-              })
-              this.$router.replace('/')
+    methods:{
+      UserLogin() {
+        if(this.username1 == ''||this.password == ''){
+          alert('手机号和密码不能为空！')
+        }else {
+          let _this = this;
+          axios.post('http://localhost:3000/users/login',
+            {
+              uname: _this.username1,
+              upwd: _this.password
+            }).then(function (result) {
+            let info = eval("(" + result.request.response + ")");
+            // _this.$store.state.uid = info.data.uid
+            _this.$store.state.username = info.data.uname
+            console.log(_this.uid);
+            if (info.code == 200) {
+              alert('登录成功，即将跳转到首页');
+              setTimeout(function () {
+                _this.$router.push('/')
+              }.bind(this), 1000);
+              _this.$store.state.username2 =_this.username1;
+              // _this.uid =_this.username1;
+              sessionStorage.setItem('sphone',_this.$store.state.username2);
+              sessionStorage.setItem('spassword',_this.$store.state.pwd);
+              console.log(_this.$store.state.username2);
+              _this.$router.push({path: '/'})
             }
-            // else if (this.user.phoneuser === '12345678' && this.user.ver === '123') {
-            //   this.$notify({
-            //     type: 'success',
-            //     message: '欢迎你,' + this.user.name + '!',
-            //     duration: 3000
-            //   })
-            //   this.$router.replace('/')
-            // }
             else {
-              this.$message({
-                type: 'error',
-                message: '用户名或密码错误',
-                showClose: true
-              })
+              alert('用户名或密码错误')
             }
-          }
-          else {
-            return false
-          }
-        })
+            //会记录当前路由
+          });
+        }
       },
+    },
 
-    }
-  };
-</script>
-<style>
-  .loginss{
-    height: 600px;
-    width: 450px;
-    margin:60px auto;
   }
+
+</script>
+
+<style scoped>
+
 </style>

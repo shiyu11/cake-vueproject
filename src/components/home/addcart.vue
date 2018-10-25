@@ -1,35 +1,24 @@
 <template>
   <div class="p-size">
     <div v-if="type==0">
+      <span class="p-price"><span>￥</span>{{father.pprice}} <span>/磅</span> </span>
       <ul>
         <li><span class="p-chooseprice">已选1磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合3-4人分享</li>
-        <li><img src="../../assets/home/sweet.png" alt="">含5套餐具</li>
-        <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
     </div>
     <div v-else-if="type==1">
       <ul>
         <li><span class="p-chooseprice">已选2磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合7-8人分享</li>
-        <li><img src="../../assets/home/sweet.png" alt="">含10套餐具</li>
-        <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
     </div>
     <div v-else-if="type==2">
       <ul>
         <li><span class="p-chooseprice">已选3磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合11-12人分享</li>
-        <li><img src="../../assets/home/sweet.png" alt="">含15套餐具</li>
-        <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
     </div>
     <div v-else>
       <ul>
         <li><span class="p-chooseprice">已选4磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合15-20人分享</li>
-        <li><img src="../../assets/home/sweet.png" alt="">含20套餐具</li>
-        <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
     </div>
     <el-row :gutter="20" class="el-row-bang">
@@ -49,7 +38,7 @@
     <el-row :gutter="20" class="el-row-cart">
       <el-col :span="6" :offset="2">
         <div>
-        <el-button  round type="warning" @click="putCart(type)"><span data-dismiss="modal">&nbsp;&nbsp;确认&nbsp;&nbsp;</span></el-button>
+        <el-button  round type="warning" @click="putCart()">&nbsp;&nbsp;确认&nbsp;&nbsp;</el-button>
         <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
         </div>
       </el-col>
@@ -58,10 +47,10 @@
       </el-col>
     </el-row>
   </div>
-
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "ProductSize",
     data() {
@@ -70,29 +59,42 @@
       }
     },
     methods: {
-      show: function (index) {
+      show(index) {
         this.type = index;
+        this.putBang(index)
       },
-      putCart: function (type) {
-        alert('添加成功')
-        var bangshu = type + 1;
-        // var productpid = this.father.pname
-        // var shuju = '{' + productpid + ',' + bangshu + '}'
-        var shuju = '{'+ bangshu + '}'
-        console.log(shuju)
-        // console.log(bangshu,productpid)
-        if (sessionStorage.getItem('product2')) {
-          var products = sessionStorage.getItem('product2');
-          products += (',' + shuju);
-          sessionStorage.setItem('product2', products);
-          alert('已经放入购物车中！')
-        } else {
-          //var products = [];
-          //products.push(product); JSON.stringify(products)
-          sessionStorage.setItem('products', shuju);
-        }
-
+      putBang(key){
+        this.bangshu= key+1
+        // console.log('返回的数据 '+(key+1))
+      },
+      putCart(){
+        //key+1 是磅数
+        axios.post('http://localhost:3000/addcart',{
+          uid:3,
+          size:this.bangshu,
+          pid:this.father.pid,
+        })
       }
+      // putCart: function (type) {
+      //   alert('添加成功')
+      //   var bangshu = type + 1;
+      //   // var productpid = this.father.pname
+      //   // var shuju = '{' + productpid + ',' + bangshu + '}'
+      //   var shuju = '{'+ bangshu + '}'
+      //   console.log(shuju)
+      //   // console.log(bangshu,productpid)
+      //   if (sessionStorage.getItem('product2')) {
+      //     var products = sessionStorage.getItem('product2');
+      //     products += (',' + shuju);
+      //     sessionStorage.setItem('product2', products);
+      //     alert('已经放入购物车中！')
+      //   } else {
+      //     //var products = [];
+      //     //products.push(product); JSON.stringify(products)
+      //     sessionStorage.setItem('products', shuju);
+      //   }
+      //
+      // }
     },
 
   }

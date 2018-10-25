@@ -2,27 +2,34 @@
     <div class="container">
       <div class="row">
         <div class="Occupant">
-          <br>
-          <h4 class="demonstration">选择收货地址</h4>
-          <div class="occf">
-             <el-form :rules="rules" class="demo-ruleForm">
-              <el-form-item label="收货人姓名" prop="name">
-                <el-input v-model="name"placeholder="请输入真实的姓名"></el-input>
-              </el-form-item>
-                 <el-form-item label="手机号" prop="phone">
-                <el-input v-model="phone" placeholder="请输入手机号"></el-input>
-              </el-form-item>
-              <el-form-item label="详细地址" prop="address">
-                <el-input v-model="address" placeholder="请输入详细地址"></el-input>
-              </el-form-item>
-             </el-form>
-           </div>
+                 <el-button type="text" @click="dialogFormVisible = true" class="tab">添加新的收货地址</el-button>
+                 <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+                    <el-form :rules="rules">
+                       <el-form-item label="收货人" :label-width="formLabelWidth">
+                          <el-input v-model="name" autocomplete="off" placeholder="收货人姓名" style="width: 370px"></el-input>
+                       </el-form-item>
+                       <el-form-item label="联系方式" :label-width="formLabelWidth">
+                         <el-input v-model="phone" autocomplete="off" placeholder="收货人手机号" style="width: 370px"></el-input>
+                       </el-form-item>
+                       <el-form-item label="详细地址" :label-width="formLabelWidth">
+                         <el-input v-model="address" autocomplete="off" placeholder="收货人详细地址" style="width: 370px"></el-input>
+                       </el-form-item>
+                    </el-form>
+                   <div slot="footer" class="dialog-footer">
+                      <el-button @click="dialogFormVisible = false">取 消</el-button>
+                      <el-button type="primary" @click="dialogFormVisible = false;confirm()" >确 定</el-button>
+                   </div>
+                 </el-dialog>
+                <div v-if="submited">
+                  <input type="checkbox" checked="checked"> 收货人：{{$store.state.name1}},收货地址：{{$store.state.address1}},{{$store.state.phone1}}
+                </div>
               </div>
           </div>
     </div>
 </template>
 
 <script>
+
   export default {
     computed: {
       name: {
@@ -52,16 +59,10 @@
     },
     data() {
       return {
-        options2:[
-        {label:'请选择'},
-          {label:'上海',cities:[{label:'徐汇区'},{label:'宝山区'},{label:'黄浦区'},{label:'虹口区'},{label:'金山区'},{label:'松江区'},{label:'南汇区'},{label:'杨浦区'}]},
-          {label:'苏州',cities:[{label:'姑苏区'},{label:'平江区'},{label:'吴中区'},{label:'高新区'},{label:'虎丘区'},{label:'工业园区'},{label:'相城区'},{label:'吴江区'}]}
-        ],
-        props:{
-          value:'label',
-          children:'cities'
-        },
-
+        dialogFormVisible: false,
+        formLabelWidth: '120px',
+        form:{},
+        submited:false,
         // ruleForm: {
         //   name: '',
         //   phone:'',
@@ -78,7 +79,6 @@
             {inputPattern:/^1([38]\d|5[0-35-9]|7[3678])\d{8}$/ ,
               message: '长度在 8 到 11 个字符', trigger: 'blur' }
           ],
-
           address:[
             // {required: true, message: '请输入地址', trigger: 'blur' },
             { min: 2, message: '长度至少 2 个字符', trigger: 'blur' }
@@ -88,44 +88,31 @@
       };
     },
     methods: {
-      handleItemChange(val){
-      console.log('active item:',val);
-      setTimeout(_=>{
-      if(val.indexOf('上海')>-1 && !this.options2[0].cities.length){
-      this.options2[0].cities = [{
-      label:'徐汇区'
-      }];
-      }else if (val.indexOf('苏州') > -1 && !this.options2[1].cities.length){
-      this.options2[1].cities = [{
-      label:'姑苏区'
-      }]
+      confirm:function(){
+        this.submited = true;
+        // axios.post(`http://localhost:3000/addressAdd`, {
+        //   aid:2,
+        //   aname: this.$store.state.name1,
+        //   phone: this.$store.state.phone1,
+        //   address: this.$store.state.address1,
+        //   defaultaddress:1,
+        //   uid:2
+        // }).then(function (result) {
+        //   console.log(result.data)
+        // })
+        // alert('成功')
+        }
       }
-      })
-      },
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            this.ruleForms.push(this.ruleForm)
-            this.ruleForm ={}
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        });
-      },
-      del:function(index){
-          this.ruleForms.splice(index,1);
-        },
-    }
   }
 </script>
 
 <style scoped>
+  .tab{
+    color:black;
+    font-size: 18px;
+  }
   .Occupant{
     border: 1px solid gainsboro;
     box-shadow: 4px 4px 8px gainsboro;
-  }
-  .occf{
-    margin-left: 30px;
   }
 </style>

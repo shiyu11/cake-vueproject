@@ -38,7 +38,7 @@
     </div>
     <el-row :gutter="20" class="el-row-bang">
       <el-col :span="4" >
-        <el-button type="warning" round plain v-on:click="show(0)">1磅</el-button>
+        <el-button type="warning" round plain v-on:click="show(0)" >1磅</el-button>
       </el-col>
       <el-col :span="4" :offset="1">
         <el-button  round type="warning" plain v-on:click="show(1)">2磅</el-button>
@@ -52,7 +52,7 @@
     </el-row>
     <el-row :gutter="20" class="el-row-cart">
       <el-col :span="6" :offset="2">
-        <el-button  round type="warning" @click="putCart(type)"><a href="#/cart">加入购物车</a></el-button>
+        <el-button  round type="warning" @click="putCart()">加入购物车</el-button>
       </el-col>
       <el-col :span="6" :offset="2">
         <el-button round type="warning" ><a href="#/check">立即购买</a></el-button>
@@ -62,38 +62,60 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     name: "ProductSize",
     data() {
       return {
         message: '内容一',
         type: 0,
-      }
-    },
-    methods: {
-      show: function (index) {
-        this.type = index;
-      },
-      putCart: function (type) {
-        var bangshu = type + 1;
-        var productpid = this.father.pname
-        var shuju = '{' + productpid + ',' + bangshu + '}'
-        console.log(shuju)
-        // console.log(bangshu,productpid)
-        if (sessionStorage.getItem('products')) {
-          var products = sessionStorage.getItem('products');
-          products += (',' + shuju);
-          sessionStorage.setItem('products', products);
-          alert('已经放入购物车中！')
-        } else {
-          //var products = [];
-          //products.push(product); JSON.stringify(products)
-          sessionStorage.setItem('products', shuju);
-        }
+        bangshu:''
 
       }
     },
+    mounted(){
+    },
+    methods: {
+      show(index) {
+        this.type = index;
+        this.putBang(index)
+      },
+      putBang(key){
+        this.bangshu= key+1
+        // console.log('返回的数据 '+(key+1))
+      },
+      putCart(){
+        //key+1 是磅数
+          axios.post('http://localhost:3000/addcart',{
+            uid:1,
+            size:this.bangshu,
+            pid:this.father.pid,
+          })
+        alert('加入购物车成功')
+      }
+
+    }
+      // putCart: function (type) {
+      //   var bangshu = type + 1;
+      //   var productpid = this.father.pname
+      //   var shuju = '{' + productpid + ',' + bangshu + '}'
+      //   console.log(shuju)
+      //   // console.log(bangshu,productpid)
+      //   if (sessionStorage.getItem('products')) {
+      //     var products = sessionStorage.getItem('products');
+      //     products += (',' + shuju);
+      //     sessionStorage.setItem('products', products);
+      //     alert('已经放入购物车中！')
+      //   } else {
+      //     //var products = [];
+      //     //products.push(product); JSON.stringify(products)
+      //     sessionStorage.setItem('products', shuju);
+      //   }
+      //
+      // }
+    ,
     props:['father'],
+
 
 
   }

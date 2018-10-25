@@ -1,4 +1,5 @@
 
+<!--场合的分类展示页-->
 <!--场合是定的数字，保留-->
 <!--接口获取所有的蛋糕数据-->
 <template>
@@ -39,11 +40,11 @@
             <el-row>
             <div class="bottom clearfix">
               <el-col :span="12">
-              <span class="pname"><span>￥</span>{{onep.pprice}}</span>
+              <span class="pname"><span>￥</span>{{onep.pprice}}{{onep.pid}}</span>
               </el-col>
-              <el-col :span="12">
-                <button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" data-dismiss="modal">加入购物车</button>
-              </el-col>
+              <!--<el-col :span="12">-->
+                <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>-->
+              <!--</el-col>-->
             </div>
             </el-row>
           </div>

@@ -9,6 +9,14 @@
         <!--json-->
         <!--<img :src="product[mypid-1].xpic" alt="" class="p-img">-->
         <img :src="product.xpic" alt="" class="p-img">
+
+        <!--<div mag-thumb="outer-drag">-->
+          <!--<img :src="product.xpic" />-->
+        <!--</div>-->
+        <!--<div mag-zoom="outer-drag">-->
+          <!--<img :src="product.xxpic" />-->
+        <!--</div>-->
+
       </el-col>
       <el-col :span="10" :offset="1">
         <div class="p-int">
@@ -46,13 +54,12 @@
 
 
     <el-row class="bottomdes">
-
-      <el-col :span="6" :offset="5">
+      <el-col :span="4" >
         <img src="../../assets/home/katong2.gif" class="img-responsive" alt="Responsive image">
+        <p class="buttonp">累积评论</p>
       </el-col>
-      <el-col :span="8" class="moretext hidden-sm-and-down">
-        <p class="buttonp">已经到底啦</p>
-        <a href="#top" class="buttonp">回顶部</a>
+      <el-col :span="16" class="hidden-sm-and-down" :offset="2">
+        <my-review :fpid="mypid"></my-review>
       </el-col>
     </el-row>
   </div>
@@ -60,6 +67,7 @@
 
 <script>
   import ProductSize from './ProductSize'
+  import Review from './Review'
   import axios from 'axios'
   export default {
     name: "ProductSize",
@@ -278,12 +286,14 @@
         //     "xpic": require("../../assets/products/x10.jpg")
         //   },
         // ],
-        product:[]
+        product: []
 
 
-    }},
+      }
+    },
     components: {
-      'my-productsize': ProductSize
+      'my-productsize': ProductSize,
+      'my-review': Review
     },
     mounted: function () {
       let _this = this
@@ -291,10 +301,24 @@
         _this.product = result.data.data;
         console.log(result.data.data)
       })
-    },
+      // $(function(){
+      //   $host = $('[mag-thumb="outer-drag"]');
+      // this.$refs.bimg.mag.mode='outer'
+      // this.$refs.bimg.mag.position='drag'
+      // this.$refs.bimg.mag.toggle='false'
+
+      }
+      //   $host.mag({
+      //     mode: 'outer',
+      //     position: 'drag',
+      //     toggle: false
+      // })
+      //
+      // });
 
 
-  }
+ }
+
 </script>
 <style>
   .p-title {
@@ -308,7 +332,6 @@
     margin-top: 20px;
   }
   .moretext{
-
     color: #DEB887;
   }
   hr{
@@ -323,7 +346,10 @@
     font-size:50px
   }
   .buttonp{
-    margin-top: 80px;
+    margin-top: 20px;
+    color: #DEB887;
+    font-size: 30px;
+    margin-left: 20px;
   }
 
 </style>

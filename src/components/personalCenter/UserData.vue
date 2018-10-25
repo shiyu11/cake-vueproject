@@ -117,7 +117,7 @@
     background: url("../../../static/images/hmhpic/bg-1.png") no-repeat;
     margin: 20px;
     margin-left: 60px;
-    position: absolute;
+
   }
   .form-1{
     position: relative;

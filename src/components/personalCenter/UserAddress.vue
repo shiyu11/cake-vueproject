@@ -1,6 +1,9 @@
 <template>
+  <div>
+    <div>
+      <my-address></my-address>
+    </div>
     <div class="el-container">
-      <div>
         <el-button type="text" @click="dialogFormVisible = true" class="tab">添加新的收货地址</el-button>
         <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
           <el-form :model="form">
@@ -10,17 +13,6 @@
             <el-form-item label="联系方式" :label-width="formLabelWidth">
               <el-input v-model="form.phone" autocomplete="off" placeholder="收货人手机号" style="width: 370px"></el-input>
             </el-form-item>
-            <!--<el-form-item label="城市" :label-width="formLabelWidth">-->
-              <!--&lt;!&ndash;<el-select v-model="form.region" placeholder="请选择地区" style="width: 370px">&ndash;&gt;-->
-                <!--<el-cascader-->
-                  <!--:options="options"-->
-                  <!--v-model="selectedOptions"-->
-                  <!--@change="handleChange">-->
-                <!--</el-cascader>-->
-                <!--<el-option label="上海" value="shanghai"></el-option>-->
-                <!--<el-option label="苏州" value="suzhou"></el-option>-->
-              <!--&lt;!&ndash;</el-select>&ndash;&gt;-->
-            <!--</el-form-item>-->
             <el-form-item label="详细地址" :label-width="formLabelWidth">
               <el-input v-model="form.address" autocomplete="off" placeholder="收货人详细地址" style="width: 370px"></el-input>
             </el-form-item>
@@ -33,46 +25,58 @@
             <el-button type="primary" @click="dialogFormVisible = false;confirm()">确 定</el-button>
           </div>
         </el-dialog>
+      <div>
       </div>
     </div>
+  </div>
 </template>
 
 <script>
   import axios from 'axios'
+  import UsergetAddress from './UsergetAddress'
     export default {
         name: "UserAddress",
       data(){
           return{
             dialogFormVisible: false,
             form: {
-              uid:1,
+              uid:'',
               aname:'',
               phone:'',
-              // region: '',
               address:'',
               defaultaddress: false,
-              type: [],
+              // type: [],
               resource: '',
-              desc: ''
+              desc: '',
             },
             formLabelWidth: '120px',
 
+            mydata:[]
           }
       },
+      mounted(){
+        axios.get('http://localhost:3000/alladdress').then((res)=>{
+          //渲染页面
+          console.log(res)
+          this.mydata = res.data.data;
+        }),(err)=>{
+          console.log(err)
+        }
+      },
       methods:{
-          // showData(e){
-          //   console.log(e)
-          //   console.log(this.form)
-          // },
         confirm(){
-           axios.post('http://localhost:3000/orderAdd2',{
-             uid:1,
+           axios.post('http://localhost:3000/addaddress',{
+             uid:this.$store.state.uid,
              aname:this.form.aname,
              phone:this.form.phone,
+             // region:this.form.region,
              address:this.form.address,
              defaultaddress:this.form.defaultaddress,
            })
         }
+      },
+      components:{
+        'my-address':UsergetAddress
       }
           }
 </script>
@@ -80,7 +84,7 @@
 <style scoped>
   .el-container{
     border: 2px solid transparent;
-    margin: 80px;
-    margin-left: 30px;
+    margin: 20px;
+    margin-left: 10px;
   }
 </style>

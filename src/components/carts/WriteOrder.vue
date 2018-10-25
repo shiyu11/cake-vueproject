@@ -1,5 +1,4 @@
 <template>
-
   <div class="container">
     <div class="row">
       <hr>
@@ -7,9 +6,7 @@
         <span class="span2">CONFIRMATION</span>
         <h4>订单确认</h4>
       </div>
-      <div>
-        <app-order-list></app-order-list>
-      </div>
+
       <div>
         <app-address></app-address>
       </div>
@@ -26,10 +23,10 @@
       <table class="table" style="text-align: right">
         <tbody>
         <tr>
-          <td><span class="span4">2</span>件商品，总商品金额：   ￥596.00</td>
+          <td><span class="span4">{{$store.state.rnum}}</span>件商品，总商品金额：   ￥{{$store.state.money}}</td>
         </tr>
         <tr>
-          <td>应付总额：<span class="span3">￥596.00</span></td>
+          <td>应付总额：<span class="span3">￥{{$store.state.money}}</span></td>
         </tr>
         <tr>
           <td>配送至：{{$store.state.address1}},收货人：{{$store.state.name1}}，{{$store.state.phone1}}</td>
@@ -38,7 +35,7 @@
       </table>
 
       <div style="text-align:right;">
-        <router-link tag="button" active-class="active" role="presentation" to="/finish" @click="ok" exact><a>提交订单</a></router-link>
+        <button class="btn btn-primary" v-on:click="submit">提交订单</button>
       </div>
       <div style="text-align:right;">
         <router-link to="/cart">返回购物车</router-link>
@@ -50,75 +47,39 @@
   import Address from './Address'
   import Date from './Date'
   import ProductOrder from './ProductOrder'
-  import OrderList from './OrderList'
+  import axios from 'axios'
   export default {
     name: "OrderDetail",
     components: {
       'app-address': Address,
       'app-date': Date,
-      'app-product-order': ProductOrder,
-      'app-order-list': OrderList
+      'app-product-order': ProductOrder
     },
     methods: {
-      ok() {
-          axios.post(`http://localhost:3000/addressAdd`, {
-            aid:2,
+      submit() {
+        if(this.$store.state.name1==''||this.$store.state.phone1==''||this.$store.state.address1==''||this.$store.state.time1==''){
+          alert('请确认信息不能为空')
+        }else{
+          this.$router.push({path:'/finish'})
+          axios.post(`http://localhost:3000/orderAdd`, {
+            state:0,
+            uid:1,
+            money:222,
+            rnum:111,
+            oid:1,
+            pid:1,
             aname: this.$store.state.name1,
             phone: this.$store.state.phone1,
             address: this.$store.state.address1,
-            defaultaddress:1,
-            uid:2
+            defaultaddress:1
           }).then(function (result) {
             console.log(result.data)
           })
           alert('成功')
+        }
       }
     }
   }
-    // data() {
-    //   return {
-    //     pickerOptions1: {
-    //       shortcuts: [{
-    //         text: '今天',
-    //         onClick(picker) {
-    //           picker.$emit('pick', new Date());
-    //         }
-    //       }, {
-    //         text: '昨天',
-    //         onClick(picker) {
-    //           const date = new Date();
-    //           date.setTime(date.getTime() - 3600 * 1000 * 24);
-    //           picker.$emit('pick', date);
-    //         }
-    //       }, {
-    //         text: '一周前',
-    //         onClick(picker) {
-    //           const date = new Date();
-    //           date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
-    //           picker.$emit('pick', date);
-    //         }
-    //       }]
-    //     },
-    //     value1: '',
-    //     value2: '',
-    //     value3: '',
-    //
-    //
-    //   };
-    // },
-    // methods:{
-
-    // sure:function(){
-    //   this.ruleForms.push(this.ruleForm)
-    //   this.ruleForm ={}
-    // },
-    // no:function(){
-    //     this.ruleForm = {}
-    // },
-    // delPro:function(index){
-    //   this.ruleForms.splice(index,1);
-    // },
-
 
 </script>
 
@@ -126,6 +87,7 @@
 
   .checkout-title{
     text-align:center;
+    margin-bottom: 50px;
     color:darkgray;
   }
   .table{
@@ -143,5 +105,4 @@
   .span4{
     color:firebrick;
   }
-
 </style>

@@ -42,28 +42,28 @@
     <div>
       <el-row :gutter="20"
               class="space">
-        <el-col :span="5">
+        <el-col :span="6">
           <el-card shadow="hover">
             <router-link to="/productlist/1">
             <img src="../../assets/home/newlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="6">
           <el-card shadow="hover">
             <router-link to="/productlist/2">
             <img src="../../assets/home/birthlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="6">
           <el-card shadow="hover">
             <router-link to="/productlist/3">
             <img src="../../assets/home/childlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
-        <el-col :span="5">
+        <el-col :span="6">
           <el-card shadow="hover">
             <router-link to="/productlist/1">
             <img src="../../assets/home/togetherlogo.png" alt="" class="image">
@@ -71,11 +71,6 @@
           </el-card>
         </el-col>
 
-        <el-col :span="4">
-            <router-link to="/event">
-              <img src="../../assets/home/katong3.gif" alt="" class="image img-circle">
-            </router-link>
-        </el-col>
 
       </el-row>
       <el-row>
@@ -85,22 +80,26 @@
 
     <!--口味-->
     <div>
-
-
     </div>
     <!--一部分-->
 
      <my-products></my-products>
 
-    <!--活动推荐-->
-
+    <!--预售-->
+    <el-row>
+      <el-col :span="12">
+      <router-link to="/yushou">预售</router-link>
+      </el-col>
+      <el-col :span="12">
+        <router-link to="/theme">主題</router-link>
+      </el-col>
+    </el-row>
 
   </div>
 </template>
 
 <script>
   import Products from './Products'
-
   export default {
     name: "Home",
     components: {

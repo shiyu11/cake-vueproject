@@ -2,22 +2,22 @@
     <div class="container">
       <el-row :gutter="20">
         <el-col :span="12" :offset="1">
-          <img :src="product[1].theme" alt="" class="image">
+          <img :src="product[12].theme" alt="" class="image">
         </el-col>
         <el-col :span="10" :offset="1">
-          <div>
-            <h3>{{product[1].pname}}</h3>
+          <div class="right-price">
+            <h3>{{product[12].pname}}</h3>
             <div v-if="type==0" class="price">
-              <h4><i>￥</i><span>{{product[1].pprice}}</span></h4>
-              <s>原价￥<span>{{product[1].pprice*1.5}}</span></s>
+              <h4><i>￥</i><span>{{product[12].pprice}}</span></h4>
+              <s>原价￥<span>{{product[12].pprice*1.5}}</span></s>
             </div>
             <div v-else-if="type==1" class="price">
-              <h4><i>￥</i><span>{{product[1].pprice*2}}</span></h4>
-              <s>原价￥<span>{{product[1].pprice*3}}</span></s>
+              <h4><i>￥</i><span>{{product[12].pprice*2}}</span></h4>
+              <s>原价￥<span>{{product[12].pprice*3}}</span></s>
             </div>
             <div v-else class="price">
-              <h4><i>￥</i><span>{{product[1].pprice*3}}</span></h4>
-              <s>原价￥<span>{{product[1].pprice*4.5}}</span></s>
+              <h4><i>￥</i><span>{{product[12].pprice*3}}</span></h4>
+              <s>原价￥<span>{{product[12].pprice*4.5}}</span></s>
             </div>
             <el-row  :gutter="20" class="el-row-bang">
               <el-col :span="4" >
@@ -74,6 +74,7 @@
 
 <style scoped>
   .image{
+    margin-top: 120px;
     width: 100%;
   }
   .el-row-cart{
@@ -86,6 +87,9 @@
   }
   .el-row-bang{
     margin-top: 20px;
+  }
+  .right-price{
+    margin-top: 150px;
   }
   .price{
     margin-left: 100px;

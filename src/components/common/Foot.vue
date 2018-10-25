@@ -2,8 +2,8 @@
   <div>
     <el-footer style="height: 200px;">
       <div class="bot1">
-        <p class="icp" style="color:#b0916a;">客服热线：4006-678-678（8:00 - 22:00）</p>
-        <p class="icp">客服邮箱：cs@mcake.com</p>
+        <p class="icp" style="color:#b0916a;">客服热线：4003-638-638（8:00 - 22:00）</p>
+        <p class="icp">客服邮箱：cs@tastedreamcake.com</p>
       </div>
       <div class="chuizhi">
       </div>

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <div><h2>{{$store.state.username}}</h2></div>
     <div class="about">
       <div class="container">
         <div class="row">
@@ -13,28 +14,16 @@
           </el-col>
         </div>
         <div class="row">
-          <div class="col-md-3 hidden-xs hidden-sm">
-            <div class="list-group">
-              <a href="#1" class="list-group-item myti">配送服务</a>
-              <a href="#2" class="list-group-item myti">购物指南</a>
-              <a href="#3" class="list-group-item myti">投诉与建议</a>
-              <router-link to="/">
-                <img src="../../assets/home/katong1.gif" alt="" class="image ">
-                <h3 class="re">返回首页</h3>
-              </router-link>
-
-            </div>
-          </div>
-          <div class="col-md-9 context">
+          <div class="col-md-12 context">
             <a name="1"></a>
             <h3>配送服务</h3>
             <ul>
               <li><p class="titi">上 海</p></li>
               <li><p>1. 免费配送区域：
-                北以宝钱公路；西以绕城高速、沪蓉高速、嘉松中路、嘉松南路、辰塔路、玉树路；南以申嘉湖高速、黄浦江、大治河；
-                东以绕城高速、浦东机场为界。</p></li>
+                北以宝钱公路；西以绕城高速、沪蓉高速、嘉松中路、嘉松南路、辰塔路、玉树路；南以申嘉湖高速、黄浦江、大治河。
+            </p></li>
               <li><p> 2. 配送时间：10:00-22:00</p></li>
-              <li><p> 3. 400电话咨询时间：8:00-22:00（请至少提前5小时预订）
+              <li><p> 3. 电话咨询时间：8:00-22:00（请至少提前5小时预订）
                 当天21:30之后订单及次日9:00前订单，最早配送时间为次日14:0</p></li>
             </ul>
 
@@ -48,7 +37,7 @@
             <a name="2"></a>
             <h3>购物指南</h3>
             <ul>
-              <li><p>1、注册/登录MCAKE官网
+              <li><p>1、注册/登录
                 如果您未在网站注册过，点击官网首页右上角【注册】按钮，根据提示进行账号注册；如果您已注册过，只需点击首页右上角【登录】按钮，输入帐号密码即可登录。（本网站也为用户提供了快速购买通道，无需注册会员即可直接下单订购商品）。
               </p></li>
               <li><p> 2、选购商品放入购物车
@@ -60,7 +49,7 @@
               </p></li>
               <li><p>
                 4、选择配送方式
-                填写收货人信息后，您可以根据您所在地区和时间要求选择您想要的送货方式。可以选择由MCAKE配送至收货地址，也可以到指定自提点地点进行自提。
+                填写收货人信息后，您可以根据您所在地区和时间要求选择您想要的送货方式。
               </p></li>
               <li><p>
                 5、选择付款方式
@@ -77,9 +66,9 @@
             <ul>
               <li><p>尊敬的贵宾，如果您在购物过程中，对我们的网站、服务、物流等环节存在任何意见或建议，请与我们的客服取得联系。客服人员将会及时为您处理。
               </p></li>
-              <li><p>客服热线：4006-678-678 (8:00-22:00)</p></li>
-              <li><p> 客服邮箱：cs@mcake.com</p></li>
-              <li><p> 您也可以通过在线反馈提交您的订单投诉或意见与建议。感谢您对Mcake的关注和一如既往的支持！</p></li>
+              <li><p>客服热线：4006-638-638 (8:00-22:00)</p></li>
+              <li><p> 客服邮箱：cs@tastedreamcake.com</p></li>
+              <li><p> 您也可以通过在线反馈提交您的订单投诉或意见与建议。感谢您的关注和一如既往的支持！</p></li>
             </ul>
             <a href="#4" class="rt">返回顶部</a>
           </div>
@@ -117,7 +106,7 @@
 
   .myti {
     font-size: 25px;
-    margin-top: 150px;
+
   }
 
   .re {

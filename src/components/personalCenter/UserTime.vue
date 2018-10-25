@@ -4,13 +4,13 @@
   <div class="icon-1 content content-front">
       <h3>欢迎您{{users.uname}}</h3>
       <h3>来到品味·梦幻蛋糕</h3>
-      <button @click="goData" style="float: right">完善个人资料</button>
-      <p>会员级别:{{users.level}}</p>
+      <p @click="goData">完善个人资料</p>
+
     <div>
       <p>我的订单:
         <span @click="goOrderAfter" style="text-decoration: underline">待收货{{order.state}}</span><br>
-        <span @click="goOrderFinish" style="margin-left: 69px;text-decoration: underline">已完成{{order.state}}</span>
-        <button @click="goOrder" style="float: right">全部订单>></button>
+        <span @click="goOrderFinish" style="margin-left: 69px;text-decoration: underline">已完成{{order.state}}</span><br>
+        <span @click="goOrder">全部订单>></span>
       </p>
 
     </div>
@@ -26,7 +26,6 @@
             now:'',
             users:[
               {uname:'哈哈',
-              level:'V2',
               }],
             order:[{
               state:'1'
@@ -58,7 +57,7 @@
   }
  .el-container .icon-1 p{
    color: #B0916A;
-  text-align: left;
+   text-align: left;
    font-size: 15px;
    font-weight: normal;
    line-height: 200%;
@@ -66,15 +65,19 @@
   .el-container{
     border: 2px solid transparent;
     margin: 30px;
-    margin-left: 60px;
+    margin-left: 10px;
   }
   /*.content {*/
     /*color: #ffffff;*/
   /*}*/
   .bg {
-    background: url("../../../static/images/hmhpic/timg.jpg");
+    background: url("../../../static/images/hmhpic/timg1.jpg");
     height:600px;
     width: 800px;
+
+    /*z-index: -1;!*-1 可以当背景*!*/
+    /*-webkit-filter: blur(2px);*/
+    /*filter: blur(3px);*/
   }
   .bg-blur {
     float: left;
@@ -90,9 +93,9 @@
   }
   .content-front {
     position:absolute;
-    left: 270px;
+    left: 370px;
     right: 10px;
-    top: 34px;
+    top: 135px;
     height:600px;
     text-align: left;
   }

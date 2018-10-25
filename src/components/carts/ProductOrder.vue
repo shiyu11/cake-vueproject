@@ -17,33 +17,22 @@
           <td>数量</td>
           <td>小计</td>
         </tr>
-        <tr>
+        <tr v-for="(product,index) in products" :key="product.id">
           <td>
-            <img src="../../assets/a3.jpg" style="width:25%">
+            <img :src="product.ppic" style="width:30%">
           </td>
-          <td>
-            Velour rouge<br/>
-            蔓越莓红丝绒
+          <td width="20%">
+            <div class="info">
+              <h5>{{ product.pname }}</h5>
+              <p>赠品：标配餐具10份  生日蜡烛1支</p>
+            </div>
           </td>
-          <td>2磅<br/>
-            标配：10份标配餐具</td>
-          <td>￥298.00</td>
-          <td>x1</td>
-          <td>￥298.00</td>
-        </tr>
-        <tr>
-          <td>
-            <img src="../../assets/a5.jpg" style="width:25%">
-          </td>
-          <td>
-            Napoléon aux myrtilles<br/>
-            蓝莓轻乳拿破仑
-          </td>
-          <td>2磅<br/>
-            标配：10份标配餐具</td>
-          <td>￥298.00</td>
-          <td>x1</td>
-          <td>￥298.00</td>
+          <td width="15%" class="size">
+            {{product.size}}
+            </td>
+          <td width="10%" class="price">{{ product.pprice }}</td>
+          <td width="10%" class="num">{{product.pnum}}</td>
+          <td width="10%" class="allprice">{{ product.pprice * product.pnum }}</td>
         </tr>
         </tbody>
       </table>
@@ -53,12 +42,22 @@
 
 <script>
     export default {
-        name: "ProductOrder"
+        name: "ProductOrder",
+      data(){
+        return{
+          products:[
+            {pname:'蓝莓轻乳拿破仑',pnum:2,ppic:require("../../assets/a3.jpg"),size:'2磅',pprice:198}
+          ],
+        }
+      },
     }
 </script>
 
 <style scoped>
   .table{
     background-color:#F2F6F7;
+  }
+  .price,.allprice,.num,.size{
+    line-height:100px;
   }
 </style>
