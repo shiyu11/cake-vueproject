@@ -70,7 +70,7 @@
       putCart(){
         //key+1 是磅数
         axios.post('http://localhost:3000/addcart',{
-          uid:3,
+          uid:this.$store.state.uid,
           size:this.bangshu,
           pid:this.father.pid,
         })

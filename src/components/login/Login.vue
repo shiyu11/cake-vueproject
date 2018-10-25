@@ -5,7 +5,7 @@
       <div class="form-group">
         <label for="inputPhone3" class="col-sm-2 control-label">手机号：</label>
         <div class="col-sm-4">
-          <input v-model="username1" type="text" class="form-control" id="inputPhone3" placeholder="请输入手机号">
+          <input v-model="phonenum" type="text" class="form-control" id="inputPhone3" placeholder="请输入手机号">
         </div>
       </div>
       <div class="form-group">
@@ -30,39 +30,45 @@
     name: "Login",
     data(){
       return{
-        username1:'',
+        phonenum:'',
         password:'',
-        uid:'',
-        mydata:'',
-        uname:''
+        uphone:'',
+        // uid:'',
+        mydata:''
       }
     },
     methods:{
       UserLogin() {
-        if(this.username1 == ''||this.password == ''){
+        if(this.phonenum == ''||this.password == ''){
           alert('手机号和密码不能为空！')
         }else {
           let _this = this;
           axios.post('http://localhost:3000/users/login',
             {
-              uname: _this.username1,
+              uphone: _this.phonenum,
               upwd: _this.password
             }).then(function (result) {
             let info = eval("(" + result.request.response + ")");
-            // _this.$store.state.uid = info.data.uid
-            _this.$store.state.username = info.data.uname
-            console.log(_this.uid);
+            console.log(info)
+            _this.$store.state.uid = info.data.uid;
+            console.log(_this.$store.state.uid)
+            _this.$store.state.uname = info.data.uname
+            // console.log(_this.uid);
             if (info.code == 200) {
               alert('登录成功，即将跳转到首页');
+
               setTimeout(function () {
                 _this.$router.push('/')
               }.bind(this), 1000);
-              _this.$store.state.username2 =_this.username1;
-              // _this.uid =_this.username1;
-              sessionStorage.setItem('sphone',_this.$store.state.username2);
-              sessionStorage.setItem('spassword',_this.$store.state.pwd);
-              console.log(_this.$store.state.username2);
-              _this.$router.push({path: '/'})
+              _this.$store.state.phone =_this.phonenum;
+              // _this.uid =_this.phonenum;
+              // sessionStorage.setItem('sphone',_this.$store.state.phone);
+              // sessionStorage.setItem('spassword',_this.$store.state.pwd);
+              // sessionStorage.setItem('sname',_this.$store.state.ppp);
+              sessionStorage.setItem('uid',_this.$store.state.uid);
+              // console.log(_this.$store.state.phone);
+              // _this.$router.push({path: '/'})
+              _this.$store.state.type=1
             }
             else {
               alert('用户名或密码错误')

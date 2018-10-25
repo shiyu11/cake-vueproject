@@ -38,7 +38,7 @@
     </div>
     <el-row :gutter="20" class="el-row-bang">
       <el-col :span="4" >
-        <el-button type="warning" round plain v-on:click="show(0)" >1磅</el-button>
+        <el-button type="warning" round plain v-on:click="show(0)">1磅</el-button>
       </el-col>
       <el-col :span="4" :offset="1">
         <el-button  round type="warning" plain v-on:click="show(1)">2磅</el-button>
@@ -55,7 +55,7 @@
         <el-button  round type="warning" @click="putCart()">加入购物车</el-button>
       </el-col>
       <el-col :span="6" :offset="2">
-        <el-button round type="warning" ><a href="#/check">立即购买</a></el-button>
+        <el-button round type="warning"><a href="#/check">立即购买</a></el-button>
       </el-col>
     </el-row>
   </div>
@@ -86,34 +86,18 @@
       },
       putCart(){
         //key+1 是磅数
+        if (this.$store.state.type == 0) {
+         alert('请先登录')
+        }else{
           axios.post('http://localhost:3000/addcart',{
-            uid:1,
+            uid:this.$store.state.uid,
             size:this.bangshu,
             pid:this.father.pid,
           })
-        alert('加入购物车成功')
+          alert('加入购物车成功')
+        }
       }
-
-    }
-      // putCart: function (type) {
-      //   var bangshu = type + 1;
-      //   var productpid = this.father.pname
-      //   var shuju = '{' + productpid + ',' + bangshu + '}'
-      //   console.log(shuju)
-      //   // console.log(bangshu,productpid)
-      //   if (sessionStorage.getItem('products')) {
-      //     var products = sessionStorage.getItem('products');
-      //     products += (',' + shuju);
-      //     sessionStorage.setItem('products', products);
-      //     alert('已经放入购物车中！')
-      //   } else {
-      //     //var products = [];
-      //     //products.push(product); JSON.stringify(products)
-      //     sessionStorage.setItem('products', shuju);
-      //   }
-      //
-      // }
-    ,
+    },
     props:['father'],
 
 

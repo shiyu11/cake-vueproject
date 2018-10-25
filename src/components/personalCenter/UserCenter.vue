@@ -44,7 +44,7 @@
       },
       methods:{
           toHome(){
-            this.$router.push({path:'/'})
+            request.getSession().invalidate();
           },
         handleClick(tab, event) {
             if(tab.$options.propsData.label=='完善个人资料'){

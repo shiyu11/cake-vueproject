@@ -13,10 +13,10 @@
       <el-form-item label="确认密码" prop="checkPass">
         <el-input type="password" v-model="ruleForm.checkPass" placeholder="请再次输入密码" autocomplete="off"></el-input>
       </el-form-item>
-      <el-form-item label="验证码" prop="code">
-        <el-input type="text" v-model="ruleForm.code" placeholder="请输入验证码" autocomplete="off"></el-input>
-        <el-button type="primary" @click="getMessage()">获取验证码</el-button>
-      </el-form-item>
+      <!--<el-form-item label="验证码" prop="code">-->
+        <!--<el-input type="text" v-model="ruleForm.code" placeholder="请输入验证码" autocomplete="off"></el-input>-->
+        <!--<el-button type="primary" @click="getMessage()">获取验证码</el-button>-->
+      <!--</el-form-item>-->
       <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
         <el-button @click="resetForm('ruleForm')">重置</el-button>
@@ -125,12 +125,13 @@
               upwd: _this.ruleForm.pass,
               uname: _this.ruleForm.userName,
             }).then((result)=> {
+              _this.$router.push('/login')
               console.log(result.data)
             },(err) =>{
               console.log(result.err)
             })
           } else {
-            console.log('error submit!!');
+            console.log('注册失败!!');
             return false;
           }
         });

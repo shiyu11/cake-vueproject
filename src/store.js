@@ -7,7 +7,7 @@ export default new Vuex.Store({
     phone1:'',
     address1:'',
     time1:'',
-    uid:1,
+    uid:'',
     time1:'',
     phone:'',
     pwd:'',
@@ -18,5 +18,7 @@ export default new Vuex.Store({
     money:222,
     rnum:111,
     defaultaddress:1,
+    uname:'',
+    type:0
   }
 })
