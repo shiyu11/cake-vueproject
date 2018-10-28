@@ -5,309 +5,7 @@
     </div>
 
     <div class="fuzhu">
-      <div class="kong"></div>
-      <div id="yushou1">
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-        <div class="circle-container">
-          <div class="circle"></div>
-        </div>
-      </div>
+        <div class="kong"></div>
         <!--旋转图片-->
         <div class="box">
           <div style="transform: rotateY(0deg) translateZ(275px);">
@@ -338,18 +36,35 @@
             <img src="../../assets/yushou/pp9.png" class="img1">
           </div>
         </div>
-        <div >
+
+
+        <div>
+
           <div class="tm1">
 
           </div>
+
           <img src="../../assets/yushou/shuzi1.jpg" class="img-responsive tm">
+
+
         </div>
     </div>
 
      <div class="zhengwen">
+       <el-row>
+         <el-col :span="12" class="text-center textr">
+           <p>我与你的倾心一刻</p>
+           <p>是天使奶油的邂逅</p>
+           <p>这1314你知道520吗</p>
+         </el-col>
+         <el-col :span="8">
+           <img src="../../assets/home/yushoushuoming.png" class="img-responsive tm">
+         </el-col>
+
+       </el-row>
          <el-row>
         <el-col :span="12">
-          <img src="../../assets/yushou/shuzi2.jpg" class="img-responsive "></el-col>
+          <img src="../../assets/yushou/shuzi2.jpg" class="img-responsive"></el-col>
         <el-col :span="12" class="text-center textr">
           <p>用心打发而成的美味奶油</p>
           <p>口感绵密，精致细腻</p>
@@ -380,50 +95,6 @@
      </div>
 
 
-    <!--<div>-->
-    <!--<div class="content">-->
-    <!--<div class="photo-cube__wrapper">-->
-    <!--<input type="radio" id="1" name="cube" checked="true" class="photo-cube__control"/>-->
-    <!--<input type="radio" id="2" name="cube" class="photo-cube__control"/>-->
-    <!--<input type="radio" id="3" name="cube" class="photo-cube__control"/>-->
-    <!--<input type="radio" id="4" name="cube" class="photo-cube__control"/>-->
-    <!--<input type="radio" id="5" name="cube" class="photo-cube__control"/>-->
-    <!--<input type="radio" id="6" name="cube" class="photo-cube__control"/>-->
-    <!--<div class="photo-cube">-->
-    <!--<div class="photo-cube__panel"></div>-->
-    <!--<div class="photo-cube__panel"></div>-->
-    <!--<div class="photo-cube__panel"></div>-->
-    <!--<div class="photo-cube__panel"></div>-->
-    <!--<div class="photo-cube__panel"></div>-->
-    <!--<div class="photo-cube__panel"></div>-->
-    <!--</div>-->
-    <!--<div class="photo-cube__actions&#45;&#45;left">-->
-    <!--<label for="6" class="photo-cube__action"></label>-->
-    <!--<label for="1" class="photo-cube__action"></label>-->
-    <!--<label for="2" class="photo-cube__action"></label>-->
-    <!--<label for="3" class="photo-cube__action"></label>-->
-    <!--<label for="4" class="photo-cube__action"></label>-->
-    <!--<label for="5" class="photo-cube__action"></label>-->
-    <!--</div>-->
-    <!--<div class="photo-cube__actions&#45;&#45;right">-->
-    <!--<label for="2" class="photo-cube__action"></label>-->
-    <!--<label for="3" class="photo-cube__action"></label>-->
-    <!--<label for="4" class="photo-cube__action"></label>-->
-    <!--<label for="5" class="photo-cube__action"></label>-->
-    <!--<label for="6" class="photo-cube__action"></label>-->
-    <!--<label for="1" class="photo-cube__action"></label>-->
-    <!--</div>-->
-    <!--<div class="photo-cube__indicators">-->
-    <!--<label for="1" class="photo-cube__indicator"></label>-->
-    <!--<label for="2" class="photo-cube__indicator"></label>-->
-    <!--<label for="3" class="photo-cube__indicator"></label>-->
-    <!--<label for="4" class="photo-cube__indicator"></label>-->
-    <!--<label for="5" class="photo-cube__indicator"></label>-->
-    <!--<label for="6" class="photo-cube__indicator"></label>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
 
   </div>
 </template>

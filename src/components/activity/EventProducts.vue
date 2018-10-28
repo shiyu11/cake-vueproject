@@ -2,22 +2,22 @@
     <div class="container">
       <el-row :gutter="20">
         <el-col :span="12" :offset="1">
-          <img :src="product[12].theme" alt="" class="image">
+          <img :src="product[3].theme" alt="" class="image">
         </el-col>
         <el-col :span="10" :offset="1">
           <div class="right-price">
-            <h3>{{product[12].pname}}</h3>
+            <h3>{{product[3].pname}}</h3>
             <div v-if="type==0" class="price">
-              <h4><i>￥</i><span>{{product[12].pprice}}</span></h4>
-              <s>原价￥<span>{{product[12].pprice*1.5}}</span></s>
+              <h4><i>￥</i><span>{{product[3].pprice}}</span></h4>
+              <s>原价￥<span>{{product[3].pprice*1.5}}</span></s>
             </div>
             <div v-else-if="type==1" class="price">
-              <h4><i>￥</i><span>{{product[12].pprice*2}}</span></h4>
-              <s>原价￥<span>{{product[12].pprice*3}}</span></s>
+              <h4><i>￥</i><span>{{product[3].pprice*2}}</span></h4>
+              <s>原价￥<span>{{product[3].pprice*3}}</span></s>
             </div>
             <div v-else class="price">
-              <h4><i>￥</i><span>{{product[12].pprice*3}}</span></h4>
-              <s>原价￥<span>{{product[12].pprice*4.5}}</span></s>
+              <h4><i>￥</i><span>{{product[3].pprice*3}}</span></h4>
+              <s>原价￥<span>{{product[3].pprice*4.5}}</span></s>
             </div>
             <el-row  :gutter="20" class="el-row-bang">
               <el-col :span="4" >
@@ -32,7 +32,7 @@
             </el-row>
             <el-row :gutter="20" class="el-row-cart">
               <el-col :span="6" :offset="1">
-                <el-button  round type="warning">加入购物车</el-button>
+                <el-button  round type="warning" @click="putCart()">加入购物车</el-button>
               </el-col>
               <el-col :span="6" :offset="2">
                 <el-button round type="warning" >立即购买</el-button>
@@ -61,12 +61,30 @@
         return {
           message: '内容一',
           type: 0,
-          product:[]
+          product:[],
+          bangshu:''
         }
       },
       methods: {
-        show: function (index) {
+        show(index) {
           this.type = index;
+          this.putBang(index)
+        },
+        putBang(key){
+          this.bangshu= key+1
+        },
+        putCart(){
+          //key+1 是磅数
+          if (this.$store.state.type == 0) {
+            alert('请先登录')
+          }else{
+            axios.post('http://localhost:3000/addcart',{
+              uid:sessionStorage.getItem('uid'),
+              size:this.bangshu,
+              pid:this.product[3].pid,
+            })
+            alert('加入购物车成功')
+          }
         }
       },
     }

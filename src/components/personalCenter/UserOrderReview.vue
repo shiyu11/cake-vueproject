@@ -8,27 +8,28 @@
           <th>订单信息</th>
           <!--<th>订单编号</th>-->
           <th>数量</th>
-          <th>金额</th>
+          <!--<th>评论内容</th>-->
           <th>订单状态</th>
           <th>操作</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="order in or" v-if="order.state=='待评价'">
-          <td><img :src="order.ppic" style="width:120px;height:120px;" ></td>
+        <tr v-for="(order,index) in or" v-if="order.state=='待评价'">
+          <td><router-link :to="`/productDetail/${order.pid}`">
+            <img :src="order.ppic" style="width:120px;height:120px;" ></router-link></td>
           <td class="info">
             <h4>{{order.pname}}</h4>
           </td>
           <!--<td>{{order.oid}}</td>-->
           <td>{{order.rnum}}</td>
-          <td>{{order.pprice}}</td>
+
           <td>{{order.state}}</td>
           <td>
             <el-form >
-            <el-input type="textarea" style="border: 1px solid #B0926A" v-model="vcon">
+            <el-input type="textarea" style="border: 1px solid #B0926A" v-model="order.vcon">
           </el-input>
             </el-form>
-            <button v-on:click="evaluateOrder(order.oid,order.pid)">评价
+            <button v-on:click="evaluateOrder(index,order.oid,order.pid)">评价
            </button></td>
         </tr>
         </tbody>
@@ -45,41 +46,48 @@
         return {
           myoid: this.$route.params.oid,
           or:[],
-          myuid:this.$store.state.uid,
+          myuid:sessionStorage.getItem('uid'),
           mytime:new Date(),
           vcon:''
         }
       },
       mounted(){
         let _this=this
-        axios.get('http://localhost:3000/allorder').then((res)=>{
+        axios.get(`http://localhost:3000/allorder/${this.myuid}`).then((res)=>{
           //渲染页面
-          console.log(res)
+          // console.log(res)
           _this.or = res.data.data;
+          console.log(_this.log)
+          for(let i in _this.or){
+            (_this.or)[i].vcon = '';
+          }
         }),(err)=>{
           console.log(err)
         }
       },
+      //提交评价内容
       methods:{
-
-        evaluateOrder:function (oid,pid) {
+        evaluateOrder:function (index,oid,pid) {
           let  _this=this
           // console.log(`http://localhost:3000/updateor2/${oid}`);
           axios.get("http://localhost:3000/updateor2/"+oid).then((res)=>{
-            console.log(res);
-
+            // console.log(res);
+            alert('评价成功成功')
+            this.$router.push({path:'/usercenter/Myorder/finish'})
           })
           axios.post('http://localhost:3000/product/adduserreview',{
-            vcontent:_this.vcon,
+            vcontent:_this.or[index].vcon,
             vtime:_this.mytime,
             pid:pid,
             uid:_this.myuid
+
           }).then((res)=>{
-            console.log(res);
+            // console.log(res);
           })
           console.log("执行成功");
           // console.log('wode==='+this.myuid+'wodetime'+this.mytime+'wovcontnet'+this.form.vcontent+'wodepid'+this.or.pid)
-        }
+        },
+
       }
     }
 </script>

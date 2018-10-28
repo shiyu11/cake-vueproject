@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/home/Home'
-import ProductNav from '@/components/product/ProductNav'
 import ProductDetail from '@/components/productdetails/ProductDetail'
 import OneProduct from '@/components/home/OneProduct'
 import about from '@/components/home/about'
@@ -35,17 +34,14 @@ import register from '@/components/login/register.vue'
 
 
 
-
-import productlist from '@/components/product/ProductList'
-
 Vue.use(Router)
 
 
 export default new Router({
+  // mode:'history',
   routes: [
     {path: '/', name: 'Home', component: Home},
     {path: '/about', name: 'about', component: about},
-    {path:'/product',component:ProductNav},
     {path:'/productDetail/:pid',component:ProductDetail},
     {path:'/productlist/:occasion',component:OneProduct},
     {path:'/yushou',component:yushou},

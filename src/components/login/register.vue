@@ -1,27 +1,35 @@
 <template>
-  <div class="allRegidter">
-    <el-form :model="ruleForm" status-icon :rules="rules2" ref="ruleForm" label-width="100px" class="demo-ruleForm">
-      <el-form-item label="手机号" prop="phoneNum">
-        <el-input type="text" v-model="ruleForm.phoneNum" placeholder="请输入手机号" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="用户名" prop="userName">
-        <el-input type="text" v-model="ruleForm.userName" placeholder="请输入用户名" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="密码" prop="pass">
-        <el-input type="password" v-model="ruleForm.pass" placeholder="请输入密码" autocomplete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="确认密码" prop="checkPass">
-        <el-input type="password" v-model="ruleForm.checkPass" placeholder="请再次输入密码" autocomplete="off"></el-input>
-      </el-form-item>
-      <!--<el-form-item label="验证码" prop="code">-->
-        <!--<el-input type="text" v-model="ruleForm.code" placeholder="请输入验证码" autocomplete="off"></el-input>-->
-        <!--<el-button type="primary" @click="getMessage()">获取验证码</el-button>-->
-      <!--</el-form-item>-->
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
-        <el-button @click="resetForm('ruleForm')">重置</el-button>
-      </el-form-item>
-    </el-form>
+  <div class="mcontainer">
+    <div class="allRegidter">
+      <el-row>
+        <el-col :sm="8" :md="8" :lg="8" :xl="8"  :offset="12" class="wai">
+          <el-form :model="ruleForm" status-icon :rules="rules2" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="手机号" prop="phoneNum">
+              <el-input type="text" v-model="ruleForm.phoneNum" placeholder="请输入手机号" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="用户名" prop="userName">
+              <el-input type="text" v-model="ruleForm.userName" placeholder="请输入用户名" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="密码" prop="pass">
+              <el-input type="password" v-model="ruleForm.pass" placeholder="请输入密码" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="确认密码" prop="checkPass">
+              <el-input type="password" v-model="ruleForm.checkPass" placeholder="请再次输入密码" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item label="验证码" prop="code">
+              <el-input type="text" v-model="ruleForm.code" placeholder="请输入验证码" autocomplete="off"></el-input>
+              <el-button type="primary" @click="getMessage()">获取验证码</el-button>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="submitForm('ruleForm')">注册</el-button>
+              <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+          </el-form>
+        </el-col>
+      </el-row>
+
+    </div>
+
   </div>
 </template>
 <script>
@@ -108,12 +116,22 @@
       };
     },
     methods: {
-      getMessage(){
+      getMessage() {
         let _this = this
-        for(let i = 0;i < 6;i++){
-          _this.getcode += Math.floor(Math.random()*10);
-        }
-       alert(_this.getcode);
+        axios.get(`http://127.0.0.1:3000/users/getallphone/${_this.ruleForm.phoneNum}`).then((result) => {
+          let info = eval("(" + result.request.response + ")");
+          if (info.data.length != 0) {
+            alert("该用户已经注册,请直接登录!")
+          } else {
+            _this.getcode = ''
+            for (let i = 0; i < 6; i++) {
+              _this.getcode += Math.floor(Math.random() * 10);
+            }
+            alert(_this.getcode)
+          }
+        }, (err) => {
+          console.log(result.err)
+        })
       },
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
@@ -145,8 +163,18 @@
 </script>
 <style>
   .allRegidter{
-    margin-top: 100px;
-    width: 35%;
-    margin-left: 350px;
+    height: 800px;
+    margin-top: 80px;
+  }
+  .mcontainer{
+    width: 100%;
+    height:500px;
+    background-image: url("../../assets/home/san.png");
+    background-repeat: no-repeat;
+  }
+  .wai{
+    padding:20px;
+    border:2px solid gainsboro;
+    box-shadow: 4px 4px 8px gainsboro;
   }
 </style>

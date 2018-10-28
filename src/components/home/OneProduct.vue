@@ -14,10 +14,9 @@
         </el-col>
       </el-row>
     </div>
-
     <div class="dwidth">
     <el-row  class="space" justify="center" :gutter="20" >
-      <el-col :sm="8" :md="6" :lg="6" :xl="6" v-for="(onep,index) in products" v-if="onep.occasion==myoccasion"  >
+      <el-col :sm="12" :md="6" :lg="6" :xl="6"  v-for="(onep,index) in mydata[myoccasion-1]" >
         <el-card :body-style="{ padding: '2px' }" class="space">
           <!--<img src="../../assets/p1.jpg" class="image">-->
           <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
@@ -27,7 +26,7 @@
           <div style="padding:14px;">
             <el-row>
               <el-col :span="24">
-              <span class="pname">{{onep.pname}}</span>
+              <span class="pname">{{onep.pname}}{{index}}</span>
               </el-col>
             </el-row>
 
@@ -40,30 +39,41 @@
             <el-row>
             <div class="bottom clearfix">
               <el-col :span="12">
-              <span class="pname"><span>￥</span>{{onep.pprice}}{{onep.pid}}</span>
+              <span class="pname"><span>￥</span>{{onep.pprice}}</span>
               </el-col>
-              <!--<el-col :span="12">-->
-                <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm">加入购物车</button>-->
-              <!--</el-col>-->
             </div>
             </el-row>
           </div>
         </el-card>
       </el-col>
+
+      <!--序号-->
+      <!--<el-col>-->
+        <!--<div class="block">-->
+          <!--<span class="demonstration">显示总数</span>-->
+          <!--<el-pagination-->
+            <!--@current-change="handleCurrentChange"-->
+            <!--:current-page.sync="5"-->
+            <!--:page-size="5"-->
+            <!--layout="total, prev, pager, next"-->
+            <!--:total="100">-->
+          <!--</el-pagination>-->
+        <!--</div>-->
+      <!--</el-col>-->
     </el-row>
   </div>
 
 <!--模态框-->
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-      <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content mymodal">
-          <span class="buytitle">选择您要订购的磅数</span>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <hr>
-          <my-addcart></my-addcart>
-        </div>
-      </div>
-    </div>
+    <!--<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">-->
+      <!--<div class="modal-dialog modal-sm" role="document">-->
+        <!--<div class="modal-content mymodal">-->
+          <!--<span class="buytitle">选择您要订购的磅数</span>-->
+          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+          <!--<hr>-->
+          <!--<my-addcart></my-addcart>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
 </div>
 </template>
@@ -85,6 +95,8 @@
 
         products: [
         ],
+        mydata:[],
+
         // products:null
       }
     },
@@ -106,7 +118,24 @@
       let _this = this
       axios.get(`http://localhost:3000/product`).then(function (result) {
         _this.products = result.data.data;
-        console.log(result.data)
+        // console.log(result.data)
+        let data1=[], data2=[], data3=[], data4=[]
+        for(let i=0;i<result.data.data.length;i++){
+          if(result.data.data[i].occasion==1){
+           data1.push(result.data.data[i])
+          }
+          if(result.data.data[i].occasion==2){
+            data2.push(result.data.data[i])
+          }
+          if(result.data.data[i].occasion==3){
+            data3.push(result.data.data[i])
+          }
+          if(result.data.data[i].occasion==4){
+            data4.push(result.data.data[i])
+          }
+
+        }
+        _this.mydata.push(data1,data2,data3,data4)
       })
     },
 

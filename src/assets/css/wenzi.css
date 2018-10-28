@@ -25,15 +25,14 @@
 /*.container */
 .newYear {
   display: inline-block;
-  font-size: 8rem;
+  font-size:6rem;
   margin: 0;
   left: 50%;
   top:10%;
   transform: translateX(-50%);
   position: absolute;
-  /*margin: auto;*/
- color: #c0a16b;
- /*color:  #fff0f5;*/
+
+ color:rgba(211,108,90,0.95);
   animation: animate 2s ease infinite;
   bottom: 0;
 }

@@ -5,12 +5,17 @@
       </el-col>
 
       <div class="rule">
-        <h2>活动规则</h2>
-        <p>
-          1、本活动仅限上海、苏州地区；（产品请详见各<br/>地官网，如当地没有此款产品则不参加特惠活动）<br/>
-          2、活动支付方式 : 仅限银行卡在线支付或银联在线支付；<br/>
-          3、本活动不可使用代金卡，不与其他优惠同享<br/>
-        </p>
+        <div class="row col-xs-7 col-xs-offset-5">
+          <h2>活动规则</h2>
+        </div>
+       <div class="row col-xs-8 col-xs-offset-4">
+         <p>
+           1、本活动仅限上海、苏州地区；（产品请详见各<br/>地官网，如当地没有此款产品则不参加特惠活动）<br/>
+           2、活动支付方式 : 仅限银行卡在线支付或银联在线支付；<br/>
+           3、本活动不可使用代金卡，不与其他优惠同享<br/>
+         </p>
+       </div>
+
       </div>
     </div>
 </template>
@@ -25,17 +30,12 @@
   .a11{
     margin-top: 50px;
   }
-  .rule{
-    margin-left: 400px;
-  }
   .rule h2{
     font-size: 24px;
     font-weight: 400;
-    margin-top: 200px;
   }
   p{
     font-size: 16px;
-    /*margin-left: 60px;*/
   }
 </style>
 

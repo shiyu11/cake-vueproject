@@ -6,9 +6,13 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // import Axios from 'axios'
-import store from './store.js'
 
+// import Axios from 'axios'
+import store from './store.js'
+// Vue.use(Axios)
+// Axios.defaults.baseURL='http://127.0.0.1:3000'
 // Axios.defaults.baseURL='http://http://10.40.4.11:3000'
+
 // Vue.use(axios)
 Vue.use(ElementUI);
 // Vue.prototype.$axios=Axios;

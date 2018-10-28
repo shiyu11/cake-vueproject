@@ -6,18 +6,10 @@
 
     <el-row :gutter="20" name="top">
       <el-col :span="12">
-        <!--json-->
-        <!--<img :src="product[mypid-1].xpic" alt="" class="p-img">-->
         <img :src="product.xpic" alt="" class="p-img">
 
-        <!--<div mag-thumb="outer-drag">-->
-          <!--<img :src="product.xpic" />-->
-        <!--</div>-->
-        <!--<div mag-zoom="outer-drag">-->
-          <!--<img :src="product.xxpic" />-->
-        <!--</div>-->
-
       </el-col>
+
       <el-col :span="10" :offset="1">
         <div class="p-int">
           <!--json-->
@@ -28,6 +20,7 @@
           <my-productsize :father="product"></my-productsize>
           <div class="describe">
             <p>{{product.text}}</p>
+            <!--<a href="#ping" style="margin-top:10px">查看评论》》》》》》》》》》</a>-->
           </div>
         </div>
       </el-col>
@@ -52,14 +45,21 @@
     <!--<img :src="product[mypid-1].dpic" alt="" class="p-img">-->
     </el-row>
 
-
     <el-row class="bottomdes">
       <el-col :span="4" >
-        <img src="../../assets/home/katong2.gif" class="img-responsive" alt="Responsive image">
-        <p class="buttonp">累积评论</p>
+        <img src="../../assets/home/katong2.gif" class="img-responsive" alt="Responsive image" >
+        <p class="buttonp" name="ping">累积评论</p>
       </el-col>
       <el-col :span="16" class="hidden-sm-and-down" :offset="2">
         <my-review :fpid="mypid"></my-review>
+      </el-col>
+    </el-row>
+
+    <el-row>
+      <el-col :span="2" :offset="22">
+        <a href="#top">
+        <img src="../../assets/home/top.gif" class="img-responsive" alt="Responsive image">
+        </a>
       </el-col>
     </el-row>
   </div>
@@ -74,218 +74,6 @@
     data() {
       return {
         mypid: this.$route.params.pid,
-        // product: [
-        //   {
-        //     "pname": "1黛西的旅行",
-        //     "ppic": require("../../assets/products/p1.jpg"),
-        //     "pprice": "255",
-        //     "pid": 1,
-        //     "occasion": 1,
-        //     "taste": "慕斯",
-        //     "dpic": require("../../assets/products/d1.jpg"),
-        //     "xpic": require("../../assets/products/x1.jpg")
-        //   },
-        //   {
-        //     "pname": "2蔓越莓红丝绒",
-        //     "ppic": require("../../assets/products/p2.jpg"),
-        //     "pprice": "355",
-        //     "pid": 2,
-        //     "occasion": 2,
-        //     "taste":"慕斯",
-        //     "dpic": require("../../assets/products/d2.jpg"),
-        //     "xpic": require("../../assets/products/x2.jpg")
-        //   },
-        //   {
-        //     "pname": "3蓝莓轻乳拿破仑",
-        //     "ppic": require("../../assets/products/p3.jpg"),
-        //     "pprice": "455",
-        //     "pid": 3,
-        //     "occasion": 3,
-        //     "taste":"慕斯",
-        //     "dpic": require("../../assets/products/d3.jpg"),
-        //     "xpic": require("../../assets/products/x3.jpg")
-        //   },
-        //   {
-        //     "pname": "4蓝莓轻乳拿破仑2",
-        //     "ppic": require("../../assets/products/p3.jpg"),
-        //     "pprice": "555",
-        //     "pid": 4,
-        //     "occasion": 4,
-        //     "taste":"慕斯",
-        //     "dpic": require("../../assets/products/d3.jpg"),
-        //     "xpic": require("../../assets/products/x3.jpg")
-        //   },
-        //   {
-        //     "pname": "5蓝莓轻乳拿破仑3",
-        //     "ppic": require("../../assets/products/p3.jpg"),
-        //     "pprice": "655",
-        //     "pid": 5,
-        //     "occasion": 2,
-        //     "taste":"鲜奶",
-        //     "dpic": require("../../assets/products/d3.jpg"),
-        //     "xpic": require("../../assets/products/x3.jpg")
-        //   },
-        //   {
-        //     "pname": "6黛西的旅行",
-        //     "ppic": require("../../assets/products/p7.jpg"),
-        //     "pprice": "755",
-        //     "pid": 6,
-        //     "occasion": 1,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d7.jpg"),
-        //     "xpic": require("../../assets/products/x7.jpg")
-        //   },
-        //   {
-        //     "pname": "7蔓越莓红丝绒",
-        //     "ppic": require("../../assets/products/p8.jpg"),
-        //     "pprice": "855",
-        //     "pid": 7,
-        //     "occasion": 1,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d8.jpg"),
-        //     "xpic": require("../../assets/products/x8.jpg")
-        //   },
-        //   {
-        //     "pname": "8蓝莓轻乳拿破仑",
-        //     "ppic": require("../../assets/products/p9.jpg"),
-        //     "pprice": "955",
-        //     "pid": 8,
-        //     "occasion": 3,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d9.jpg"),
-        //     "xpic": require("../../assets/products/x9.jpg")
-        //   },
-        //   {
-        //     "pname": "9蓝莓轻乳拿破仑2",
-        //     "ppic": require("../../assets/products/p10.jpg"),
-        //     "pprice": "155",
-        //     "pid": 9,
-        //     "occasion": 4,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d10.jpg"),
-        //     "xpic": require("../../assets/products/x10.jpg")
-        //   },
-        //   {
-        //     "pname": "10蓝莓轻乳拿破仑3",
-        //     "ppic": require("../../assets/products/p11.jpg"),
-        //     "pprice": "255",
-        //     "pid": 10,
-        //     "occasion": 4,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d11.jpg"),
-        //     "xpic": require("../../assets/products/x11.jpg")
-        //   },
-        //   {
-        //     "pname": "11黛西的旅行",
-        //     "ppic": require("../../assets/products/p6.jpg"),
-        //     "pprice": "355",
-        //     "pid": 11,
-        //     "occasion": 3,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d6.jpg"),
-        //     "xpic": require("../../assets/products/x6.jpg")
-        //   },
-        //   {
-        //     "pname": "12蔓越莓红丝绒",
-        //     "ppic": require("../../assets/products/p5.jpg"),
-        //     "pprice": "455",
-        //     "pid": 12,
-        //     "occasion": 1,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d5.jpg"),
-        //     "xpic": require("../../assets/products/x5.jpg")
-        //   },
-        //   {
-        //     "pname": "13蓝莓轻乳拿破仑",
-        //     "ppic": require("../../assets/products/p4.jpg"),
-        //     "pprice": "555",
-        //     "pid": 13,
-        //     "occasion": 2,
-        //     "taste": "鲜奶",
-        //     "dpic": require("../../assets/products/d4.jpg"),
-        //     "xpic": require("../../assets/products/x4.jpg")
-        //   },
-        //   {
-        //     "pname": "14蓝莓轻乳拿破仑2",
-        //     "ppic": require("../../assets/products/p7.jpg"),
-        //     "pprice": "655",
-        //     "pid": 14,
-        //     "occasion": 4,
-        //     "taste": "巧克力",
-        //     "dpic": require("../../assets/products/d7.jpg"),
-        //     "xpic": require("../../assets/products/x7.jpg")
-        //   },
-        //   {
-        //     "pname": "15蓝莓轻乳拿破仑3",
-        //     "ppic": require("../../assets/products/p5.jpg"),
-        //     "pprice": "755",
-        //     "pid": 15,
-        //     "occasion": 1,
-        //     "taste":"巧克力",
-        //     "dpic": require("../../assets/products/d5.jpg"),
-        //     "xpic": require("../../assets/products/x5.jpg")
-        //   },
-        //   {
-        //     "pname": "16黛西的旅行",
-        //     "ppic": require("../../assets/products/p11.jpg"),
-        //     "pprice": "855",
-        //     "pid": 16,
-        //     "occasion": 3,
-        //     "taste":"巧克力",
-        //     "dpic": require("../../assets/products/d11.jpg"),
-        //     "xpic": require("../../assets/products/x11.jpg")
-        //   },
-        //   {
-        //     "pname": "17蔓越莓红丝绒",
-        //     "ppic": require("../../assets/products/p7.jpg"),
-        //     "pprice": "955",
-        //     "pid": 17,
-        //     "occasion": 4,
-        //     "taste":"巧克力",
-        //     "dpic": require("../../assets/products/d7.jpg"),
-        //     "xpic": require("../../assets/products/x7.jpg")
-        //   },
-        //   {
-        //     "pname": "18蓝莓轻乳拿破仑",
-        //     "ppic": require("../../assets/products/p3.jpg"),
-        //     "pprice": "155",
-        //     "pid": 18,
-        //     "occasion": 2,
-        //     "taste": "芝士",
-        //     "dpic": require("../../assets/products/d3.jpg"),
-        //     "xpic": require("../../assets/products/x3.jpg")
-        //   },
-        //   {
-        //     "pname": "19蓝莓轻乳拿破仑2",
-        //     "ppic": require("../../assets/products/p9.jpg"),
-        //     "pprice": "255",
-        //     "pid": 19,
-        //     "occasion": 3,
-        //     "taste": "芝士",
-        //     "dpic": require("../../assets/products/d9.jpg"),
-        //     "xpic": require("../../assets/products/x9.jpg")
-        //   },
-        //   {
-        //     "pname": "20蓝莓轻乳拿破仑3",
-        //     "ppic": require("../../assets/products/p11.jpg"),
-        //     "pprice": "355",
-        //     "pid": 20,
-        //     "occasion": 1,
-        //     "taste": "芝士",
-        //     "dpic": require("../../assets/products/d11.jpg"),
-        //     "xpic": require("../../assets/products/x11.jpg")
-        //   },
-        //   {
-        //     "pname": "21蓝莓轻乳拿破仑4",
-        //     "ppic": require("../../assets/products/p10.jpg"),
-        //     "pprice": "455",
-        //     "pid": 21,
-        //     "occasion": 4,
-        //     "taste": "芝士",
-        //     "dpic": require("../../assets/products/d10.jpg"),
-        //     "xpic": require("../../assets/products/x10.jpg")
-        //   },
-        // ],
         product: []
 
 
@@ -351,6 +139,9 @@
     font-size: 30px;
     margin-left: 20px;
   }
+  .topimg{
+    /*background: #00B3ED*/
+  }
 
 </style>
 
@@ -358,5 +149,9 @@
   .p-img {
     width: 100%
   }
+
+
+
+  /*小鬼*/
 
 </style>

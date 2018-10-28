@@ -55,8 +55,11 @@
         <el-button  round type="warning" @click="putCart()">加入购物车</el-button>
       </el-col>
       <el-col :span="6" :offset="2">
-        <el-button round type="warning"><a href="#/check">立即购买</a></el-button>
+        <el-button round type="warning" @click="buy()">立即购买</el-button>
       </el-col>
+
+
+
     </el-row>
   </div>
 </template>
@@ -69,7 +72,8 @@
       return {
         message: '内容一',
         type: 0,
-        bangshu:''
+        bangshu:'',
+        // uname:sessionStorage.getItem('uname')
 
       }
     },
@@ -86,16 +90,19 @@
       },
       putCart(){
         //key+1 是磅数
-        if (this.$store.state.type == 0) {
-         alert('请先登录')
-        }else{
+        // if (this.uname==null) {
+        //  alert('请先登录')
+        // }else{
           axios.post('http://localhost:3000/addcart',{
-            uid:this.$store.state.uid,
+            uid:sessionStorage.getItem('uid'),
             size:this.bangshu,
             pid:this.father.pid,
           })
           alert('加入购物车成功')
-        }
+        // }
+      },
+      buy(){
+        this.$router.push('/check')
       }
     },
     props:['father'],

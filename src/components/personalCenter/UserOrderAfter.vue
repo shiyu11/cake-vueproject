@@ -10,10 +10,11 @@
             <tr>
               <th></th>
               <th>订单信息</th>
-              <!--<th>订单编号</th>-->
+
               <!--<th>收货人</th>-->
               <th>数量</th>
-              <th>金额</th>
+              <!--<th>金额</th>-->
+              <th>订单编号</th>
               <th>订单状态</th>
               <th>地址详情↓</th>
               <th>操作</th>
@@ -22,13 +23,14 @@
             <tbody>
             <!--&&order.uid==$store.state.uid-->
             <tr v-for="order in or" v-if="order.state=='待收货'">
-              <td><img :src="order.ppic" style="width:120px;height:120px"></td>
+              <td><router-link :to="`/productDetail/${order.pid}`"><img :src="order.ppic" style="width:120px;height:120px"></router-link></td>
               <td class="info">
                 <h4>{{order.pname}}</h4>
               </td>
-              <!--<td>{{order.oid}}</td>-->
+
               <td>{{order.rnum}}</td>
-              <td>{{order.pprice}}</td>
+              <!--<td>{{order.pprice}}</td>-->
+              <td>{{order.oid}}</td>
               <td>{{order.state}}</td>
               <td>
                 <p>{{order.aname}}</p>
@@ -51,14 +53,15 @@
       data() {
         return {
           myoid: this.$route.params.oid,
-          or:[],
+          myuid:sessionStorage.getItem('uid'),
+          or:[]
         }
       },
       mounted(){
         let _this=this
-        axios.get('http://localhost:3000/allorder').then((res)=>{
+        axios.get(`http://localhost:3000/allorder/${this.myuid}`).then((res)=>{
           //渲染页面
-          console.log(res)
+          // console.log(res)
           _this.or = res.data.data;
         }),(err)=>{
           console.log(err)
@@ -67,10 +70,12 @@
       methods:{
         affirmOrder:function (oid) {
           let  _this=this
-          console.log(`http://localhost:3000/updateor1/${oid}`);
+          // console.log(`http://localhost:3000/updateor1/${oid}`);
           axios.get("http://localhost:3000/updateor1/"+oid).then((res)=>{
-            console.log(res);
-            console.log("执行成功");
+            // console.log(res);
+            // console.log("执行成功");
+            alert('确认收货成功')
+            this.$router.push({path:'/usercenter/Myorder/review'})
           })
 
           }

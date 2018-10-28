@@ -7,64 +7,78 @@
         <h4>购物车</h4>
       </div>
 
-      <table class="table">
-        <thead>
-        <tr>
-          <th width="6%">
-            <input type="checkbox" :checked="checkAllFlag" @click="checkAll">全选
-          </th>
-          <th></th>
-          <th>商品信息</th>
-          <th>规格</th>
-          <th>单价（元）</th>
-          <th>数量</th>
-          <th>金额</th>
-          <th>操作</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="product in products" :key="product.id">
-          <td width="5%" class="input">
-            <input type="checkbox" :checked="product.check" @click="checkBox(product)">
-          </td>
-          <td>
-            <img :src="product.ppic" style="width:35%;">
-          </td>
-          <td width="16%">
-            <div class="info">
-              <h5>{{ product.pname }}</h5>
-              <p>赠品：标配餐具10份  生日蜡烛1支</p>
-            </div>
-          </td>
-          <td width="10%" class="size">{{product.size}}</td>
-          <td width="10%" class="price">{{ product.pprice }}</td>
-          <td width="10%">
-            <div class="num">
-              <el-row>
-                <el-col><span @click="changeMoney(product,-1)" class="span">-</span>
-                  {{product.pnum}}
-                  <span @click="changeMoney(product,1)" class="span">+</span></el-col>
-              </el-row>
-            </div>
-          </td>
-          <td width="10%" class="allprice">{{ product.pprice * product.pnum }}</td>
-          <td width="10%">
-            <div class="button">
-              <button v-on:click="del(product.cid)">删除</button>
-            </div>
-          </td>
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-          <td colspan="8" class="text-right">共{{totalNum}}件，商品合计{{totalMoney}}元</td>
-        </tr>
-        </tfoot>
-      </table>
-      <div style="text-align:right;">
-        <button class="btn btn-primary" v-on:click="goHome">继续购物</button>
-        <button class="btn btn-primary" v-on:click="commit">结算</button>
+      <div v-if="sum == getsum" class="row cart_list">
+        <div class="cart col-xs-1 col-xs-offset-3" ><img src="../../../static/images/a15.png"/></div>
+        <div class="col-xs-5" >
+          <br/>
+          <p class="empty_cart">
+          <span>您还没登录，赶紧行动吧！</span>
+          <br/>
+          马上进入<router-link to="/login">登录页面</router-link>，去挑选您喜欢的商品到购物车吧！
+        </p></div>
       </div>
+
+      <div v-if="sum != getsum">
+        <table class="table">
+          <thead>
+          <tr>
+            <th width="6%">
+              <input type="checkbox" :checked="checkAllFlag" @click="checkAll">全选
+            </th>
+            <th></th>
+            <th>商品信息</th>
+            <th>规格</th>
+            <th>单价（元）</th>
+            <th>数量</th>
+            <th>金额</th>
+            <th>操作</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr v-for="product in products" :key="product.id">
+            <td width="5%" class="input">
+              <input type="checkbox" :checked="product.check" @click="checkBox(product)">
+            </td>
+            <td>
+              <img :src="product.ppic" style="width:35%;">
+            </td>
+            <td width="16%">
+              <div class="info">
+                <h5>{{ product.pname }}</h5>
+                <p>赠品：标配餐具10份  生日蜡烛1支</p>
+              </div>
+            </td>
+            <td width="10%" class="size">{{product.size}}</td>
+            <td width="10%" class="price">{{ product.pprice*product.size}}</td>
+            <td width="10%">
+              <div class="num">
+                <el-row>
+                  <el-col><span @click="changeMoney(product,-1)" class="span">-</span>
+                    {{product.pnum}}
+                    <span @click="changeMoney(product,1)" class="span">+</span></el-col>
+                </el-row>
+              </div>
+            </td>
+            <td width="10%" class="allprice">{{ product.pprice * product.pnum }}</td>
+            <td width="10%">
+              <div class="button">
+                <button v-on:click="del(product.cid)">删除</button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="8" class="text-right">共{{totalNum}}件，商品合计{{totalMoney}}元</td>
+          </tr>
+          </tfoot>
+        </table>
+        <div style="text-align:right;">
+          <button class="btn btn-primary" v-on:click="goHome">继续购物</button>
+          <button class="btn btn-primary" v-on:click="commit" v-if="num!= getnum">结算</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
@@ -75,14 +89,14 @@
     name: "MyCart",
     data(){
       return{
-        products:[
-          // {id:1,pname:'蓝莓轻乳拿破仑',pnum:2,ppic:require("../../assets/a3.jpg"),size:'2磅',price:198},
-          // {id:2,pname:'奶酪轻乳拿破仑',pnum:1,ppic:require("../../assets/a5.jpg"),size:'3磅',price:178},
-          // {id:3,pname:'草莓轻乳拿破仑',pnum:3,ppic:require("../../assets/a3.jpg"),size:'5磅',price:218}
-        ],
+
+        products:[],
         totalNum:0,
         totalMoney:0,
-        checkAllFlag:false
+        checkAllFlag:false,
+        dingpid:'',
+        num:1,
+        sum:1,
       }
     },
     methods:{
@@ -90,7 +104,7 @@
         this.$router.push({path:'/'})
       },
       commit(){
-        this.$router.push({path:'/check'})
+          this.$router.push({path:'/check'})
       },
       changeMoney:function (product,way) {
         if (way>0) {
@@ -146,15 +160,23 @@
             _this.totalNum += product.pnum;
           }
         })
+        sessionStorage.setItem('totalNum1',this.totalNum);
+        // this.$store.state.totalNum1=this.totalNum;
       },
       getTotalMoney:function () {
         var _this=this;
+        let a = []
         this.totalMoney = 0;
-        this.products.forEach(function (product,index) {
+        this.products.forEach(function (product) {
           if (product.check) {
             _this.totalMoney += product.pnum*product.pprice;
+            a.push({"pid":product.pid,"pname":product.pname,"rnum":product.pnum,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
           }
         })
+        // this.$store.state.totalMoney1=this.totalMoney;
+        sessionStorage.setItem('totalMoney1',this.totalMoney);
+        sessionStorage.setItem('dingpid',JSON.stringify(a));
+        console.log('我的'+JSON.stringify(a))
       },
       del: function (cid) {
         // var index=this.products.indexOf(index);
@@ -174,7 +196,7 @@
       },
       ajax() {
         let _this=this
-        axios.get(`http://localhost:3000/getcart/${this.$store.state.uid}`).then(function (result) {
+        axios.get(`http://localhost:3000/getcart/${sessionStorage.getItem('uid')}`).then(function (result) {
           _this.products = result.data.data;
           console.log(result.data)
         })
@@ -182,7 +204,23 @@
     },
     created(){
       this.ajax()
+      },
+    computed: {
+      getnum() {
+        if (this.totalMoney == 0) {
+          return this.num = 1;
+        } else {
+          this.num = 0;
+        }
+      },
+      getsum(){
+        if(this.$store.state.type == 0){
+          return this.sum = 1;
+        }else{
+          this.sum = 0;
+        }
       }
+    }
   }
 </script>
 
@@ -201,18 +239,32 @@
     font-size: 32px;
   }
   .input,.size,.price,.allprice{
-    line-height:100px;
+    line-height:120px;
   }
   .num{
-    margin-top: 40px;
+    width: 100%;
+    line-height:120px;
   }
   .button{
-    margin-top: 40px;
-    margin-right: 55px;
+    width: 100%;
+    margin-top: 50px;
+
   }
   .span{
     margin: 8px;
     cursor: pointer;
+  }
+  .cart_list{
+    display:block;
+  }
+  .empty_cart span{
+    font-size: 24px;
+  }
+  .empty_cart{
+    line-height: 34px;
+  }
+  .cart{
+    padding-right: 120px;
   }
 </style>
 

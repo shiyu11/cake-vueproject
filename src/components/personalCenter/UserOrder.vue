@@ -36,7 +36,7 @@
           else if(tab.$options.propsData.label=='FINISH 已完成'){
             this.$router.push({path:'/usercenter/Myorder/finish'})
           }
-          console.log(tab.$options.propsData.label);
+          // console.log(tab.$options.propsData.label);
         }
       },
       // components:{

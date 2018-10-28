@@ -2,7 +2,7 @@
 <template>
   <div>
     <!--轮播图-->
-    <div id="carousel-example-generic" class="carousel slide space lunbo" data-ride="carousel">
+    <div id="carousel-example-generic" class="carousel slide space lunbo" data-ride="carousel" name="top">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#carousel-example-generic" data-slide-to="0" ></li>
@@ -86,24 +86,31 @@
      <my-products></my-products>
 
     <!--预售-->
+    <div class="yushou">
+   <my-adddonghua></my-adddonghua>
+  </div>
+
     <el-row>
-      <el-col :span="12">
-      <router-link to="/yushou">预售</router-link>
-      </el-col>
-      <el-col :span="12">
-        <router-link to="/theme">主題</router-link>
+      <el-col :span="2" :offset="22">
+        <a href="#top">
+          <img src="../../assets/home/top.gif" class="img-responsive" alt="Responsive image">
+        </a>
       </el-col>
     </el-row>
+
 
   </div>
 </template>
 
 <script>
   import Products from './Products'
+  import adddonghua from './adddonghua'
   export default {
     name: "Home",
     components: {
-      'my-products': Products
+      'my-products': Products,
+      'my-adddonghua':adddonghua,
+
     },
     data() {
       return {
@@ -137,6 +144,12 @@
     width: 100%;
     display: block;
   }
-
+  /*.image1{*/
+    /*height:10%;*/
+    /*display: block;*/
+  /*}*/
+.yushou{
+  margin-top: 20px;
+}
 
 </style>
