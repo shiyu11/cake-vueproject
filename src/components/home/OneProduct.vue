@@ -26,7 +26,7 @@
           <div style="padding:14px;">
             <el-row>
               <el-col :span="24">
-              <span class="pname">{{onep.pname}}{{index}}</span>
+              <span class="pname">{{onep.pname}}</span>
               </el-col>
             </el-row>
 

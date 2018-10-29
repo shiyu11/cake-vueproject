@@ -229,7 +229,7 @@
   h2 {
     font-weight: normal;
     position: relative;
-    background: deeppink;
+    background: pink;
     width: 50%;
     color: black;
     text-align: center;

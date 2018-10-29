@@ -59,7 +59,7 @@
                 </el-row>
               </div>
             </td>
-            <td width="10%" class="allprice">{{ product.pprice * product.pnum }}</td>
+            <td width="10%" class="allprice">{{ product.pprice * product.size* product.pnum }}</td>
             <td width="10%">
               <div class="button">
                 <button v-on:click="del(product.cid)">删除</button>
@@ -169,7 +169,7 @@
         this.totalMoney = 0;
         this.products.forEach(function (product) {
           if (product.check) {
-            _this.totalMoney += product.pnum*product.pprice;
+            _this.totalMoney += product.pnum*product.size*product.pprice;
             a.push({"pid":product.pid,"pname":product.pname,"rnum":product.pnum,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
           }
         })

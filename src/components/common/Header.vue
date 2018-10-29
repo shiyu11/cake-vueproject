@@ -1,10 +1,5 @@
 <template>
-  <div class="header-text navbar-fixed-top">
-    <!--<el-row :gutter="20">-->
-
-    <!--&lt;!&ndash;<el-col :span="4" :offset="14" class="user">欢迎用户<span>moumou</span></el-col>&ndash;&gt;-->
-    <!--</el-row>-->
-
+  <div class="header-text navbar-fixed-top mac">
     <el-row>
       <el-menu
         :default-active="activeIndex"
@@ -141,7 +136,9 @@
   .header-text{
     font-size:25px;
   }
-
+/*.mac{*/
+  /*background-image: url("../../assets/home/huaban.png");*/
+/*}*/
 </style>
 
 

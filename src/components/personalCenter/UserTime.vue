@@ -3,7 +3,7 @@
     <div class="bg bg-blur"></div>
   <div class="icon-1 content content-front">
       <h3 style="line-height: 1.3">欢迎您<br>
-        {{this.$store.state.uname}}</h3>
+        {{uname}}</h3>
       <h3>来到品味·梦幻蛋糕</h3>
       <p @click="goData">点击完善个人资料</p>
 
@@ -36,9 +36,11 @@
 <script>
     export default {
         name: "UserTime",
+
       data:function(){
           return{
             now:'',
+            uname:sessionStorage.getItem('sname'),
 
             order:[{
               state:'1'

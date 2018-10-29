@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container max">
     <div class="row">
     <!--<div v-for="(address,index) in ad" v-if="index<4">-->
     <div>
@@ -10,7 +10,7 @@
             <th>收货人姓名</th>
             <th>电话</th>
             <th>详细地址</th>
-            <th>默认地址</th>
+            <!--<th>默认地址</th>-->
             <!--<th>地址操作</th>-->
           </tr>
           </thead>
@@ -19,7 +19,7 @@
             <td>{{address.aname}}</td>
             <td>{{address.phone}}</td>
             <td>{{address.address}}</td>
-            <td>{{address.defaultaddress}}</td>
+            <!--<td>{{address.defaultaddress}}</td>-->
           </tr>
           </tbody>
         </table>
@@ -60,6 +60,9 @@
 </script>
 
 <style scoped>
+  .max{
+    margin-bottom: 300px;
+  }
 
 </style>
 

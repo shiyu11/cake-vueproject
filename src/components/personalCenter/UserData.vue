@@ -100,14 +100,7 @@
           alert('修改失败')
           console.log(err)
         })
-        // this.$refs[formName].validate((valid) => {
-        //   if (valid) {
-        //     alert('submit!');
-        //   } else {
-        //     console.log('error submit!!');
-        //     return false;
-        //   }
-        // });
+
       },
       changer(time){
         return time.split('T')[0];
@@ -136,7 +129,7 @@
   .el-container {
     height: 765px;
     width: 100%;
-    background: url("../../../static/images/hmhpic/bg-1.png") no-repeat;
+    background: url("../../../static/images/hmhpic/bg-1.jpg") no-repeat;
     margin: 2%;
   }
   .form-1{

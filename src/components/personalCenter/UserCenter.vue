@@ -7,7 +7,7 @@
     <el-row :gutter="20">
       <el-col :span="4">
         <div id="Date">{{now}}</div>
-        <div class="grid-content bg-purple">
+        <div class="grid-content bg-purple max">
           <el-tabs :tab-position="tabPosition" @tab-click="handleClick" style="height:70%;">
             <el-tab-pane label="cake"></el-tab-pane>
             <el-tab-pane label="完善信息"></el-tab-pane>
@@ -150,5 +150,8 @@
     font-family:"Axure Handwriting";
     font-weight: bold;
     color: rgba(211,108,90,0.95);
+  }
+  .max{
+    /*margin-top: 80px;*/
   }
 </style>

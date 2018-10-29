@@ -51,21 +51,21 @@
         </el-col>
         <el-col :span="6">
           <el-card shadow="hover">
-            <router-link to="/productlist/2">
+            <router-link to="/productlist/3">
             <img src="../../assets/home/birthlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="hover">
-            <router-link to="/productlist/3">
+            <router-link to="/productlist/2">
             <img src="../../assets/home/childlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
         <el-col :span="6">
           <el-card shadow="hover">
-            <router-link to="/productlist/1">
+            <router-link to="/productlist/4">
             <img src="../../assets/home/togetherlogo.png" alt="" class="image">
             </router-link>
           </el-card>

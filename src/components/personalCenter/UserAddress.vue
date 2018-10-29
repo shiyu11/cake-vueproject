@@ -18,9 +18,9 @@
           <el-form-item label="详细地址" :label-width="formLabelWidth">
             <el-input v-model="form.address" autocomplete="off" placeholder="收货人详细地址" style="width: 370px"></el-input>
           </el-form-item>
-          <el-form-item label="设为默认地址">
-            <el-switch v-model="form.defaultaddress"></el-switch>
-          </el-form-item>
+          <!--<el-form-item label="设为默认地址">-->
+            <!--<el-switch v-model="form.defaultaddress"></el-switch>-->
+          <!--</el-form-item>-->
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button @click="dialogFormVisible = false">取 消</el-button>
