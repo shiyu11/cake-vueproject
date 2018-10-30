@@ -1,24 +1,25 @@
 <template>
 <div class="container">
   <app-event-header></app-event-header>
-  <app-event-products></app-event-products>
-   <app-event-part></app-event-part>
-  <app-event-detail></app-event-detail>
+  <app-event-product></app-event-product>
+  <app-event-load></app-event-load>
+  <app-event-details></app-event-details>
 </div>
 </template>
 
 <script>
-  import EventPart from './EventPart'
   import EventHeader from './EventHeader'
-  import EventDetail from './EventDetail'
-  import EventProducts from './EventProducts'
+  import EventProduct from './EventProduct'
+  import EventDetails from './EventDetails'
+  import EventLoad from './EventLoad'
+
     export default {
         name: "Event",
       components:{
-        'app-event-part':EventPart,
         'app-event-header':EventHeader,
-        'app-event-detail':EventDetail,
-        'app-event-products':EventProducts
+        'app-event-product':EventProduct,
+        'app-event-details':EventDetails,
+        'app-event-load':EventLoad,
       },
     }
 </script>

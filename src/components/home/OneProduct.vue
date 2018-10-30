@@ -80,7 +80,7 @@
 
 <script>
   import addcart from '../home/addcart'
-  import axios from 'axios'
+
 
   export default {
     data() {
@@ -116,7 +116,7 @@
     },
     mounted: function () {
       let _this = this
-      axios.get(`http://localhost:3000/product`).then(function (result) {
+      this.$axios.get(`product`).then(function (result) {
         _this.products = result.data.data;
         // console.log(result.data)
         let data1=[], data2=[], data3=[], data4=[]
@@ -143,7 +143,7 @@
 </script>
 
 
-<style>
+<style scoped>
   .maxtitle {
     font-size: 30px;
     color: #B0916A;
@@ -180,11 +180,7 @@
     line-height: 12px;
   }
 
-  .button {
-    padding: 0;
-    float: right;
-    color: #B0916A;
-  }
+
 
   .image {
     width: 100%;
@@ -207,14 +203,7 @@
     border: 1px solid #B0916A;
     margin-top: 5px;
   }
-  .buytitle{
-    font-size:20px;
 
-  }
-  .mymodal{
-    width:400px;
-    padding:10px;
-  }
 
 </style>
 

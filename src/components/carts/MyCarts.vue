@@ -54,15 +54,24 @@
               <div class="num">
                 <el-row>
                   <el-col><span @click="changeMoney(product,-1)" class="span">-</span>
-                    {{product.pnum}}
+                    {{product.pno}}
                     <span @click="changeMoney(product,1)" class="span">+</span></el-col>
                 </el-row>
               </div>
             </td>
-            <td width="10%" class="allprice">{{ product.pprice * product.size* product.pnum }}</td>
+            <td width="10%" class="allprice">{{ product.pprice * product.size* product.pno }}</td>
             <td width="10%">
               <div class="button">
-                <button v-on:click="del(product.cid)">删除</button>
+                <!--<el-button @click="centerDialogVisible = true">删除</el-button>-->
+                <button v-on:click="centerDialogVisible= true">删除</button>
+                <el-dialog title="" :visible.sync="centerDialogVisible" width="25%" center>
+                  <span class="deltitle">你确定要删除此订单?</span>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button type="primary" @click="centerDialogVisible= false">取消</el-button>
+                    <el-button type="primary" @click="centerDialogVisible= false;del(product.cid)">确定</el-button>
+                  </span>
+                </el-dialog>
+
               </div>
             </td>
           </tr>
@@ -89,7 +98,6 @@
     name: "MyCart",
     data(){
       return{
-
         products:[],
         totalNum:0,
         totalMoney:0,
@@ -97,6 +105,8 @@
         dingpid:'',
         num:1,
         sum:1,
+        uname:sessionStorage.getItem('sname'),
+        centerDialogVisible: false,
       }
     },
     methods:{
@@ -108,11 +118,11 @@
       },
       changeMoney:function (product,way) {
         if (way>0) {
-          product.pnum++;
+          product.pno++;
         }else{
-          product.pnum--;
-          if (product.pnum<1) {
-            product.pnum=1;
+          product.pno--;
+          if (product.pno<1) {
+            product.pno=1;
           }
         }
         this.getTotalMoney();
@@ -157,7 +167,7 @@
         this.totalNum = 0;
         this.products.forEach(function (product,index) {
           if (product.check) {
-            _this.totalNum += product.pnum;
+            _this.totalNum += product.pno;
           }
         })
         sessionStorage.setItem('totalNum1',this.totalNum);
@@ -169,24 +179,22 @@
         this.totalMoney = 0;
         this.products.forEach(function (product) {
           if (product.check) {
-            _this.totalMoney += product.pnum*product.size*product.pprice;
-            a.push({"pid":product.pid,"pname":product.pname,"rnum":product.pnum,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
+            _this.totalMoney += product.pno*product.size*product.pprice;
+            a.push({"pid":product.pid,"pname":product.pname,"rnum":product.pno,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
           }
         })
         // this.$store.state.totalMoney1=this.totalMoney;
         sessionStorage.setItem('totalMoney1',this.totalMoney);
         sessionStorage.setItem('dingpid',JSON.stringify(a));
-        console.log('我的'+JSON.stringify(a))
+        // console.log('我的'+JSON.stringify(a))
       },
       del: function (cid) {
-        // var index=this.products.indexOf(index);
-        // this.products.splice(index,1);
-
         let _this = this
         $.ajax({
           url:"http://localhost:3000/deletecart/"+cid,
           type:"get",
           success:function(result){
+            // alert('删除成功')
             _this.products=[],
               _this.ajax()
             _this.getTotalMoney();
@@ -198,7 +206,7 @@
         let _this=this
         axios.get(`http://localhost:3000/getcart/${sessionStorage.getItem('uid')}`).then(function (result) {
           _this.products = result.data.data;
-          console.log(result.data)
+          // console.log(result.data)
         })
       }
     },
@@ -214,7 +222,7 @@
         }
       },
       getsum(){
-        if(this.$store.state.type == 0){
+        if(this.uname==null){
           return this.sum = 1;
         }else{
           this.sum = 0;
@@ -256,6 +264,8 @@
   }
   .cart_list{
     display:block;
+    margin-top: 50px;
+    margin-bottom: 180px;
   }
   .empty_cart span{
     font-size: 24px;
@@ -265,6 +275,10 @@
   }
   .cart{
     padding-right: 120px;
+  }
+  .deltitle{
+    margin-left:62px;
+    font-size: 19px;
   }
 </style>
 

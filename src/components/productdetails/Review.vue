@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+
     export default {
       name: "Review",
       data() {
@@ -63,7 +63,7 @@
       },
       mounted: function () {
         let _this = this
-        axios.get(`http://localhost:3000/product/reviews/${_this.fpid}`).then(function (result) {
+        this.$axios.get(`product/reviews/${_this.fpid}`).then(function (result) {
           _this.reviews = result.data.data;
           // console.log(result.data.data)
           _this.len = result.data.data.length;

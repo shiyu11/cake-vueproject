@@ -1,0 +1,160 @@
+
+@charset "utf-8";
+/*科e互联特效基本框架CSS*/
+
+/* 效果CSS开始 */
+.demo {
+  /*margin: 0px auto;*/
+  text-align:center;
+}
+.nav li	{
+  position: relative;
+  display: inline-block;
+  margin-left: -50px;
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+}
+.nav li a {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 50%;
+  border-width: 8px;
+  border-style: solid;
+}
+.nav li:hover {
+  z-index: 11;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.nav li:hover a {
+  text-decoration: none;
+}
+.nav li:hover span {
+  -webkit-transition: all 0.4s linear;
+  -moz-transition: all 0.4s linear;
+  -o-transition: all 0.4s linear;
+  -ms-transition: all 0.4s linear;
+  transition: all 0.4s linear;
+  -webkit-animation: moveFromBottom 0.3s ease;
+  -moz-animation: moveFromBottom 0.3s ease;
+  -o-animation: moveFromBottom 0.3s ease;
+  -ms-animation: moveFromBottom 0.3s ease;
+  animation: moveFromBottom 0.3s ease;
+}
+
+.nav li a {
+  color: #ba9d5e;
+  text-shadow: 0 1px 0 #f5e0ad;
+  border-color: #dcc999;
+  background-color: #f0cd78;
+}
+
+.nav li:hover a {
+  color: #ab8228;
+  text-shadow: 0 1px 0 #ffe199;
+  border-color: #b08f3e;
+  background-color: #f8c64d;
+}
+
+.nav span {
+  display: block;
+  line-height:20px;
+  font-size: 20px;
+  font-style: normal;
+}
+.nav span:before {
+  display: block;
+}
+.nav li:nth-child(1) span:before {
+  content: "-";
+}
+.nav li:nth-child(2) span:before {
+  content: "";
+}
+.nav li:nth-child(3) span:before {
+  content: "+";
+}
+
+@-webkit-keyframes moveFromBottom {
+  from {
+    -webkit-transform: translateY(120%) scale(0.5) ;
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+@-moz-keyframes moveFromBottom {
+  from {
+    -moz-transform: translateY(120%) scale(0.5) ;
+    opacity: 0;
+  }
+  to {
+    -moz-transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+@-ms-keyframes moveFromBottom {
+  from {
+    -ms-transform: translateY(120%) scale(0.5) ;
+    opacity: 0;
+  }
+  to {
+    -ms-transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+@-o-keyframes moveFromBottom {
+  from {
+    -o-transform: translateY(120%) scale(0.5) ;
+    opacity: 0;
+  }
+  to {
+    -o-transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes moveFromBottom {
+  from {
+    transform: translateY(120%) scale(0.5) ;
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%) scale(1);
+    opacity: 1;
+  }
+}
+.nav span:before {
+  font-family: 'LigatureSymbols';
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -ms-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -webkit-font-feature-settings: "liga" 1, "dlig" 1;
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -ms-font-feature-settings: "liga" 1, "dlig" 1;
+  font-feature-settings: "liga" 1, "dlig" 1;
+  font-size: 20px;
+}
+@font-face {
+  font-family: 'LigatureSymbols';
+  src: url('../../assets/home/sweet.png');
+  src: url('../../assets/home/sweet.png') format('embedded-opentype'),
+  url('../../assets/home/sweet.png') format('woff'),
+  url('../../assets/home/sweet.png') format('truetype'),
+  url('../../assets/home/sweet.png') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* 效果CSS结束 */

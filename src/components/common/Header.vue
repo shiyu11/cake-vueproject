@@ -104,13 +104,14 @@
       },
       clearUser(){
         sessionStorage.clear();
-        this.$router.push({path:'/login'})
+        // this.$router.push({path:'/login'})
+        window.location.href='http://10.40.4.15:8080/'
       },
     },
-    watch: {
-      '$route' (to, from) {
-        this.$router.go(0);
-      }},
+    // watch: {
+    //   '$route' (to, from) {
+    //     this.$router.go(0);
+    //   }},
   }
 </script>
 

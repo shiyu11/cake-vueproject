@@ -1,5 +1,5 @@
 <template>
-  <div  style="background-color:#f2f6f7;">
+  <div  style="background-color:#f2f6f7;margin-top:20px">
     <el-row>
       <el-col :span="8" class="mar">
         <p style="color:#b0916a;margin-top: 30px">客服热线：4003-638-638（8:00 - 22:00）</p>
@@ -72,7 +72,6 @@
     height: 115px;
     background-color: gray;
   }
-
   .a{
     margin-top: 30px;
     font-size: 14px;
@@ -83,5 +82,4 @@
     margin-top:10px;
     margin-left: 10px;
   }
-
 </style>

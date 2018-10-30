@@ -101,7 +101,7 @@
     border-bottom:dashed 1px silver;
   }
   table>tbody>tr>td.info{
-    background-color: white;
+  background-color:white;
 
   }
   table>tbody>tr>td{

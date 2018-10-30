@@ -37,6 +37,13 @@
                         <!--</el-col>-->
                       </div>
                     </el-row>
+
+                    <el-row>
+                      <el-col :span="24">
+                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      </el-col>
+                    </el-row>
+
                   </div>
                 </el-card>
                 <!--测验-->
@@ -88,6 +95,13 @@
                         <!--</el-col>-->
                       </div>
                     </el-row>
+
+                    <el-row>
+                      <el-col :span="24">
+                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      </el-col>
+                    </el-row>
+
                   </div>
                 </el-card>
               </el-col>
@@ -135,6 +149,12 @@
                         </el-col>
 
                       </div>
+                    </el-row>
+
+                    <el-row>
+                      <el-col :span="24">
+                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      </el-col>
                     </el-row>
                   </div>
                 </el-card>
@@ -188,6 +208,12 @@
                         <!--</el-col>-->
                       </div>
                     </el-row>
+
+                    <el-row>
+                      <el-col :span="24">
+                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      </el-col>
+                    </el-row>
                   </div>
                 </el-card>
               </el-col>
@@ -230,6 +256,7 @@
 
                       </div>
                     </el-row>
+
                   </div>
                 </el-card>
               </el-carousel-item>
@@ -248,7 +275,7 @@
 
 <script>
   import addcart from '../home/addcart'
-  import axios from 'axios'
+
     export default {
       name: "Products",
       components: {
@@ -367,7 +394,7 @@
       },
       mounted: function () {
         let _this = this
-        axios.get(`http://localhost:3000/product`).then(function (result) {
+        this.$axios.get(`product`).then(function (result) {
           _this.products = result.data.data;
           console.log(result.data)
           let data1=[], data2=[], data3=[], data4=[]
@@ -398,23 +425,22 @@
       //   }
       // }
       methods:{
-        // function (type) {
-        //   var bangshu = type + 1;
-        //   var productpid = this.father.pname
-        //   var shuju = '{' + productpid + ',' + bangshu + '}'
-        //   console.log(shuju)
-        //   // console.log(bangshu,productpid)
-        //   if (sessionStorage.getItem('product')) {
-        //     var products = sessionStorage.getItem('product');
-        //     products += (',' + shuju);
-        //     sessionStorage.setItem('product', products);
-        //     alert('已经放入购物车中！')
-        //   } else {
-        //     //var products = [];
-        //     //products.push(product); JSON.stringify(products)
-        //     sessionStorage.setItem('products', shuju);
-        //   }
+        // 推荐
+        change(occasion){
+          if(occasion==1){
+            return '新品'
+          }
+          else if(occasion==2){
+            return '儿童'
+          }
+          else if(occasion==3){
+            return '生日'
+          }
+          else{
+            return '聚会'
+          }
 
+        }
         }
 
     }
@@ -422,6 +448,51 @@
 
 
 <style>
+
+</style>
+
+<style scoped>
+  .button1 {
+    font-size:14px;
+    font-family:Verdana;
+    font-weight:normal;
+    -moz-border-radius:25px;
+    -webkit-border-radius:25px;
+    border-radius:25px;
+    padding:5px 25px;
+    text-decoration:none;
+    cursor: pointer;
+  }
+  .btn_style3 {
+    border:1px solid #84bbf3;
+    background:-moz-linear-gradient( center top, #bddbfa 8%, #80b5ea 97% );
+    background:-ms-linear-gradient( top, #bddbfa 8%, #80b5ea 97% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #bddbfa), color-stop(97%, #80b5ea) );
+    background-color:#bddbfa;
+    color:#ffffff;
+    display:inline-block;
+    text-shadow:0px 0px 0px #528ecc;
+    -webkit-box-shadow:inset 0px 0px 0px -50px #dcecfb;
+    -moz-box-shadow:inset 0px 0px 0px -50px #dcecfb;
+    box-shadow:inset 0px 0px 0px -50px #dcecfb;
+  }.btn_style3:hover {
+     background:-moz-linear-gradient( center top, #80b5ea 8%, #bddbfa 97% );
+     background:-ms-linear-gradient( top, #80b5ea 8%, #bddbfa 97% );
+     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+     background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #80b5ea), color-stop(97%, #bddbfa) );
+     background-color:#80b5ea;
+   }.btn_style3:active {
+      position:relative;
+      top:1px;
+    }
+  . ptaste{
+    color:#B0916A;
+    font-size:15px ;
+    border: 1px solid #B0916A;
+    margin-top: 5px;
+  }
+
   .mian {
     height: 100%;
     width: 100%;
@@ -469,41 +540,4 @@
     margin-left: 50px;
     /*font-family:"微软雅黑";*/
   }
-</style>
-
-<style scoped>
-  .button1 {
-    font-size:14px;
-    font-family:Verdana;
-    font-weight:normal;
-    -moz-border-radius:25px;
-    -webkit-border-radius:25px;
-    border-radius:25px;
-    padding:5px 25px;
-    text-decoration:none;
-    cursor: pointer;
-  }
-  .btn_style3 {
-    border:1px solid #84bbf3;
-    background:-moz-linear-gradient( center top, #bddbfa 8%, #80b5ea 97% );
-    background:-ms-linear-gradient( top, #bddbfa 8%, #80b5ea 97% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #bddbfa), color-stop(97%, #80b5ea) );
-    background-color:#bddbfa;
-    color:#ffffff;
-    display:inline-block;
-    text-shadow:0px 0px 0px #528ecc;
-    -webkit-box-shadow:inset 0px 0px 0px -50px #dcecfb;
-    -moz-box-shadow:inset 0px 0px 0px -50px #dcecfb;
-    box-shadow:inset 0px 0px 0px -50px #dcecfb;
-  }.btn_style3:hover {
-     background:-moz-linear-gradient( center top, #80b5ea 8%, #bddbfa 97% );
-     background:-ms-linear-gradient( top, #80b5ea 8%, #bddbfa 97% );
-     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
-     background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #80b5ea), color-stop(97%, #bddbfa) );
-     background-color:#80b5ea;
-   }.btn_style3:active {
-      position:relative;
-      top:1px;
-    }
 </style>

@@ -66,9 +66,6 @@
             { required: true, message: '请输入邮箱', trigger: 'blur' },
             { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
           ],
-          // sex:[
-          //   { required: true, message: '请选择性别', trigger: 'change' }
-          // ],
           birth:[
             { required: true, message: '请输入生日', trigger: 'change' }
           ],
@@ -130,7 +127,6 @@
     height: 765px;
     width: 100%;
     background: url("../../../static/images/hmhpic/bg-1.jpg") no-repeat;
-    margin: 2%;
   }
   .form-1{
     margin-top: 180px;
@@ -140,11 +136,6 @@
   .el-form-item span{
     color: lightslategrey;
     font-size: 12px;
-  }
-  .el-checkbox-group{
-  }
-  .el-checkbox label{
-    color: red !important;
   }
 
   span{

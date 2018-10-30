@@ -6,7 +6,6 @@
       <my-address></my-address>
     </div>
     <div class="el-container">
-
       <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
         <el-form :model="form">
           <el-form-item label="收货人" :label-width="formLabelWidth">

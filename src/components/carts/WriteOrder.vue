@@ -69,7 +69,7 @@
             </td>
             <td width="20%">
               <div class="info">
-                <h5>{{ onew.pname }}</h5>
+                <h5>{{onew.pname}}</h5>
                 <p>赠品：标配餐具10份  生日蜡烛1支</p>
               </div>
             </td>
@@ -111,9 +111,9 @@
       <div style="text-align:right;">
         <button class="btn btn-primary" v-on:click="submit()">提交订单</button>
       </div>
-      <div style="text-align:right;">
-        <router-link to="/cart">返回购物车</router-link>
-      </div>
+      <!--<div style="text-align:right;">-->
+        <!--<router-link to="/cart">返回购物车</router-link>-->
+      <!--</div>-->
     </div>
   </div>
   </div>
@@ -221,28 +221,38 @@
           sessionStorage.setItem('time1',this.$store.state.time1);
           this.$router.push({path:'/finish'})
           // for(let i=0; i< this.mydata.length;i++){
-          //   axios.post(`http://localhost:3000/orderAdd`, {
-          //     state:this.$store.state1,
-          //     uid:this.$store.state.uid,
-          //     money:this.$store.state.totalMoney1,
-          //     address: this.ruleForm.address,
-          //     aname: this.ruleForm.name,
-          //     phone: this.ruleForm.phoneNum,
-          //     rnum:1111,
-          //     oid:16,
-          //     pid:1,
-          //   }).then(function (result) {
-          //     console.log(result.data)
-          //   })
+            this.$axios.post(`orderAdd1`,{
+              state:'待收货',
+              uid:sessionStorage.getItem('uid'),
+              money:sessionStorage.getItem('totalMoney1'),
+              address: this.ruleForm.address,
+              aname: this.ruleForm.name,
+              phone: this.ruleForm.phoneNum,
+
+            }).then(function (result) {
+              console.log(result.data)
+            })
             alert('订单提交成功')
-          // }
+            this.addproduct()
         }
       },
+      addproduct(){
+        let _this=this
+        for(let i=0;i<this.mydata.length;i++){
+          this.$axios.post(`orderAdd2`,{
+            uid:sessionStorage.getItem('uid'),
+            pid:_this.mydata[i].pid,
+            rnum:_this.mydata[i].rnum
+          }).then(function (result) {
+            console.log('chenggongcharu')
+          })
+        }
+      }
     },
     mounted() {
-      let _this= this;
+
       this.mydata=JSON.parse(sessionStorage.getItem('dingpid'));
-      console.log('获取的数据'+this.mydata)
+      console.log('获取的数据'+JSON.stringify(this.mydata))
 
       //   // axios.get(`http://localhost:3000/product/details/${product.pid}`).then(function (result) {
     //   //   _this.products = result.data.data;

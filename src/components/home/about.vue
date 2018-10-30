@@ -70,7 +70,6 @@
               <li><p> 客服邮箱：cs@tastedreamcake.com</p></li>
               <li><p> 您也可以通过在线反馈提交您的订单投诉或意见与建议。感谢您的关注和一如既往的支持！</p></li>
             </ul>
-            <a href="#4" class="rt">返回顶部</a>
           </div>
         </div>
       </div>

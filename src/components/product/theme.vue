@@ -132,7 +132,7 @@
     width: 300px;
     height: 300px;
     border-radius: 300px 0;
-    background: pink;
+    background:linear-gradient(to top, #feada6 0%, #f5efef 100%);
     opacity: 0.6;
     position: absolute;
     top: 300px;

@@ -81,13 +81,13 @@
         // console.log(_this.now)
       },1000)
     },
-    // components:{
-    //   'my-user-data':UserData,
-    //   'my-user-order':UserOrder,
-    //   'my-user-updatepsd':Userupdatepsd,
-    //   'my-user-address':UserAddress,
-    //   'my-user-time':UserTime
-    // }
+    components:{
+      'my-user-data':UserData,
+      'my-user-order':UserOrder,
+      'my-user-updatepsd':Userupdatepsd,
+      'my-user-address':UserAddress,
+      'my-user-time':UserTime
+    }
   }
 
 </script>

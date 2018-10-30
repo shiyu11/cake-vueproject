@@ -1,7 +1,7 @@
 <template>
   <div class="el-container">
-    <div class="bg bg-blur"></div>
-  <div class="icon-1 content content-front">
+    <div class="bg bg-blur">
+  <div class="icon-1 content content-front" style="margin-top: 100px">
       <h3 style="line-height: 1.3">欢迎您<br>
         {{uname}}</h3>
       <h3>来到品味·梦幻蛋糕</h3>
@@ -11,7 +11,6 @@
       <p>我的订单:
         <span @click="goOrder">全部订单>></span>
       </p>
-
     <div class="box shadow">
       <a @click="goOrderAfter" >待收货{{order.state}}</a>
       <div class="circle"></div>
@@ -24,11 +23,9 @@
       <a  @click="goOrderFinish">已完成{{order.state}}</a>
       <div class="circle"></div>
     </div>
-
-
-
     </div>
   </div>
+    </div>
   </div>
 
 </template>
@@ -41,7 +38,6 @@
           return{
             now:'',
             uname:sessionStorage.getItem('sname'),
-
             order:[{
               state:'1'
             }]
@@ -73,9 +69,8 @@
     color: #B0916A;
   }
  .el-container .icon-1 p{
-
    color: rgba(211,108,90,0.95);
-   text-align: left;
+   text-align: center;
    font-size: 18px;
    font-weight: normal;
    line-height: 200%;
@@ -84,6 +79,7 @@
     border: 2px solid transparent;
     margin: 30px;
     margin-left: 10px;
+    width: 100%;
   }
   /*.content {*/
     /*color: #ffffff;*/
@@ -91,7 +87,7 @@
   .bg {
     background: url("../../../static/images/hmhpic/timg1.jpg");
     height:600px;
-    width: 800px;
+    width: 100%;
   }
   .bg-blur {
     float: left;
@@ -101,18 +97,11 @@
     background-size: cover;
   }
   .content-front {
-    position:absolute;
-    left: 570px;
-    top: 100px;
-    height:600px;
     text-align: center;
   }
   button{
     line-height: 10px;
   }
-
-
-
   html {
     box-sizing: border-box;
     font: 18px PT Mono;
@@ -136,9 +125,11 @@
   .box {
     width: 15%;
     min-width: 150px;
+    text-align: center;
     display: block;
     height: 45px;
     position: relative;
+    margin: 0 auto;
     border-radius: 5px;
     background: linear-gradient(to right, rgba(211,108,90,0.95), #d6e2ad 100%);
     margin-bottom: 25px;
@@ -150,9 +141,6 @@
 
   .box a{color: rgba(69,6,7,0.95);text-decoration:none;}
 
-  .shadow {
-    position: relative;
-  }
   .shadow:before {
     z-index: -1;
     position: absolute;

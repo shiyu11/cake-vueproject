@@ -33,7 +33,7 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
+
   export default {
     data() {
       var validatePhone = (rule, value, callback) => {
@@ -118,7 +118,7 @@
     methods: {
       getMessage() {
         let _this = this
-        axios.get(`http://127.0.0.1:3000/users/getallphone/${_this.ruleForm.phoneNum}`).then((result) => {
+        this.$axios.get(`users/getallphone/${_this.ruleForm.phoneNum}`).then((result) => {
           let info = eval("(" + result.request.response + ")");
           if (info.data.length != 0) {
             alert("该用户已经注册,请直接登录!")
@@ -138,7 +138,7 @@
           if (valid) {
             alert('注册成功!');
             let _this = this
-            axios.post("http://localhost:3000/users/register", {
+            this.$axios.post("users/register", {
               uphone: _this.ruleForm.phoneNum,
               upwd: _this.ruleForm.pass,
               uname: _this.ruleForm.userName,

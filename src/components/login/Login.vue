@@ -23,7 +23,7 @@
 
 
 <script>
-  import axios from 'axios'
+
   export default {
     name: "Login",
     data(){
@@ -41,7 +41,7 @@
           alert('手机号和密码不能为空！')
         }else {
           let _this = this;
-          axios.post('http://localhost:3000/users/login',
+          this.$axios.post('users/login',
             {
               uphone: _this.phonenum,
               upwd: _this.password
@@ -50,6 +50,8 @@
             console.log(info)
             if (info.code == 200) {
               alert('登录成功，即将跳转到首页');
+
+
               setTimeout(function () {
                 _this.$router.push('/')
               }.bind(this), 1000);
@@ -57,6 +59,7 @@
               sessionStorage.setItem('spassword',info.data.upwd);
               sessionStorage.setItem('sname',info.data.uname);
               sessionStorage.setItem('uid',info.data.uid);
+              window.location.href='http://10.40.4.15:8080/'
             }
             else {
               alert('用户名或密码错误')
@@ -65,7 +68,10 @@
         }
       },
     },
-
+    // watch: {
+    //   '$route' (to, from) {
+    //     this.$router.go(0);
+    //   }},
   }
 
 </script>
