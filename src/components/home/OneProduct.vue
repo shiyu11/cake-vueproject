@@ -16,14 +16,17 @@
     </div>
     <div class="dwidth">
     <el-row  class="space" justify="center" :gutter="20" >
-      <el-col :sm="12" :md="6" :lg="6" :xl="6"  v-for="(onep,index) in mydata[myoccasion-1]" >
+
+
+
+      <el-col :sm="12" :md="6" :lg="6" :xl="6"  v-for="(onep,index) in mydata[myoccasion-1]" :key="index">
         <el-card :body-style="{ padding: '2px' }" class="space">
           <!--<img src="../../assets/p1.jpg" class="image">-->
           <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
             <img :src="onep.ppic"  class="image">
           </router-link>
           <!--<img  :src="imgSrc(nonep.img)"  class="image">-->
-          <div style="padding:14px;">
+          <div class="shuom">
             <el-row>
               <el-col :span="24">
               <span class="pname">{{onep.pname}}</span>
@@ -46,35 +49,8 @@
           </div>
         </el-card>
       </el-col>
-
-      <!--序号-->
-      <!--<el-col>-->
-        <!--<div class="block">-->
-          <!--<span class="demonstration">显示总数</span>-->
-          <!--<el-pagination-->
-            <!--@current-change="handleCurrentChange"-->
-            <!--:current-page.sync="5"-->
-            <!--:page-size="5"-->
-            <!--layout="total, prev, pager, next"-->
-            <!--:total="100">-->
-          <!--</el-pagination>-->
-        <!--</div>-->
-      <!--</el-col>-->
     </el-row>
   </div>
-
-<!--模态框-->
-    <!--<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">-->
-      <!--<div class="modal-dialog modal-sm" role="document">-->
-        <!--<div class="modal-content mymodal">-->
-          <!--<span class="buytitle">选择您要订购的磅数</span>-->
-          <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
-          <!--<hr>-->
-          <!--<my-addcart></my-addcart>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
 </div>
 </template>
 
@@ -97,7 +73,7 @@
         ],
         mydata:[],
 
-        // products:null
+
       }
     },
     components:{
@@ -133,7 +109,6 @@
           if(result.data.data[i].occasion==4){
             data4.push(result.data.data[i])
           }
-
         }
         _this.mydata.push(data1,data2,data3,data4)
       })
@@ -195,13 +170,17 @@
     clear: both
   }
   .pname{
-    font-size:20px
+    font-size:20px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   }
   .ptaste{
     color:#B0916A;
     font-size:15px ;
     border: 1px solid #B0916A;
     margin-top: 5px;
+  }
+  .shuom{
+    margin-left: 15px;
   }
 
 

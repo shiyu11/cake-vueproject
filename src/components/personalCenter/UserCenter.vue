@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="overflow-x:hidden;">
     <div class="icon">
       <img src="../../../static/images/hmhpic/person1.png" alt="">
     </div>
@@ -7,16 +7,24 @@
     <el-row :gutter="20">
       <el-col :span="4">
         <div id="Date">{{now}}</div>
-        <div class="grid-content bg-purple max">
-          <el-tabs :tab-position="tabPosition" @tab-click="handleClick" style="height:70%;">
-            <el-tab-pane label="cake"></el-tab-pane>
-            <el-tab-pane label="完善信息"></el-tab-pane>
-            <el-tab-pane label="我的订单"></el-tab-pane>
-            <!--<el-tab-pane label="安全中心"></el-tab-pane>-->
-            <el-tab-pane label="收货地址" ></el-tab-pane>
-          </el-tabs>
-          <!--<button @click="toHome">退出登录</button>-->
-        </div>
+        <div id="leftpic" style="width: 150px;height: 150px;"><img src="../../../static/images/hmhpic/timg.gif" alt="" style="max-height:100%;max-width:100%"></div>
+        <ul>
+          <router-link class="list-group-item" to="/usercenter/UserTime" tag="li" active-class="active">cake</router-link>
+          <router-link class="list-group-item" to="/usercenter/Personaldata" tag="li" active-class="active">完善信息</router-link>
+          <router-link class="list-group-item" to="/usercenter/Myorder/all" tag="li" active-class="active">我的订单</router-link>
+          <router-link class="list-group-item" to="/usercenter/UserAddress" tag="li" active-class="active">收货地址</router-link>
+          <router-link class="list-group-item" to="/usercenter/Mycollection" tag="li" active-class="active">我的收藏</router-link>
+        </ul>
+        <!--<div class="grid-content bg-purple max">-->
+          <!--<el-tabs :tab-position="tabPosition" @tab-click="handleClick" style="height:70%;">-->
+            <!--<el-tab-pane label="cake"></el-tab-pane>-->
+            <!--<el-tab-pane label="完善信息"></el-tab-pane>-->
+            <!--<el-tab-pane label="我的订单"></el-tab-pane>-->
+            <!--&lt;!&ndash;<el-tab-pane label="安全中心"></el-tab-pane>&ndash;&gt;-->
+            <!--<el-tab-pane label="收货地址" ></el-tab-pane>-->
+          <!--</el-tabs>-->
+          <!--&lt;!&ndash;<button @click="toHome">退出登录</button>&ndash;&gt;-->
+        <!--</div>-->
       </el-col>
       <el-col :span="20">
         <div class="grid-content bg-purple">
@@ -30,7 +38,6 @@
 <script>
   import UserData from './UserData'
   import UserOrder from './UserOrder'
-  import Userupdatepsd from './Userupdatepsd'
   import UserAddress from './UserAddress'
   import UserTime from './UserTime'
   export default {
@@ -39,33 +46,30 @@
       return {
         tabPosition: 'left',
         now:''
-        // username:''
       };
     },
-    methods:{
-      toHome(){
-        this.$router.push({path:'/'})
-      },
-      handleClick(tab, event) {
-        if(tab.$options.propsData.label=='完善信息'){
-          this.$router.push({path:'/usercenter/Personaldata'})
-        }
-        else if (tab.$options.propsData.label=='cake') {
-          this.$router.push({path:'/usercenter/UserTime'})
-        }
-        else if (tab.$options.propsData.label=='我的订单') {
-          this.$router.push({path:'/usercenter/Myorder'})
-        }
-        // else if (tab.$options.propsData.label=='安全中心') {
-        //   this.$router.push({path:'/usercenter/Userupdatepsd'})
-        // }
-        else if (tab.$options.propsData.label=='收货地址') {
-          this.$router.push({path:'/usercenter/UserAddress'})
-        }
-        //
-        // console.log(tab.$options.propsData.label);
-      }
-    },
+    // methods:{
+    //   toHome(){
+    //     this.$router.push({path:'/'})
+    //   },
+    //   handleClick(tab, event) {
+    //     if(tab.$options.propsData.label=='完善信息'){
+    //       this.$router.push({path:'/usercenter/Personaldata'})
+    //     }
+    //     else if (tab.$options.propsData.label=='cake') {
+    //       this.$router.push({path:'/usercenter/UserTime'})
+    //     }
+    //     else if (tab.$options.propsData.label=='我的订单') {
+    //       this.$router.push({path:'/usercenter/Myorder'})
+    //     }
+    //     // else if (tab.$options.propsData.label=='安全中心') {
+    //     //   this.$router.push({path:'/usercenter/Userupdatepsd'})
+    //     // }
+    //     else if (tab.$options.propsData.label=='收货地址') {
+    //       this.$router.push({path:'/usercenter/UserAddress'})
+    //     }
+    //   }
+    // },
     created(){
       let _this  = this;
       setInterval(function(){
@@ -84,7 +88,6 @@
     components:{
       'my-user-data':UserData,
       'my-user-order':UserOrder,
-      'my-user-updatepsd':Userupdatepsd,
       'my-user-address':UserAddress,
       'my-user-time':UserTime
     }
@@ -94,22 +97,28 @@
 
 
 <style>
-  .el-tabs__item.el-tabs__item.is-active{
-    /*background-color: rgba(207,90,91,0.95);*/
-    /*border: 1px solid rgba(207,90,91,0.95);*/
-  }
   .el-tabs--left .el-tabs__item.is-left {
     text-align: center;
-  }
-  .el-tabs__item{
-    font-size: 20px;
-    padding: 8px 26px;
-    height: 56px;
-    color: #B0916A;
   }
 </style>
 
 <style scoped>
+  ul{list-style: none}
+  li{
+    font-size: 20px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    color:#B0916A; ;
+  }
+  .list-group-item.active,.list-group-item.active:hover {
+    background-color: rgba(211,108,90,0.95);
+    border-color: white;
+    border-radius: 10px;
+  }
+  .list-group-item{
+    border: 1px solid transparent;
+  }
   element{
     min-width: 1000px;
   }
@@ -151,7 +160,5 @@
     font-weight: bold;
     color: rgba(211,108,90,0.95);
   }
-  .max{
-    /*margin-top: 80px;*/
-  }
+
 </style>

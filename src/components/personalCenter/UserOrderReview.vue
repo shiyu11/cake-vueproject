@@ -1,6 +1,7 @@
 <template>
-  <div class="el-container">
-    <div class="col-md-12">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-9">
       <table class="table">
         <thead>
         <tr>
@@ -35,6 +36,7 @@
         </tbody>
       </table>
     </div>
+  </div>
   </div>
 </template>
 
@@ -93,6 +95,9 @@
 </script>
 
 <style scoped>
+  .col-md-9 {
+    width: 81%;
+  }
   .table{
     border:solid 1px transparent;
     margin-top: 10px;
@@ -120,8 +125,7 @@
   table>tbody>tr>td.info{
     background-color: white;
   }
-  .el-container{
-    margin-top: 1px;
+  .container{
     margin-left: 2px;
   }
   .el-textarea__inner{

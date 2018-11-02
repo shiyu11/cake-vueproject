@@ -6,6 +6,9 @@ import OneProduct from '@/components/home/OneProduct'
 import about from '@/components/home/about'
 import yushou from '@/components/product/yushou'
 import theme from '@/components/product/theme'
+import allProducts from '@/components/home/allproducts'
+import  cakebox from '../components/home/cakebox'
+import Pay from '@/components/carts/Pay.vue'
 
 // 黄
 // 黄
@@ -19,6 +22,8 @@ import UserOrderAll from '../components/personalCenter/UserOrderAll'
 import UserOrderAfter from '../components/personalCenter/UserOrderAfter'
 import UserOrderReview from '../components/personalCenter/UserOrderReview'
 import UserOrderFinish from '../components/personalCenter/UserOrderFinish'
+import Mycollection from '../components/personalCenter/Mycollection'
+
 
 
 
@@ -46,7 +51,8 @@ export default new Router({
     {path:'/productlist/:occasion',component:OneProduct},
     {path:'/yushou',component:yushou},
     {path:'/theme',component:theme},
-
+    {path:'/allproducts',component:allProducts},
+    {path: '/cakebox', name: 'cakebox', component: cakebox},
     // {path:'/productlist',component:productlist},
 
 
@@ -55,13 +61,14 @@ export default new Router({
         {path:'Personaldata',component:UserData},
         {path:'UserTime',component:UserTime},
         {path:'Myorder',component:UserOrder,children: [
-            {path:'',component:UserOrderAll},
+            {path:'all',component:UserOrderAll},
             {path:'after',component:UserOrderAfter},
             {path:'review',component:UserOrderReview},
             {path:'finish',component:UserOrderFinish}
           ]},
         {path:'Userupdatepsd',component:Userupdatepsd},
         {path:'UserAddress',component:UserAddress},
+        {path:'Mycollection',component:Mycollection}
       ]},
 
 // 谭
@@ -69,6 +76,7 @@ export default new Router({
     {path:'/check',component:WriteOrder},
     {path:'/finish',component:Over},
     {path:'/event',component:Event},
+    {path:'/over',component:Pay},
 
     // 沈
     {path:'/login',component:login},

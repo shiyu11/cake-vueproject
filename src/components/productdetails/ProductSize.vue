@@ -7,7 +7,7 @@
       <span class="p-price"><span>￥</span>{{father.pprice}} <span>/磅</span> </span>
       <ul>
         <li><span class="p-chooseprice">已选1磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合3-4人分享</li>
+        <li><img src="../../assets/home/sweet.png" alt="">适合2-3人分享</li>
         <li><img src="../../assets/home/sweet.png" alt="">含5套餐具</li>
         <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
@@ -16,7 +16,7 @@
       <span class="p-price"><span>￥</span>{{father.pprice*2}}</span>
       <ul>
         <li><span class="p-chooseprice">已选2磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合7-8人分享</li>
+        <li><img src="../../assets/home/sweet.png" alt="">适合4-7人分享</li>
         <li><img src="../../assets/home/sweet.png" alt="">含10套餐具</li>
         <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
@@ -25,7 +25,7 @@
       <span class="p-price"><span>￥</span>{{father.pprice*3}}</span>
       <ul>
         <li><span class="p-chooseprice">已选3磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合11-12人分享</li>
+        <li><img src="../../assets/home/sweet.png" alt="">适合8-12人分享</li>
         <li><img src="../../assets/home/sweet.png" alt="">含15套餐具</li>
         <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
@@ -34,7 +34,7 @@
       <span class="p-price"><span>￥</span>{{father.pprice*4}}</span>
       <ul>
         <li><span class="p-chooseprice">已选4磅</span></li>
-        <li><img src="../../assets/home/sweet.png" alt="">适合15-20人分享</li>
+        <li><img src="../../assets/home/sweet.png" alt="">适合12-20人分享</li>
         <li><img src="../../assets/home/sweet.png" alt="">含20套餐具</li>
         <li><img src="../../assets/home/sweet.png" alt="">最早明天 09:30配送</li>
       </ul>
@@ -78,6 +78,12 @@
       <el-col :span="6" :offset="2">
         <el-button round type="warning" @click="buy()">立即购买</el-button>
       </el-col>
+      <el-col :span="4" :offset="2" >
+        <el-button round type="warning" @click="putcollect()" v-if="a==0">收藏</el-button>
+      </el-col>
+      <el-col :span="4" :offset="2">
+        <el-button round type="warning" @click="del()" v-if="a==1">取消收藏</el-button>
+      </el-col>
 
 
     </el-row>
@@ -94,9 +100,11 @@
         type: 0,
         bangshu: '',
         pno: 1,
+        a:'0',
       }
     },
-    mounted() {
+    mounted(){
+      this.aaa()
     },
     methods: {
       show(index) {
@@ -104,6 +112,7 @@
         // plain=true
         this.putBang(index)
       },
+
       putBang(key) {
         this.bangshu = key + 1
         // console.log('返回的数据 '+(key+1))
@@ -152,7 +161,41 @@
           }
         }
 
-      }
+      },
+
+
+      putcollect(){
+        //key+1 是磅数
+        let  _this = this
+        this.$axios.post('addcollection',{
+          uid:sessionStorage.getItem('uid'),
+          pid:this.father.pid,
+        })
+        alert('收藏成功')
+        location.reload()
+      },
+      del () {
+        let _this = this
+        this.$axios.get(`deletecollect/${this.father.pid}`).then(function (result) {
+          _this.products = result.data.data;
+          console.log(result.data)
+        })
+        alert('取消收藏成功')
+        location.reload()
+      },
+      aaa(){
+        let _this=this
+        this.$axios.get(`getonly/${sessionStorage.getItem('uid')}/${this.$route.params.pid}`).then(function (result) {
+          _this.products = result.data.data[0];
+          // console.log(result.data.data[0].sid)
+          if( _this.products.sid ==''){
+            _this.a=0
+          }
+          else{
+            _this.a=1
+          }
+        })
+      },
     },
     props: ['father'],
 

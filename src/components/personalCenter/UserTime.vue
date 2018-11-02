@@ -5,22 +5,22 @@
       <h3 style="line-height: 1.3">欢迎您<br>
         {{uname}}</h3>
       <h3>来到品味·梦幻蛋糕</h3>
-      <p @click="goData">点击完善个人资料</p>
+      <p @click="goData" style="cursor: pointer">点击完善个人资料</p>
 
     <div>
       <p>我的订单:
-        <span @click="goOrder">全部订单>></span>
+        <span @click="goOrder" style="cursor: pointer">全部订单>></span>
       </p>
     <div class="box shadow">
-      <a @click="goOrderAfter" >待收货{{order.state}}</a>
+      <a @click="goOrderAfter"  style="cursor: pointer">待收货{{order.state}}</a>
       <div class="circle"></div>
     </div>
     <div class="box shadow">
-      <a @click="goOrderReview">待评价{{order.state}}</a>
+      <a @click="goOrderReview" style="cursor: pointer">待评价{{order.state}}</a>
       <div class="circle"></div>
     </div>
     <div class="box shadow">
-      <a  @click="goOrderFinish">已完成{{order.state}}</a>
+      <a  @click="goOrderFinish" style="cursor: pointer">已完成{{order.state}}</a>
       <div class="circle"></div>
     </div>
     </div>
@@ -48,7 +48,7 @@
             this.$router.push({path:'/usercenter/Personaldata'})
           },
         goOrder(){
-            this.$router.push({path:'/usercenter/Myorder'})
+            this.$router.push({path:'/usercenter/Myorder/all'})
         },
         goOrderAfter(){
             this.$router.push({path:'/usercenter/Myorder/after'})

@@ -8,6 +8,7 @@
         <h4>订单确认</h4>
       </div>
 
+      <!--添加收货地址-->
       <div class="Occupant">
         <br/>
         <el-button type="text" @click="dialogFormVisible = true" class="tab">请添加收货地址</el-button>
@@ -20,7 +21,10 @@
             <el-form-item label="手机号" prop="phoneNum">
               <el-input type="text" v-model="ruleForm.phoneNum" placeholder="请输入手机号" autocomplete="off"></el-input>
             </el-form-item>
-            <el-form-item label="地址" prop="address">
+            <!--<el-form-item label="地址" prop="Address">-->
+              <!--<el-cascader :options="options2" v-model="ruleForm.Address" @active-item-change="handleItemChange" :props="props"></el-cascader>-->
+            <!--</el-form-item>-->
+            <el-form-item label="详细地址" prop="address">
               <el-input type="text" v-model="ruleForm.address" placeholder="请输入详细地址" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item>
@@ -34,8 +38,8 @@
                  收货人：{{ruleForm.name}},&nbsp;&nbsp;收货地址：{{ruleForm.address}},&nbsp;{{ruleForm.phoneNum}}<span class="myupdate" v-on:click="update">修改</span><span class="mydel" v-on:click="del">删除</span>
         </div>
       </div>
-
       <br/>
+      <!--选择配送时间-->
       <div class="Occupant">
         <br>
         <h4 class="demonstration">选择配送日期</h4>
@@ -46,7 +50,7 @@
         </div>
       </div>
       <hr>
-
+      <!--购买的商品-->
         <el-row>
           <el-col :span="15" :offset="2">
             <h4>确认商品信息</h4>
@@ -62,7 +66,6 @@
             <td>数量</td>
             <td>小计</td>
           </tr>
-
           <tr v-for="(onew,index) in mydata">
             <td>
               <img :src="onew.ppic" style="width:30%">
@@ -71,18 +74,35 @@
               <div class="info">
                 <h5>{{onew.pname}}</h5>
                 <p>赠品：标配餐具10份  生日蜡烛1支</p>
+                <el-select v-model="value4" clearable placeholder="选择生日牌">
+                  <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
+                  </el-option>
+                </el-select>
               </div>
             </td>
             <td width="15%" class="size">
               {{onew.size}}
             </td>
-            <td width="10%" class="price">{{ onew.pprice }}</td>
+            <td width="10%" class="price">{{ onew.pprice*onew.size }}</td>
             <td width="10%" class="num">{{onew.rnum}}</td>
-            <td width="10%" class="allprice">{{ onew.pprice * onew.rnum }}</td>
+            <td width="10%" class="allprice">{{ onew.pprice * onew.rnum*onew.size }}</td>
           </tr>
           </tbody>
         </table>
       <hr>
+      <div class="Occupant">
+        <br>
+        <h4 class="demonstration">订单留言</h4>
+        <div>
+          <el-form :model="ruleForm" status-icon :rules="rules2" ref="ruleForm" label-width="60px" class="demo-ruleForm">
+            <el-form-item label="留言：" prop="note">
+              <el-input type="textarea" v-model="ruleForm.note" placeholder="请填写50之内的汉字" autocomplete="off" style="width:35%"></el-input>
+            </el-form-item>
+          </el-form>
+        </div>
+      </div>
+      <hr>
+      <!--选择支付方式-->
       <div class="Occupant">
         <br>
         <h4 class="demonstration">选择支付方式</h4>
@@ -111,9 +131,6 @@
       <div style="text-align:right;">
         <button class="btn btn-primary" v-on:click="submit()">提交订单</button>
       </div>
-      <!--<div style="text-align:right;">-->
-        <!--<router-link to="/cart">返回购物车</router-link>-->
-      <!--</div>-->
     </div>
   </div>
   </div>
@@ -164,16 +181,29 @@
         }
       }
       return {
+        // options2: [{
+        //   label: '苏州',
+        //   cities: []
+        // }, {
+        //   label: '上海',
+        //   cities: []
+        // }],
+        // props: {
+        //   value: 'label',
+        //   children: 'cities'
+        // },
         dialogFormVisible: false,
         submited:false,
         mydata:'',
         ruleForm: {
           name:'',
           phoneNum:'',
+          Address:'',
           address:'',
         },
         aname:sessionStorage.getItem('aname'),
         phone:sessionStorage.getItem('phone'),
+        // Address:sessionStorage.getItem('Address'),
         address:sessionStorage.getItem('address'),
         totalNum:sessionStorage.getItem('totalNum1'),
         totalMoney:sessionStorage.getItem('totalMoney1'),
@@ -186,12 +216,49 @@
           ],
           address: [
             { validator: validateAddress, trigger: 'blur' }
-          ],
-
-        },
+          ]},
+        options: [{
+          value: '选项1',
+          label: '生日快乐'
+        }, {
+          value: '选项2',
+          label: 'Happy Birthday'
+        }, {
+          value: '选项3',
+          label: '节日快乐'
+        }, {
+          value: '选项4',
+          label: '一生有你真好'
+        }, {
+          value: '选项5',
+          label: 'I love you'
+        }, {
+          value: '选项6',
+          label: '百岁无忧'
+        }, {
+          value: '选项7',
+          label: '陪伴是最长情的告白'
+        },{
+          value: '选项8',
+          label: '爱你一生一世'
+        }],
+        value4: ''
       };
     },
     methods: {
+      // handleItemChange(val) {
+      //   console.log('active item:', val);
+      //   setTimeout(_ => {
+      //     if (val.indexOf('苏州') > -1 && !this.options2[0].cities.length) {
+      //       this.options2[0].cities = [{label: '吴中区'},{label: '工业园区'},{label: '姑苏区'},
+      //         {label: '相城区'},{label: '虎丘区'},{label: '吴江区'},{label: '昆山市'},{label: '常熟市'},];
+      //     } else if (val.indexOf('上海') > -1 && !this.options2[1].cities.length) {
+      //       this.options2[1].cities = [{label: '浦东新区'},{label: '徐家汇区'},{label: '黄浦区'},
+      //         {label: '金山区'},{label: '虹口区'},{label: '嘉定区'},{label: '宝山区'},{label: '宝山区'},];
+      //     }
+
+      //   }, 300);
+      // },
       update(){
         let _this = this;
         _this.dialogFormVisible = true;
@@ -202,7 +269,6 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            // alert('submit!');
             this.dialogFormVisible = false;
             this.submited = true;
           } else {
@@ -217,10 +283,10 @@
        }else{
           sessionStorage.setItem('aname',this.ruleForm.name);
           sessionStorage.setItem('phone',this.ruleForm.phoneNum);
+          // sessionStorage.setItem('Address',this.ruleForm.Address);
           sessionStorage.setItem('address',this.ruleForm.address);
           sessionStorage.setItem('time1',this.$store.state.time1);
           this.$router.push({path:'/finish'})
-          // for(let i=0; i< this.mydata.length;i++){
             this.$axios.post(`orderAdd1`,{
               state:'待收货',
               uid:sessionStorage.getItem('uid'),
@@ -228,13 +294,15 @@
               address: this.ruleForm.address,
               aname: this.ruleForm.name,
               phone: this.ruleForm.phoneNum,
-
+              note: this.ruleForm.note,
             }).then(function (result) {
               console.log(result.data)
             })
             alert('订单提交成功')
             this.addproduct()
         }
+        sessionStorage.setItem('product',JSON.stringify(this.mydata));
+        console.log('我的'+JSON.stringify(this.mydata))
       },
       addproduct(){
         let _this=this
@@ -244,20 +312,15 @@
             pid:_this.mydata[i].pid,
             rnum:_this.mydata[i].rnum
           }).then(function (result) {
-            console.log('chenggongcharu')
+            console.log('成功')
           })
         }
-      }
+      },
+
     },
     mounted() {
-
       this.mydata=JSON.parse(sessionStorage.getItem('dingpid'));
       console.log('获取的数据'+JSON.stringify(this.mydata))
-
-      //   // axios.get(`http://localhost:3000/product/details/${product.pid}`).then(function (result) {
-    //   //   _this.products = result.data.data;
-    //   //   console.log(result.data)
-    //   // })
     },
   }
 </script>
@@ -293,9 +356,7 @@
   .table{
     background-color:#F2F6F7;
   }
-  .price,.allprice,.num,.size{
-    line-height:100px;
-  }
+
   .tab{
     color:black;
     font-size: 18px;
@@ -319,5 +380,11 @@
   }
   .myradio{
     margin-bottom: 20px;
+  }
+</style>
+
+<style scoped>
+  .price,.allprice,.num,.size{
+  line-height:100px;
   }
 </style>

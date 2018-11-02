@@ -1,14 +1,57 @@
 <template>
   <div>
     <!--</div>-->
-    <div class="block">
-      <el-carousel height="600px">
-        <el-carousel-item v-for="item in 3" :key="item">
-          <h3 id="toum">{{ item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
+    <!--<div class="block">-->
+      <!--<el-carousel height="600px">-->
+        <!--<el-carousel-item v-for="item in 4" :key="item">-->
+          <!--<router-link to="/cakebox" id="toum">{{item}}</router-link>-->
+        <!--</el-carousel-item>-->
 
+      <!--</el-carousel>-->
+    <!--</div>-->
+
+    <div id="carousel-example-generic" class="carousel slide space lunbo" data-ride="carousel" name="top">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" ></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+      </ol>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+          <img src="../../assets/home/lunbo6.png" alt="..." class="img-responsive imgh">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../../assets/home/test2.jpg" alt="..." class="img-responsive imgh">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <img src="../../assets/home/lunbo2.jpg" alt="..." class="img-responsive imgh">
+          <div class="carousel-caption">
+          </div>
+        </div>
+        <div class="item">
+          <router-link to="/cakebox">
+            <img src="../../assets/home/test5.png" alt="..." class="img-responsive imgh">
+          </router-link>
+          <div class="carousel-caption">
+          </div>
+        </div>
+      </div>
+      <!-- Controls -->
+      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+      </a>
+
+    </div>
 
     <!--四种分类-->
     <div>
@@ -101,7 +144,6 @@
     width: 100%;
     display: block;
   }
-
   .yushou {
     margin-top: 20px;
   }
@@ -114,24 +156,27 @@
     margin: 0;
   }
 
-  .el-carousel__item:nth-of-type(1)
-  {
-    background-image: url("../../assets/home/lunbo6.png");
-  }
+  /*.el-carousel__item:nth-of-type(1)*/
+  /*{*/
+    /*background-image: url("../../assets/home/lunbo6.png");*/
+  /*}*/
 
-  .el-carousel__item:nth-of-type(2) {
-    background-image: url("../../assets/home/test2.jpg");
-  }
+  /*.el-carousel__item:nth-of-type(2) {*/
+    /*background-image: url("../../assets/home/test2.jpg");*/
+  /*}*/
 
-  .el-carousel__item:nth-of-type(3) {
-    background-image: url("../../assets/home/lunbo2.jpg");
-  }
+  /*.el-carousel__item:nth-of-type(3) {*/
+    /*background-image: url("../../assets/home/lunbo2.jpg");*/
+  /*}*/
+  /*.el-carousel__item:nth-of-type(4) {*/
+    /*background-image: url("../../assets/home/test5.png");*/
+  /*}*/
 
-  .block {
-    margin-top: 10px;
-  }
+  /*.block {*/
+    /*margin-top: 10px;*/
+  /*}*/
 
-  #toum {
-    color:transparent
-  }
+  /*#toum {*/
+    /*color:transparent*/
+  /*}*/
 </style>

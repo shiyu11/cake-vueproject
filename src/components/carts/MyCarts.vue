@@ -7,18 +7,18 @@
         <h4>购物车</h4>
       </div>
 
-      <div v-if="sum == getsum" class="row cart_list">
+      <div v-if="!products.length" class="row cart_list">
         <div class="cart col-xs-1 col-xs-offset-3" ><img src="../../../static/images/a15.png"/></div>
         <div class="col-xs-5" >
           <br/>
           <p class="empty_cart">
-          <span>您还没登录，赶紧行动吧！</span>
+          <span>您的购物车还是空的，赶紧行动吧！</span>
           <br/>
-          马上进入<router-link to="/login">登录页面</router-link>，去挑选您喜欢的商品到购物车吧！
+          马上进入<router-link to="/">全部产品</router-link>，去挑选您喜欢的商品吧！
         </p></div>
       </div>
 
-      <div v-if="sum != getsum">
+      <div v-else>
         <table class="table">
           <thead>
           <tr>
@@ -61,17 +61,15 @@
             </td>
             <td width="10%" class="allprice">{{ product.pprice * product.size* product.pno }}</td>
             <td width="10%">
-              <div class="button">
-                <!--<el-button @click="centerDialogVisible = true">删除</el-button>-->
-                <button v-on:click="centerDialogVisible= true">删除</button>
-                <el-dialog title="" :visible.sync="centerDialogVisible" width="25%" center>
+              <div class="delpro">
+                <span v-on:click="centerDialogVisible= true">删除</span>
+                <el-dialog title="" :visible.sync="centerDialogVisible" width="22%" center>
                   <span class="deltitle">你确定要删除此订单?</span>
                   <span slot="footer" class="dialog-footer">
-                    <el-button type="primary" @click="centerDialogVisible= false">取消</el-button>
-                    <el-button type="primary" @click="centerDialogVisible= false;del(product.cid)">确定</el-button>
+                    <el-button type="text" @click="centerDialogVisible= false">取消</el-button>
+                    <el-button type="text" @click="centerDialogVisible= false;del(product.cid)">确定</el-button>
                   </span>
                 </el-dialog>
-
               </div>
             </td>
           </tr>
@@ -87,7 +85,6 @@
           <button class="btn btn-primary" v-on:click="commit" v-if="num!= getnum">结算</button>
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -104,8 +101,6 @@
         checkAllFlag:false,
         dingpid:'',
         num:1,
-        sum:1,
-        uname:sessionStorage.getItem('sname'),
         centerDialogVisible: false,
       }
     },
@@ -171,7 +166,6 @@
           }
         })
         sessionStorage.setItem('totalNum1',this.totalNum);
-        // this.$store.state.totalNum1=this.totalNum;
       },
       getTotalMoney:function () {
         var _this=this;
@@ -183,7 +177,6 @@
             a.push({"pid":product.pid,"pname":product.pname,"rnum":product.pno,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
           }
         })
-        // this.$store.state.totalMoney1=this.totalMoney;
         sessionStorage.setItem('totalMoney1',this.totalMoney);
         sessionStorage.setItem('dingpid',JSON.stringify(a));
         // console.log('我的'+JSON.stringify(a))
@@ -221,13 +214,6 @@
           this.num = 0;
         }
       },
-      getsum(){
-        if(this.uname==null){
-          return this.sum = 1;
-        }else{
-          this.sum = 0;
-        }
-      }
     }
   }
 </script>
@@ -253,11 +239,6 @@
     width: 100%;
     line-height:120px;
   }
-  .button{
-    width: 100%;
-    margin-top: 50px;
-
-  }
   .span{
     margin: 8px;
     cursor: pointer;
@@ -277,8 +258,13 @@
     padding-right: 120px;
   }
   .deltitle{
-    margin-left:62px;
-    font-size: 19px;
+    margin-left:50px;
+    font-size: 18px;
+  }
+  .delpro{
+    cursor: pointer;
+    width: 100%;
+    margin-top: 50px;
   }
 </style>
 

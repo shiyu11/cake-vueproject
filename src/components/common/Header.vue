@@ -17,13 +17,14 @@
           <el-menu-item index="首页">首页</el-menu-item>
         </el-col>
         <el-col :span="2" class="topq">
-          <el-submenu index="2">
-            <template slot="title">蛋糕馆</template>
-            <el-menu-item index="新品">新品</el-menu-item>
-            <el-menu-item index="儿童">儿童</el-menu-item>
-            <el-menu-item index="生日">生日</el-menu-item>
-            <el-menu-item index="聚会">聚会</el-menu-item>
-          </el-submenu>
+          <!--<el-submenu index="2">-->
+            <!--<template slot="title">蛋糕馆</template>-->
+            <!--<el-menu-item index="新品">新品</el-menu-item>-->
+            <!--<el-menu-item index="儿童">儿童</el-menu-item>-->
+            <!--<el-menu-item index="生日">生日</el-menu-item>-->
+            <!--<el-menu-item index="聚会">聚会</el-menu-item>-->
+          <!--</el-submenu>-->
+          <el-menu-item index="蛋糕馆">蛋糕馆</el-menu-item>
         </el-col>
         <el-col :span="2" class="topq">
           <el-menu-item index="最新活动">最新活动</el-menu-item>
@@ -88,30 +89,15 @@
         }
         else if (key == '购物车') {
           this.$router.push({path: '/cart'})
-        }
-        else if (key == '新品') {
-          this.$router.push({path: '/productlist/1'})
-        }
-        else if (key == '生日') {
-          this.$router.push({path: '/productlist/3'})
-        }
-        else if (key == '聚会') {
-          this.$router.push({path: '/productlist/4'})
-        }
-        else if (key == '儿童') {
-          this.$router.push({path: '/productlist/2'})
+        }else if(key == '蛋糕馆'){
+          this.$router.push({path: '/allproducts'})
         }
       },
       clearUser(){
         sessionStorage.clear();
-        // this.$router.push({path:'/login'})
         window.location.href='http://10.40.4.15:8080/'
       },
     },
-    // watch: {
-    //   '$route' (to, from) {
-    //     this.$router.go(0);
-    //   }},
   }
 </script>
 

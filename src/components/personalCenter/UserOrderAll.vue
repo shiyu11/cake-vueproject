@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <el-input  placeholder="请输入商品名" style="width: 240px;"></el-input>
-            <el-button type="warning" plain icon="el-icon-search" circle>搜索</el-button>
-          </div>
-      <div class="col-md-11">
+          <!--<div class="col-md-12">-->
+            <!--<el-input  placeholder="请输入商品名" style="width: 240px;"></el-input>-->
+            <!--<el-button type="warning" plain icon="el-icon-search" circle>搜索</el-button>-->
+          <!--</div>-->
+      <div class="col-md-10">
         <table class="table">
           <thead>
           <tr>
@@ -56,7 +56,6 @@
             myoid: this.$route.params.oid,
             myuid:sessionStorage.getItem('uid'),
             or:[]
-
           }
       },
 

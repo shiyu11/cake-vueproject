@@ -57,11 +57,11 @@
         }
       }
       var validatePwd = (rule, value, callback) => {
-        var pattern = /^\S{3,20}$/g
+        var pattern = /^\S{6,20}$/g
         if (value === '') {
           callback(new Error('请输入密码'))
         } else if (!pattern.test(value)) {
-          callback(new Error('请输入3-20个非空白字符'))
+          callback(new Error('请输入6-20个非空白字符'))
         } else {
           if (this.ruleForm.pass !== '') {
             this.$refs.ruleForm.validateField('checkPass')

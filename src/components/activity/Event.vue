@@ -12,8 +12,7 @@
   import EventProduct from './EventProduct'
   import EventDetails from './EventDetails'
   import EventLoad from './EventLoad'
-
-    export default {
+  export default {
         name: "Event",
       components:{
         'app-event-header':EventHeader,

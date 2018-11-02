@@ -45,15 +45,20 @@
     },
     components:{
     },
-    mounted(){
-      let _this=this;
-      axios.get(`http://localhost:3000/alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
-        //渲染页面
-        // console.log(res);
-        _this.ad = res.data.data;
-      }),(err)=>{
-        console.log(err)
+    methods:{
+      getAlladdress(){
+        let _this=this;
+        axios.get(`http://localhost:3000/alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
+          //渲染页面
+          // console.log(res);
+          _this.ad = res.data.data;
+        }),(err)=>{
+          console.log(err)
+        }
       }
+    },
+    mounted(){
+      this.getAlladdress();
     },
   }
 

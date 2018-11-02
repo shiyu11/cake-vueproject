@@ -15,7 +15,7 @@
         <el-col :span="18">
           <div class="dwidth" data-dismiss="modal">
             <el-row class="space" justify="center" :gutter="20">
-              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList0"  >
+              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList0" :key="index" >
                 <el-card :body-style="{ padding: '2px' }" class="space">
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
                     <!--<img :src="getImg(onep.ppic)" class="image">-->
@@ -39,8 +39,8 @@
                     </el-row>
 
                     <el-row>
-                      <el-col :span="24">
-                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      <el-col :span="24"  class="ptaste">
+                        <router-link :to="`/productlist/${onep.occasion}`"><span>推荐{{change(onep.occasion)}}</span> </router-link>
                       </el-col>
                     </el-row>
 
@@ -73,7 +73,7 @@
         <el-col :span="18">
           <div class="dwidth">
             <el-row class="space" justify="center" :gutter="20">
-              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList1"  >
+              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList1" :key="index" >
                 <el-card :body-style="{ padding: '2px' }" class="space">
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
                     <img :src="onep.ppic" class="image">
@@ -97,8 +97,8 @@
                     </el-row>
 
                     <el-row>
-                      <el-col :span="24">
-                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      <el-col :span="24" class="ptaste">
+                        <router-link :to="`/productlist/${onep.occasion}`" >推荐{{change(onep.occasion)}}</router-link>
                       </el-col>
                     </el-row>
 
@@ -122,14 +122,14 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="5" style="margin-right:10px; margin-top:40px">
+        <el-col :span="5" style="margin-right:20px; margin-top:40px">
           <img src="../../assets/home/qiaokeli.png" class="img-responsive" alt="Responsive image" >
           <h2>巧克力</h2>
         </el-col>
         <el-col :span="18">
           <div class="dwidth">
             <el-row class="space" justify="center" :gutter="20">
-              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList2">
+              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList2" :key="index">
                 <el-card :body-style="{ padding: '2px' }" class="space">
 
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
@@ -152,8 +152,8 @@
                     </el-row>
 
                     <el-row>
-                      <el-col :span="24">
-                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      <el-col :span="24" class="ptaste">
+                        <router-link :to="`/productlist/${onep.occasion}`" >推荐{{change(onep.occasion)}}</router-link>
                       </el-col>
                     </el-row>
                   </div>
@@ -185,7 +185,7 @@
         <el-col :span="18">
           <div class="dwidth">
             <el-row class="space" justify="center" :gutter="20">
-              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList3" >
+              <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList3" :key="index">
                 <el-card :body-style="{ padding: '2px' }" class="space">
                   <!--<img src="../../assets/p1.jpg" class="image">-->
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
@@ -210,8 +210,8 @@
                     </el-row>
 
                     <el-row>
-                      <el-col :span="24">
-                        <router-link :to="`/productlist/${onep.occasion}`" class="ptaste">推荐{{change(onep.occasion)}}</router-link>
+                      <el-col :span="24"  class="ptaste">
+                        <router-link :to="`/productlist/${onep.occasion}`">推荐{{change(onep.occasion)}}</router-link>
                       </el-col>
                     </el-row>
                   </div>
@@ -236,7 +236,7 @@
         <el-col :span="14" :offset="2">
           <div class="dwidth">
             <el-carousel :interval="8000" type="card" height="500px">
-              <el-carousel-item v-for="(onep,index) in products" v-if="onep.occasion==1"  >
+              <el-carousel-item v-for="(onep,index) in products" v-if="onep.occasion==1" :key="index">
                 <el-card :body-style="{ padding: '2px' }" class="space">
 
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
@@ -452,6 +452,9 @@
 </style>
 
 <style scoped>
+
+
+
   .button1 {
     font-size:14px;
     font-family:Verdana;
@@ -465,7 +468,7 @@
   }
   .btn_style3 {
     border:1px solid #84bbf3;
-    background:-moz-linear-gradient( center top, #bddbfa 8%, #80b5ea 97% );
+    background:-moz-linear-gradient(center top,#bddbfa 8%,#80b5ea 97% );
     background:-ms-linear-gradient( top, #bddbfa 8%, #80b5ea 97% );
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
     background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #bddbfa), color-stop(97%, #80b5ea) );
@@ -486,6 +489,8 @@
       position:relative;
       top:1px;
     }
+
+
   . ptaste{
     color:#B0916A;
     font-size:15px ;
@@ -540,4 +545,12 @@
     margin-left: 50px;
     /*font-family:"微软雅黑";*/
   }
+  .dwidth,.space,.ptaste{
+    margin-top: 10px;
+  }
+  .pname{
+    font-size:15px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
 </style>

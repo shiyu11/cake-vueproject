@@ -1,10 +1,10 @@
 <template>
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
           <h4>收到货请及时确认收货哦</h4>
         </div>
-        <div class="col-md-11">
+        <div class="col-md-10">
           <table class="table">
             <thead>
             <tr>
@@ -101,7 +101,7 @@
     border-bottom:dashed 1px silver;
   }
   table>tbody>tr>td.info{
-  background-color:white;
+    background-color: white;
 
   }
   table>tbody>tr>td{

@@ -18,12 +18,6 @@
       </ul>
 
       <div id="fenye">
-        <!--<el-button round type="warning" plain @click="first()" >首页</el-button>-->
-        <!--<el-button round type="warning" plain @click="previous()" >上一页</el-button>-->
-        <!--<el-button round type="warning" plain @click="next()" >下一页</el-button>-->
-        <!--<el-button round type="warning" plain @click="last()" >最后页</el-button>-->
-        <!--<el-button round type="warning" plain @click="currentPageNum(1)">首页</el-button>-->
-        <!--<el-button round type="warning" plain @click="">下一页</el-button>-->
         <div class="block">
           <el-pagination
             @current-change="handleCurrentChange"
@@ -45,13 +39,7 @@
       name: "Review",
       data() {
         return {
-          // reviews:[
-          //   // { "vcontent":"好的",uid:1,"vtime":"2018-09-03 11:19:44","pid":1},
-          //   // { "vcontent":"好的9",uid:2,"vtime":"2018-09-03 11:19:44","pid":1},
-          //   // { "vcontent":"好的2",uid:3,"vtime":"2018-09-03 11:19:44","pid":1},
-          //   // { "vcontent":"好的3",uid:3,"vtime":"2018-09-03 11:19:44","pid":1},
-          //   // { "vcontent":"好的4",uid:3,"vtime":"2018-09-03 11:19:44","pid":1},
-          // ],
+
           // 分页
           articleInfoList: [],//每页显示的数据
           reviews: [],//所有的数据
@@ -98,22 +86,15 @@
           // 第一次进入页面显示this.articleList[]数组的第一个元素
           this.articleInfoList = this.reviews[0]
           // console.log(this.articleList[0])
-
         },
         // currentPageNum(currentPage) {
         //   // currentPage为当前的页数
         //   // 显示当前页数对应的数据
         //   this.articleInfoList = this.reviews[currentPage - 1];
-        //   return currentPage++
         // }
-        // next(currentPage){
-        //   let currentindex=this.currentPageNum(currentPage)
-        //   currentPageNum(currentindex)
-        // },
         handleCurrentChange(val) {
           this.articleInfoList = this.reviews[val - 1];
         },
-
         init() {
         },
         changer(time) {

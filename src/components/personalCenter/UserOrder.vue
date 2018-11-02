@@ -1,12 +1,20 @@
 <template>
     <div class="container">
-      <el-tabs v-model="activeName" @tab-click="handleClick">
-        <el-tab-pane label="ALL 所有订单" name="first"></el-tab-pane>
-        <el-tab-pane label="AFTER RECEIPT 待收货" name="second"></el-tab-pane>
-        <el-tab-pane label="REVIEW 待评价" name="fourth"></el-tab-pane>
-        <el-tab-pane label="FINISH 已完成" name="third"></el-tab-pane>
-      </el-tabs>
-      <router-view></router-view>
+      <!--<el-tabs v-model="activeName" @tab-click="handleClick">-->
+        <!--<el-tab-pane label="ALL 所有订单" name="first"></el-tab-pane>-->
+        <!--<el-tab-pane label="AFTER RECEIPT 待收货" name="second"></el-tab-pane>-->
+        <!--<el-tab-pane label="REVIEW 待评价" name="fourth"></el-tab-pane>-->
+        <!--<el-tab-pane label="FINISH 已完成" name="third"></el-tab-pane>-->
+      <!--</el-tabs>-->
+      <div>
+        <ul>
+          <router-link class="list-group-item" to="/usercenter/Myorder/all" tag="li" active-class="active">ALL 所有订单</router-link>
+          <router-link class="list-group-item" to="/usercenter/Myorder/after" tag="li" active-class="active">AFTER RECEIPT 待收货</router-link>
+          <router-link class="list-group-item" to="/usercenter/Myorder/review" tag="li" active-class="active">REVIEW 待评价</router-link>
+          <router-link class="list-group-item" to="/usercenter/Myorder/finish" tag="li" active-class="active">FINISH 已完成</router-link>
+        </ul>
+      </div>
+        <router-view></router-view>
     </div>
 
 </template>
@@ -19,31 +27,10 @@
         name: "UserOrder",
       data(){
           return{
-            activeName:'first'
+
           }
       },
-      methods:{
-        handleClick(tab,event){
-          if(tab.$options.propsData.label=='ALL 所有订单'){
-            this.$router.push({path:'/usercenter/Myorder'})
-          }
-          else if(tab.$options.propsData.label=='AFTER RECEIPT 待收货'){
-            this.$router.push({path:'/usercenter/Myorder/after'})
-          }
-          else if(tab.$options.propsData.label=='REVIEW 待评价'){
-            this.$router.push({path:'/usercenter/Myorder/review'})
-          }
-          else if(tab.$options.propsData.label=='FINISH 已完成'){
-            this.$router.push({path:'/usercenter/Myorder/finish'})
-          }
-          // console.log(tab.$options.propsData.label);
-        }
-      },
-      // components:{
-      //   // 'my-user-order-all':UserOrderAll,
-      //   // 'my-user-order-after':UserOrderAfter,
-      //   // 'my-user-order-finish':UserOrderFinish
-      // }
+
     }
 </script>
 
@@ -52,5 +39,20 @@
     border: 2px solid transparent;
     margin: 50px;
     margin-left: 20px;
+  }
+  ul{list-style: none}
+  li{
+    float: left;
+    margin-right: 23px;
+    font-size: 18px;
+    cursor: pointer
+  }
+  .list-group-item.active,.list-group-item.active:hover {
+    background-color: rgba(211,108,90,0.95);
+    border-color: white;
+    border-radius: 10px;
+  }
+  .list-group-item{
+    border: 1px solid transparent;
   }
 </style>
