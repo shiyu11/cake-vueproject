@@ -30,7 +30,7 @@
             <el-input type="textarea" style="border: 1px solid #B0926A" v-model="order.vcon">
           </el-input>
             </el-form>
-            <button v-on:click="evaluateOrder(index,order.oid,order.pid)">评价
+            <button class="button btn_style3" v-on:click="evaluateOrder(index,order.oid,order.pid)">评价
            </button></td>
         </tr>
         </tbody>
@@ -74,7 +74,7 @@
           // console.log(`http://localhost:3000/updateor2/${oid}`);
           axios.get("http://localhost:3000/updateor2/"+oid).then((res)=>{
             // console.log(res);
-            alert('评价成功成功')
+            alert('评价成功')
             this.$router.push({path:'/usercenter/Myorder/finish'})
           })
           axios.post('http://localhost:3000/product/adduserreview',{
@@ -131,4 +131,40 @@
   .el-textarea__inner{
     border:1px solid #B0926A;
   }
+
+
+  .button {
+    font-size:14px;
+    font-family:Verdana;
+    font-weight:normal;
+    -moz-border-radius:25px;
+    -webkit-border-radius:25px;
+    border-radius:25px;
+    padding:4px 20px;
+    margin: 18px;
+    text-decoration:none;
+  }
+  .btn_style3 {
+    border:1px solid white;
+    /*background:-moz-linear-gradient( center top, #bddbfa 4%, pink 97% );*/
+    background:-ms-linear-gradient( top, white 8%, #B0926A 97% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, white), color-stop(97%, #B0926A) );
+    background-color:white;
+    color: rgba(99,32,29,0.95);
+    display:inline-block;
+    text-shadow:0px 0px 0px #B0926A;
+    -webkit-box-shadow:inset 0px 0px 0px -50px white;
+    -moz-box-shadow:inset 0px 0px 0px -50px white;
+    box-shadow:inset 0px 0px 0px -50px white;
+  }.btn_style3:hover {
+     /*background:-moz-linear-gradient( center top, pink 8%, #bddbfa 97% );*/
+     background:-ms-linear-gradient( top, #B0926A 8%, white 97% );
+     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+     background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #B0926A), color-stop(97%, white) );
+     background-color:#B0926A;
+   }.btn_style3:active {
+      position:relative;
+      top:1px;
+    }
 </style>

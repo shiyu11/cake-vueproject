@@ -2,9 +2,11 @@
   <!--磅数的详细说明-->
   <div class="p-size">
 
-
+    <img src="../../assets/yushou/QQ图片20181102115757.png" class="aaa" @click="putcollect()" v-if="a==0" title="点击收藏">
+    <img src="../../assets/yushou/QQ图片20181102115821.png" class="bbb"@click="del()" v-if="a==1">
     <div v-if="type==0">
-      <span class="p-price"><span>￥</span>{{father.pprice}} <span>/磅</span> </span>
+      <span class="p-price"><span>￥</span>{{father.pprice}} <span>/磅</span>
+      </span>
       <ul>
         <li><span class="p-chooseprice">已选1磅</span></li>
         <li><img src="../../assets/home/sweet.png" alt="">适合2-3人分享</li>
@@ -78,12 +80,12 @@
       <el-col :span="6" :offset="2">
         <el-button round type="warning" @click="buy()">立即购买</el-button>
       </el-col>
-      <el-col :span="4" :offset="2" >
-        <el-button round type="warning" @click="putcollect()" v-if="a==0">收藏</el-button>
-      </el-col>
-      <el-col :span="4" :offset="2">
-        <el-button round type="warning" @click="del()" v-if="a==1">取消收藏</el-button>
-      </el-col>
+      <!--<el-col :span="4" :offset="2" >-->
+        <!--<el-button round type="warning" @click="putcollect()" v-if="a==0">收藏</el-button>-->
+      <!--</el-col>-->
+      <!--<el-col :span="4" :offset="2">-->
+        <!--<el-button round type="warning" @click="del()" v-if="a==1">取消收藏</el-button>-->
+      <!--</el-col>-->
 
 
     </el-row>
@@ -101,6 +103,8 @@
         bangshu: '',
         pno: 1,
         a:'0',
+        uname:sessionStorage.getItem('sname')
+
       }
     },
     mounted(){
@@ -119,9 +123,9 @@
       },
       putCart() {
         //key+1 是磅数
-        // if (this.uname==null) {
-        //  alert('请先登录')
-        // }else{
+        if (this.uname==null) {
+         alert('请先登录')
+        }else{
         this.$axios.post('addcart', {
           uid: sessionStorage.getItem('uid'),
           size: this.bangshu,
@@ -129,9 +133,12 @@
           pno: this.pno
         })
         alert('加入购物车成功')
-        // }
+        }
       },
       buy() {
+        if (this.uname==null) {
+          alert('请先登录')
+        }else{
         let a = []
         a.push({
           "pid": this.father.pid,
@@ -141,7 +148,7 @@
           "pprice": this.father.pprice,
           "size": this.bangshu
         })
-        let totalMoney = (this.pno) * (this.father.pprice)
+        let totalMoney = (this.pno) * (this.father.pprice)*(this.bangshu)
         let totalNum = this.pno
         sessionStorage.setItem('dingpid', JSON.stringify(a));
         // console.log('价格'+totalMoney)
@@ -149,7 +156,7 @@
         sessionStorage.setItem('totalNum1', totalNum);
         // console.log('我的eeee' + JSON.stringify(a))
 
-        this.$router.push({path: '/check'})
+        this.$router.push({path: '/check'})}
       },
       changeMoney: function (way) {
         if (way > 0) {
@@ -171,6 +178,7 @@
           uid:sessionStorage.getItem('uid'),
           pid:this.father.pid,
         })
+
         alert('收藏成功')
         location.reload()
       },
@@ -251,6 +259,18 @@
   }
   .nav li a span{
    color: black;
+  }
+  .aaa{
+    cursor:pointer;
+    float: right;
+    height: 50px;
+    width: 50px;
+  }
+  .bbb{
+    cursor:pointer;
+    float: right;
+    height:50px;
+    width: 50px;
   }
 
 </style>

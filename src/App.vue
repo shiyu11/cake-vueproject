@@ -45,9 +45,8 @@
 
 <style>
   .top{
-    width: 100px;
-    height: 90px;
+    width: 80px;
+    height: 80px;
   }
-
 
 </style>

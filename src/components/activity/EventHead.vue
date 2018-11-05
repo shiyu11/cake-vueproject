@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+   <div>
+    <div class="bei"> </div>
       <div class="closed-signboard">
         <div class="sign">WELCOME</div>
         <div class="strings"></div>
@@ -7,7 +8,8 @@
         <div class="pin pin2"></div>
         <div class="pin pin3"></div>
       </div>
-    </div>
+
+  </div>
 </template>
 
 <script>
@@ -21,7 +23,7 @@
   .closed-signboard {
     width: 425px;
     height: 300px;
-    margin: 75px auto;
+    margin: 0px auto;
     position: relative;
     transform: scale(1) rotatez(7deg) translate(-17px, 1px);
     animation: 1s init, 0.7s aa 1s, 3s ab 1.7s infinite;
@@ -110,6 +112,15 @@
     to {
       transform: scale(1);
     }
+  }
+  .bei{
+    position: absolute;
+    top:30px;
+    /*left:400px;*/
+    width: 80%;
+    height: 500px;
+    background: url("../../assets/home/pink.jpg");
+    background-repeat: no-repeat;
   }
 
 </style>

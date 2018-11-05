@@ -37,7 +37,7 @@
                 <p>{{order.phone}}</p>
                 <p>{{order.address}}</p>
               </td>
-              <td><button v-on:click="affirmOrder(order.oid)">确认收货</button></td>
+              <td><button class="button btn_style3"  v-on:click="affirmOrder(order.oid)">确认收货</button></td>
             </tr>
             </tbody>
           </table>
@@ -77,10 +77,7 @@
             alert('确认收货成功')
             this.$router.push({path:'/usercenter/Myorder/review'})
           })
-
           }
-
-
         }
     }
 </script>
@@ -109,5 +106,40 @@
     vertical-align: middle;
     width: 200px;
   }
+
+  .button {
+    font-size:14px;
+    font-family:Verdana;
+    font-weight:normal;
+    -moz-border-radius:25px;
+    -webkit-border-radius:25px;
+    border-radius:25px;
+    padding:4px 20px;
+    margin: 18px;
+    text-decoration:none;
+  }
+  .btn_style3 {
+    border:1px solid white;
+    /*background:-moz-linear-gradient( center top, #bddbfa 4%, pink 97% );*/
+    background:-ms-linear-gradient( top, white 8%, #B0926A 97% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, white), color-stop(97%, #B0926A) );
+    background-color:white;
+    color: rgba(99,32,29,0.95);
+    display:inline-block;
+    text-shadow:0px 0px 0px #B0926A;
+    -webkit-box-shadow:inset 0px 0px 0px -50px white;
+    -moz-box-shadow:inset 0px 0px 0px -50px white;
+    box-shadow:inset 0px 0px 0px -50px white;
+  }.btn_style3:hover {
+     /*background:-moz-linear-gradient( center top, pink 8%, #bddbfa 97% );*/
+     background:-ms-linear-gradient( top, #B0926A 8%, white 97% );
+     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+     background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #B0926A), color-stop(97%, white) );
+     background-color:#B0926A;
+   }.btn_style3:active {
+      position:relative;
+      top:1px;
+    }
 
 </style>

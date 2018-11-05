@@ -1,7 +1,9 @@
 <template>
   <div class="container">
     <div class="writing">
-      <span>订单满500元提供精美包装礼盒，如需指定礼盒请在下单时留言礼盒编号或名字，否则随机配送</span>
+      <div class="font3" style="text-align: center"><span>CAKE 蛋糕创意<br>蛋糕不但是食品，还是礼品</span><br>
+      </div>
+      <div class="font2" style="text-align:center"><span style="font-size:20px">订单满500元提供精美包装礼盒，如需指定礼盒请在下单时留言礼盒编号或名字，否则随机配送</span></div>
     </div>
     <div id="box">
     <div class="hex " style="background-image:url(../../../static/images/hmhpic/box1.JPG);">
@@ -127,6 +129,15 @@
     margin:0;
     padding:0;
   }
+  .font3 span{
+    font: 700 100px "Comic Sans MS";
+    font-family: myCatF;
+  }
+  .container span{
+    font-size: 30px;
+    line-height: 50px;
+  }
+
   .bj1-1{
     max-width: 100%;
     max-height: 100%;
@@ -276,5 +287,6 @@
     transform:rotate(60deg) translate(-48px, -11px);
     bottom:0;
   }
+
 
 </style>

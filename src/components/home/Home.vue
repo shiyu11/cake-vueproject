@@ -16,6 +16,7 @@
         <li data-target="#carousel-example-generic" data-slide-to="0" ></li>
         <li data-target="#carousel-example-generic" data-slide-to="1" ></li>
         <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="3" ></li>
       </ol>
       <!-- Wrapper for slides -->
       <div class="carousel-inner" role="listbox">

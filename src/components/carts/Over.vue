@@ -48,7 +48,7 @@
             标配：10份标配餐具<br/>
           </td>
           <td width="10%" class="num">{{onew.rnum}}</td>
-          <td width="15%" class="price">{{ onew.pprice * onew.rnum }}</td>
+          <td width="15%" class="price">{{ onew.pprice * onew.rnum*onew.size }}</td>
         </tr>
         </tbody>
       </table>
