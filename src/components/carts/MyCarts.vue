@@ -102,6 +102,7 @@
         dingpid:'',
         num:1,
         centerDialogVisible: false,
+        url:this.$store.state.url
       }
     },
     methods:{
@@ -184,7 +185,7 @@
       del: function (cid) {
         let _this = this
         $.ajax({
-          url:"http://localhost:3000/deletecart/"+cid,
+          url:_this.url+"/deletecart/"+cid,
           type:"get",
           success:function(result){
             // alert('删除成功')
@@ -197,7 +198,7 @@
       },
       ajax() {
         let _this=this
-        axios.get(`http://localhost:3000/getcart/${sessionStorage.getItem('uid')}`).then(function (result) {
+        this.$axios.get(`getcart/${sessionStorage.getItem('uid')}`).then(function (result) {
           _this.products = result.data.data;
           // console.log(result.data)
         })

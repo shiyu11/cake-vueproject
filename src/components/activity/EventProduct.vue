@@ -27,7 +27,7 @@
       name: "EventProduct",
       mounted: function () {
         let _this = this
-        axios.get(`http://localhost:3000/product`).then(function (result) {
+        this.$axios.get(`product`).then(function (result) {
           _this.products = result.data.data;
           console.log(result.data.data)
         })

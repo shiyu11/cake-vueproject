@@ -94,7 +94,7 @@
     //添加新的地址
    methods:{
      load(){
-       axios.get(`http://localhost:3000/alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
+       this.$axios.get(`alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
          //渲染页面
          // console.log(res)
          this.mydata = res.data.data;
@@ -104,7 +104,7 @@
      },
      getAlladdress(){
        let _this=this;
-       axios.get(`http://localhost:3000/alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
+       this.$axios.get(`alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
          //渲染页面
          // console.log(res);
          _this.ad = res.data.data;
@@ -118,7 +118,7 @@
           alert('姓名，手机号，地址不能为空！请重新添加')
         }else {
           let _this = this;
-        axios.post('http://localhost:3000/addaddress',{
+        this.$axios.post('addaddress',{
           uid:sessionStorage.getItem('uid'),
           aname:this.form.aname,
           phone:this.form.phone,

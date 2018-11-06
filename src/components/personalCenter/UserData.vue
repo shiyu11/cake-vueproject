@@ -88,7 +88,7 @@
         this.$refs[formName].validate((valid) => {
           if (valid) {
             let _this=this
-            axios.post('http://localhost:3000/users/updateusers', {
+            this.$axios.post('users/updateusers', {
               uid: sessionStorage.getItem('uid'),
               uname: _this.ruleForm.uname,
               sex: _this.ruleForm.sex,
@@ -113,7 +113,7 @@
     //获取信息
     mounted: function () {
       let _this = this;
-      axios.get('http://localhost:3000/users/getOneUsers/' + sessionStorage.getItem('uid'), {}).then((response) => {
+      this.$axios.get('users/getOneUsers/' + sessionStorage.getItem('uid'), {}).then((response) => {
         _this.ruleForm.uname = response.data.data[0].uname,
         //   console.log('哈哈哈'+JSON.stringify(response.data.data) )
         // console.log('猪头黄'+this.ruleForm.uname)

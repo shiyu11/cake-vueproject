@@ -69,7 +69,7 @@
       },
       mounted(){
         let _this=this
-        axios.get(`http://localhost:3000/allorder/${this.myuid}`).then((res)=>{
+        this.$axios.get(`allorder/${this.myuid}`).then((res)=>{
           //渲染页面
           // console.log(res)
           _this.or = res.data.data;

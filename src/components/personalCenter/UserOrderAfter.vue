@@ -59,7 +59,7 @@
       },
       mounted(){
         let _this=this
-        axios.get(`http://localhost:3000/allorder/${this.myuid}`).then((res)=>{
+        this.$axios.get(`allorder/${this.myuid}`).then((res)=>{
           //渲染页面
           // console.log(res)
           _this.or = res.data.data;
@@ -71,7 +71,7 @@
         affirmOrder:function (oid) {
           let  _this=this
           // console.log(`http://localhost:3000/updateor1/${oid}`);
-          axios.get("http://localhost:3000/updateor1/"+oid).then((res)=>{
+          this.$axios.get("updateor1/"+oid).then((res)=>{
             // console.log(res);
             // console.log("执行成功");
             alert('确认收货成功')

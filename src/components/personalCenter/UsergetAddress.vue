@@ -48,7 +48,7 @@
     methods:{
       getAlladdress(){
         let _this=this;
-        axios.get(`http://localhost:3000/alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
+        this.$axios.get(`alladdress/${sessionStorage.getItem('uid')}`).then((res)=>{
           //渲染页面
           // console.log(res);
           _this.ad = res.data.data;

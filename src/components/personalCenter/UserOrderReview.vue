@@ -55,7 +55,7 @@
       },
       mounted(){
         let _this=this
-        axios.get(`http://localhost:3000/allorder/${this.myuid}`).then((res)=>{
+        this.$axios.get(`allorder/${this.myuid}`).then((res)=>{
           //渲染页面
           // console.log(res)
           _this.or = res.data.data;
@@ -72,12 +72,12 @@
         evaluateOrder:function (index,oid,pid) {
           let  _this=this
           // console.log(`http://localhost:3000/updateor2/${oid}`);
-          axios.get("http://localhost:3000/updateor2/"+oid).then((res)=>{
+          this.$axios.get("updateor2/"+oid).then((res)=>{
             // console.log(res);
             alert('评价成功')
             this.$router.push({path:'/usercenter/Myorder/finish'})
           })
-          axios.post('http://localhost:3000/product/adduserreview',{
+          this.$axios.post('product/adduserreview',{
             vcontent:_this.or[index].vcon,
             vtime:_this.mytime,
             pid:pid,
