@@ -19,38 +19,38 @@
       </div>
 
       <div v-else>
-        <table class="table">
+        <table class="table t_table">
           <thead>
           <tr>
-            <th width="6%">
+            <th width="3%">
               <input type="checkbox" :checked="checkAllFlag" @click="checkAll">全选
             </th>
             <th></th>
             <th>商品信息</th>
-            <th>规格</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;规格</th>
             <th>单价（元）</th>
-            <th>数量</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;数量</th>
             <th>金额</th>
             <th>操作</th>
           </tr>
           </thead>
           <tbody>
           <tr v-for="product in products" :key="product.id">
-            <td width="5%" class="input">
+            <td class="input">
               <input type="checkbox" :checked="product.check" @click="checkBox(product)">
             </td>
-            <td>
-              <img :src="product.ppic" style="width:35%;">
+            <td width="10%">
+              <img :src="product.ppic" style="width:80%;">
             </td>
-            <td width="16%">
-              <div class="info">
+            <td width="8%">
+              <div class="info1">
                 <h5>{{ product.pname }}</h5>
                 <p>赠品：标配餐具10份  生日蜡烛1支</p>
               </div>
             </td>
-            <td width="10%" class="size">{{product.size}}</td>
-            <td width="10%" class="price">{{ product.pprice*product.size}}</td>
-            <td width="10%">
+            <td width="8%" class="size"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{product.size}}磅</td>
+            <td width="8%" class="price">￥{{ product.pprice*product.size}}</td>
+            <td width="8%">
               <div class="num">
                 <el-row>
                   <el-col><span @click="changeMoney(product,-1)" class="span">-</span>
@@ -59,29 +59,23 @@
                 </el-row>
               </div>
             </td>
-            <td width="10%" class="allprice">{{ product.pprice * product.size* product.pno }}</td>
-            <td width="10%">
+            <td width="8%" class="allprice">￥{{ product.pprice * product.size* product.pno }}</td>
+            <td width="6%">
               <div class="delpro">
-                <span v-on:click="centerDialogVisible= true">删除</span>
-                <el-dialog title="" :visible.sync="centerDialogVisible" width="22%" center>
-                  <span class="deltitle">你确定要删除此订单?</span>
-                  <span slot="footer" class="dialog-footer">
-                    <el-button type="text" @click="centerDialogVisible= false">取消</el-button>
-                    <el-button type="text" @click="centerDialogVisible= false;del(product.cid)">确定</el-button>
-                  </span>
-                </el-dialog>
+                <span v-on:click="centerDialogVisible= true" @click="del(product.cid)">删除</span>
               </div>
             </td>
           </tr>
           </tbody>
           <tfoot>
-          <tr>
-            <td colspan="8" class="text-right">共{{totalNum}}件，商品合计{{totalMoney}}元</td>
+          <tr v-if="num!= getnum">
+            <td colspan="8" class="text-right">共<span class="myNum">{{totalNum}}</span>件，商品合计<span class="myMoney">{{totalMoney}}</span>元</td>
           </tr>
           </tfoot>
         </table>
         <div style="text-align:right;">
           <button class="btn btn-primary" v-on:click="goHome">继续购物</button>
+          <!--<button class="label" v-on:click="goHome">继续购物</button>-->
           <button class="btn btn-primary" v-on:click="commit" v-if="num!= getnum">结算</button>
         </div>
       </div>
@@ -175,7 +169,7 @@
         this.products.forEach(function (product) {
           if (product.check) {
             _this.totalMoney += product.pno*product.size*product.pprice;
-            a.push({"pid":product.pid,"pname":product.pname,"rnum":product.pno,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
+            a.push({"pid":product.pid,"cid":product.cid,"pname":product.pname,"rnum":product.pno,"ppic":product.ppic,"pprice":product.pprice,"size":product.size})
           }
         })
         sessionStorage.setItem('totalMoney1',this.totalMoney);
@@ -184,23 +178,37 @@
       },
       del: function (cid) {
         let _this = this
-        $.ajax({
-          url:_this.url+"/deletecart/"+cid,
-          type:"get",
-          success:function(result){
-            // alert('删除成功')
-            _this.products=[],
-              _this.ajax()
-            _this.getTotalMoney();
-            _this.getTotalNum();
-          }
-        })
+        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          $.ajax({
+            url:_this.url+"/deletecart/"+cid,
+            type:"get",
+            success:function(result){
+              // alert('删除成功')
+              _this.products=[],
+                _this.ajax()
+              _this.getTotalMoney();
+              _this.getTotalNum();
+            }
+          })
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });
+        });
       },
       ajax() {
         let _this=this
         this.$axios.get(`getcart/${sessionStorage.getItem('uid')}`).then(function (result) {
           _this.products = result.data.data;
-          // console.log(result.data)
         })
       }
     },
@@ -226,8 +234,14 @@
     margin-bottom: 50px;
     color:darkgray;
   }
-  .table{
+  .t_table{
     background-color:#F2F6F7;
+    border-radius: 20px;
+  }
+  .label{
+    background: #80b5ea;
+    font-size: 13px;
+    padding:8px;
   }
   .span1{
     font-family: 'Comic Sans MS';
@@ -258,14 +272,19 @@
   .cart{
     padding-right: 120px;
   }
-  .deltitle{
-    margin-left:50px;
-    font-size: 18px;
-  }
+  /*.deltitle{*/
+    /*margin-left:50px;*/
+    /*font-size: 18px;*/
+  /*}*/
   .delpro{
     cursor: pointer;
     width: 100%;
     margin-top: 50px;
+  }
+  .myNum,.myMoney{
+    color:firebrick;
+    font-weight: bold;
+    font-size:20px;
   }
 </style>
 

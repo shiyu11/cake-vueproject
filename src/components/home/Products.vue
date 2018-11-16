@@ -18,7 +18,6 @@
               <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showList0" :key="index" >
                 <el-card :body-style="{ padding: '2px' }" class="space">
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
-                    <!--<img :src="getImg(onep.ppic)" class="image">-->
                     <img :src="onep.ppic" class="image">
                   </router-link>
                   <div style="padding:10px;">
@@ -32,9 +31,6 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-                        <!--<el-col :span="12">-->
-                          <!--<button type="button" class="btn button" data-toggle="modal" data-target=".bs-example-modal-sm" >加入购物车</button>-->
-                        <!--</el-col>-->
                       </div>
                     </el-row>
 
@@ -54,7 +50,7 @@
         </el-col>
       </el-row>
       <el-row>
-        <div @click="showAll0 = !showAll0" class="button1 btn_style3" style="float: right">{{word0}}</div>
+        <div @click="showAll0 = !showAll0" class="button1 btn_style3" style="float: right;margin-top: 10px">{{word0}}</div>
       </el-row>
     </div>
 
@@ -95,23 +91,20 @@
                         <!--</el-col>-->
                       </div>
                     </el-row>
-
                     <el-row>
                       <el-col :span="24" class="ptaste">
-                        <router-link :to="`/productlist/${onep.occasion}`" >推荐{{change(onep.occasion)}}</router-link>
+                        <router-link :to="`/productlist/${onep.occasion}`">推荐{{change(onep.occasion)}}</router-link>
                       </el-col>
                     </el-row>
-
                   </div>
                 </el-card>
               </el-col>
-              <!--<div @click="showAll = !showAll" class="show-more">{{word}}</div>-->
             </el-row>
           </div>
         </el-col>
       </el-row>
       <el-row>
-        <div @click="showAll1 = !showAll1" class="button1 btn_style3" style="float: right">{{word1}}</div>
+        <div @click="showAll1 = !showAll1" class="button1 btn_style3" style="float: right;margin-top: 10px">{{word1}}</div>
       </el-row>
     </div>
     <!--巧克力-->
@@ -122,8 +115,8 @@
         </el-col>
       </el-row>
       <el-row>
-        <el-col :span="5" style="margin-right:20px; margin-top:40px">
-          <img src="../../assets/home/qiaokeli.png" class="img-responsive" alt="Responsive image" >
+        <el-col :span="6">
+          <img src="../../assets/home/qiaokeli1.png" class="img-responsive" alt="Responsive image" >
           <h2>巧克力</h2>
         </el-col>
         <el-col :span="18">
@@ -147,7 +140,6 @@
                         <el-col :span="12">
                           <span class="pname"><span>￥</span>{{onep.pprice}}</span>
                         </el-col>
-
                       </div>
                     </el-row>
 
@@ -164,7 +156,7 @@
         </el-col>
       </el-row>
       <el-row>
-       <div @click="showAll2 = !showAll2" class="button1 btn_style3" style="float: right">{{word2}}</div>
+       <div @click="showAll2 = !showAll2" class="button1 btn_style3" style="float: right;margin-top: 10px">{{word2}}</div>
       </el-row>
     </div>
 
@@ -223,14 +215,14 @@
 
       </el-row>
       <el-row>
-        <div @click="showAll3 = !showAll3" class="button1 btn_style3" style="float: right">{{word3}}</div>
+        <div @click="showAll3 = !showAll3" class="button1 btn_style3" style="float: right;margin-top: 10px">{{word3}}</div>
       </el-row>
     </div>
 
     <div class="mian mian5">
       <el-row>
         <el-col :span="6">
-          <img src="../../assets/home/katong1.gif" class="img-responsive" alt="Responsive image">
+          <img src="../../assets/home/bg-ds-4.png" class="img-responsive" alt="Responsive image" style="margin-top:30px;margin-left: 40px">
           <h2>新品推荐</h2>
         </el-col>
         <el-col :span="14" :offset="2">
@@ -274,13 +266,8 @@
 </template>
 
 <script>
-  import addcart from '../home/addcart'
-
     export default {
       name: "Products",
-      components: {
-        'my-addcart': addcart
-      },
       data() {
         return {
           products:[],
@@ -452,16 +439,13 @@
 </style>
 
 <style scoped>
-
-
-
   .button1 {
     font-size:14px;
     font-family:Verdana;
     font-weight:normal;
-    -moz-border-radius:25px;
-    -webkit-border-radius:25px;
-    border-radius:25px;
+    -moz-border-radius:20px;
+    -webkit-border-radius:20px;
+    border-radius:20px;
     padding:5px 25px;
     text-decoration:none;
     cursor: pointer;
@@ -480,7 +464,7 @@
     -moz-box-shadow:inset 0px 0px 0px -50px #dcecfb;
     box-shadow:inset 0px 0px 0px -50px #dcecfb;
   }.btn_style3:hover {
-     background:-moz-linear-gradient( center top, #80b5ea 8%, #bddbfa 97% );
+     background:-moz-linear-gradient(center top, #80b5ea 8%, #bddbfa 97% );
      background:-ms-linear-gradient( top, #80b5ea 8%, #bddbfa 97% );
      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
      background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #80b5ea), color-stop(97%, #bddbfa) );
@@ -504,6 +488,7 @@
     /*opacity: 0.;*/
     margin-top: 20px;
     padding: 20px;
+    border-radius: 25px;
   }
 
   .mian1 {

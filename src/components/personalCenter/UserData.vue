@@ -33,7 +33,7 @@
           <!--</el-form-item>-->
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')">保存</el-button>
+          <el-button type="primary" @click="submitForm('ruleForm')" class="button btn_style3">保存</el-button>
           <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
         </el-form-item>
       </el-form>
@@ -143,7 +143,13 @@
     color: lightslategrey;
     font-size: 12px;
   }
-
+  .btn_style3 {
+    border-radius: 25px 0 25px 0;
+    background-color:rgb(176,146,106);
+    opacity: 0.8;
+    color: white;
+    border: 1px solid white;
+  }
   span{
     font-size: 30px;
   }

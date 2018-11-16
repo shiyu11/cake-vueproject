@@ -1,7 +1,6 @@
 <template>
   <!--磅数的详细说明-->
   <div class="p-size">
-
     <img src="../../assets/yushou/QQ图片20181102115757.png" class="aaa" @click="putcollect()" v-if="a==0" title="点击收藏">
     <img src="../../assets/yushou/QQ图片20181102115821.png" class="bbb"@click="del()" v-if="a==1">
     <div v-if="type==0">
@@ -43,21 +42,18 @@
     </div>
 
 
-    <!--数字按钮-->
-    <div class="page">
-      <section class="demo">
-        <nav class="nav">
-          <ul>
-            <li><a><span @click="changeMoney(-1)" class="span1"></span></a></li>
-            <li><a><span v-model="pno">{{pno}}</span></a></li>
-            <li><a><span @click="changeMoney(1)" class="span1"></span></a></li>
-          </ul>
-        </nav>
-      </section>
-    </div>
+    <!--数字按钮数量的变动-->
+      <el-row>
+      <el-col :span="2" :offset="4">
+      <el-button type="warning" plain @click="changeMoney(-1)">-</el-button></el-col>
+      <el-col :span="2" :offset="2">
+      <span v-model="pno" class="num">{{pno}}</span></el-col>
+      <el-col :span="2">
+     <el-button type="warning" plain @click="changeMoney(1)">+</el-button></el-col>
+      </el-row>
 
 
-    <!--磅数-->
+    <!--磅数选择-->
     <el-row :gutter="20" class="el-row-bang">
       <el-col :span="4">
         <el-button type="warning" round plain v-on:click="show(0)">1磅</el-button>
@@ -72,7 +68,7 @@
         <el-button round type="warning" plain v-on:click="show(3)">4磅</el-button>
       </el-col>
     </el-row>
-
+<!--添加购物车，立即购买-->
     <el-row :gutter="20" class="el-row-cart">
       <el-col :span="6" :offset="2">
         <el-button round type="warning" @click="putCart()">加入购物车</el-button>
@@ -80,15 +76,8 @@
       <el-col :span="6" :offset="2">
         <el-button round type="warning" @click="buy()">立即购买</el-button>
       </el-col>
-      <!--<el-col :span="4" :offset="2" >-->
-        <!--<el-button round type="warning" @click="putcollect()" v-if="a==0">收藏</el-button>-->
-      <!--</el-col>-->
-      <!--<el-col :span="4" :offset="2">-->
-        <!--<el-button round type="warning" @click="del()" v-if="a==1">取消收藏</el-button>-->
-      <!--</el-col>-->
-
-
     </el-row>
+
   </div>
 </template>
 
@@ -104,7 +93,6 @@
         pno: 1,
         a:'0',
         uname:sessionStorage.getItem('sname')
-
       }
     },
     mounted(){
@@ -171,16 +159,19 @@
       },
 
 
-      putcollect(){
-        //key+1 是磅数
-        let  _this = this
-        this.$axios.post('addcollection',{
-          uid:sessionStorage.getItem('uid'),
-          pid:this.father.pid,
-        })
-
-        alert('收藏成功')
-        location.reload()
+      putcollect() {
+        if (this.uname == null) {
+          alert('请先登录')
+        } else {
+          //key+1 是磅数
+          let _this = this
+          this.$axios.post('addcollection', {
+            uid: sessionStorage.getItem('uid'),
+            pid: this.father.pid,
+          })
+          alert('收藏成功')
+          _this.a=1;
+        }
       },
       del () {
         let _this = this
@@ -189,7 +180,7 @@
           console.log(result.data)
         })
         alert('取消收藏成功')
-        location.reload()
+        _this.a=0;
       },
       aaa(){
         let _this=this
@@ -210,7 +201,7 @@
 
   }
 </script>
-<style>
+<style scoped>
   @import "../../assets/css/jiajian.css";
   .el-row-cart {
     margin-top: 30px;
@@ -238,9 +229,7 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
-</style>
 
-<style scoped>
   ul {
     list-style: none;
     margin-top: 20px;
@@ -271,6 +260,13 @@
     float: right;
     height:50px;
     width: 50px;
+  }
+  .num{
+   padding-top: 5px;
+   font-size:25px;
+   /*font-weight:bold;*/
+   font-family:"Axure Handwriting";
+   /*color:#00B3ED;*/
   }
 
 </style>

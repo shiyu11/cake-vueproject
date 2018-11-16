@@ -1,14 +1,6 @@
 <template>
   <div>
-    <!--</div>-->
-    <!--<div class="block">-->
-      <!--<el-carousel height="600px">-->
-        <!--<el-carousel-item v-for="item in 4" :key="item">-->
-          <!--<router-link to="/cakebox" id="toum">{{item}}</router-link>-->
-        <!--</el-carousel-item>-->
 
-      <!--</el-carousel>-->
-    <!--</div>-->
 
     <div id="carousel-example-generic" class="carousel slide space lunbo" data-ride="carousel" name="top">
       <!-- Indicators -->
@@ -26,7 +18,9 @@
           </div>
         </div>
         <div class="item">
-          <img src="../../assets/home/test2.jpg" alt="..." class="img-responsive imgh">
+          <router-link to="/cakebox">
+          <img src="../../assets/home/test5.png" alt="..." class="img-responsive imgh">
+          </router-link>
           <div class="carousel-caption">
           </div>
         </div>
@@ -36,9 +30,7 @@
           </div>
         </div>
         <div class="item">
-          <router-link to="/cakebox">
-            <img src="../../assets/home/test5.png" alt="..." class="img-responsive imgh">
-          </router-link>
+            <img src="../../assets/home/test2.jpg" alt="..." class="img-responsive imgh">
           <div class="carousel-caption">
           </div>
         </div>
@@ -106,13 +98,7 @@
       <my-adddonghua></my-adddonghua>
     </div>
 
-  <!--<el-row class="navbar-fixed-bottom" style="position: fixed">-->
-    <!--<el-col :span="2" :offset="22">-->
-      <!--<a href="#top">-->
-        <!--<img src="../../assets/home/top.gif" class="img-responsive" alt="Responsive image">-->
-      <!--</a>-->
-    <!--</el-col>-->
-     <!--</el-row>-->
+
   </div>
 </template>
 

@@ -59,7 +59,7 @@
               sessionStorage.setItem('spassword',info.data.upwd);
               sessionStorage.setItem('sname',info.data.uname);
               sessionStorage.setItem('uid',info.data.uid);
-              window.location.href='http://10.40.4.15:8080/'
+              window.location.href='http://localhost:8080/'
             }
             else {
               alert('用户名或密码错误')

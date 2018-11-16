@@ -10,7 +10,6 @@ export default new Vuex.Store({
     oid:1,
     state1:'待收货',
     rnum:111,
-    url:'http://10.40.4.15:3000'
-
+    url:'http://localhost:3000'
   }
 })

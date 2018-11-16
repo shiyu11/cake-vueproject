@@ -5,11 +5,11 @@
           <thead>
           <tr>
             <th></th>
-            <th>订单信息</th>
+            <th style="width: 15%">订单信息</th>
             <!--<th>订单编号</th>-->
-            <th>数量</th>
+            <th style="width: 15%">数量</th>
 
-            <th>订单状态</th>
+            <th style="width: 15%">订单状态</th>
             <th>地址详情↓</th>
             <!--<th>评论</th>-->
             <!--<th>操作</th>-->
@@ -84,14 +84,15 @@
   }
   .table th{
     text-align: center;
-    background-color:#B0926A;
+    background-color:rgb(176,146,106);
+    opacity: 0.8;
     font-size: 14px;
     color: white;
     padding: 1px;
   }
   .table td{
     text-align: center;
-    width: 200px;
+    /*width: 210px;*/
     border-bottom:dashed 1px silver;
   }
   img{
@@ -109,4 +110,5 @@
     margin-top: 1px;
     margin-left: 2px;
   }
+
 </style>

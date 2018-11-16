@@ -88,6 +88,7 @@
     background: url("../../../static/images/hmhpic/timg1.jpg");
     height:600px;
     width: 100%;
+    border-radius: 40px;
   }
   .bg-blur {
     float: left;

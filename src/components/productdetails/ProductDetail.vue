@@ -61,7 +61,7 @@
         <img src="../../assets/home/katong2.gif" class="img-responsive" alt="Responsive image">
         <p class="buttonp">累积评论</p>
       </el-col>
-      <el-col :span="16" class="hidden-sm-and-down" :offset="2">
+      <el-col :span="18" class="hidden-sm-and-down" :offset="2">
         <my-review :fpid="mypid"></my-review>
       </el-col>
     </el-row>

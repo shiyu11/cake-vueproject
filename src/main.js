@@ -10,7 +10,7 @@ import Axios from 'axios'
 import store from './store'
 // Vue.use(axios)
 
-Axios.defaults.baseURL='http://10.40.4.15:3000';
+Axios.defaults.baseURL='http://localhost:3000';
 Vue.prototype.$axios=Axios;
 
 Vue.use(ElementUI);

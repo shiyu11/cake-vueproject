@@ -1,8 +1,10 @@
 <template>
   <div class="container max">
     <div class="row">
-      <div>
-        <h2 class="h2">订单已完成</h2>
+      <hr>
+      <div class="checkout-title">
+        <span class="span1">ORDER  FINISH</span>
+        <h4>订单完成</h4>
       </div>
       <el-row>
         <el-col :span="15" :offset="2">
@@ -30,7 +32,7 @@
         </el-col>
       </el-row>
 
-      <table class="table">
+      <table class="table t_table">
         <tbody>
         <tr>
           <th></th>
@@ -39,15 +41,15 @@
           <th>小计</th>
         </tr>
         <tr v-for="(onew,index) in products">
-          <td>
-            <img :src="onew.ppic" style="width:26%">
+          <td width="30%">
+            <img :src="onew.ppic" style="width:35%">
           </td>
           <td width="30%">
             {{onew.pname}}<br/>
             {{onew.size}}磅<br/>
             标配：10份标配餐具<br/>
           </td>
-          <td width="10%" class="num">{{onew.rnum}}</td>
+          <td width="15%" class="num">{{onew.rnum}}</td>
           <td width="15%" class="price">{{ onew.pprice * onew.rnum*onew.size }}</td>
         </tr>
         </tbody>
@@ -92,7 +94,16 @@
 </script>
 
 <style scoped>
-  table{
+  .checkout-title{
+    text-align:center;
+    margin-bottom: 50px;
+    color:darkgray;
+  }
+  .span1{
+    font-family: 'Comic Sans MS';
+    font-size: 32px;
+  }
+  .t_table{
     background-color:#F2F6F7;
   }
   .h2{

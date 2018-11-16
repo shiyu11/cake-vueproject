@@ -10,7 +10,7 @@ import allProducts from '@/components/home/allproducts'
 import  cakebox from '../components/home/cakebox'
 import Pay from '@/components/carts/Pay.vue'
 
-// 黄
+
 // 黄
 import UserCenter from '@/components/personalCenter/UserCenter'
 import UserData from '@/components/personalCenter/UserData'
@@ -23,8 +23,6 @@ import UserOrderAfter from '../components/personalCenter/UserOrderAfter'
 import UserOrderReview from '../components/personalCenter/UserOrderReview'
 import UserOrderFinish from '../components/personalCenter/UserOrderFinish'
 import Mycollection from '../components/personalCenter/Mycollection'
-
-
 
 
 // 谭
@@ -53,7 +51,6 @@ export default new Router({
     {path:'/theme',component:theme},
     {path:'/allproducts',component:allProducts},
     {path: '/cakebox', name: 'cakebox', component: cakebox},
-    // {path:'/productlist',component:productlist},
 
 
     // 黄

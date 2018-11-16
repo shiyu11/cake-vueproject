@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      <div class="row">
+      <div class="row" style="margin-top:30px">
         <h2 class="lot"><span>---------更多梦幻选择---------</span></h2>
         <ul class="uls col-xs-12">
           <li class="lis col-xs-3" v-for="(onep,index) in products" v-if="index<4">

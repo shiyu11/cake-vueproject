@@ -10,12 +10,12 @@
           <thead>
           <tr>
             <th></th>
-            <th>订单信息</th>
+            <th style="width: 12%">订单信息</th>
             <!--<th>收货人</th>-->
-            <th>数量</th>
+            <th style="width: 10%">数量</th>
             <!--<th>金额</th>-->
-            <th>订单编号</th>
-            <th>订单状态</th>
+            <th style="width: 10%">订单编号</th>
+            <th style="width: 10%">订单状态</th>
             <th>地址详情↓</th>
             <!--<th>操作</th>-->
           </tr>
@@ -87,14 +87,15 @@
   }
   .table th{
     text-align: center;
-    background-color:#B0926A;
+    background-color:rgb(176,146,106);
+    opacity: 0.8;
     font-size: 14px;
     color: white;
     padding: 4px;
   }
   .table td{
     text-align: center;
-    width: 200px;
+    /*width: 200px;*/
     border-bottom:dashed 1px silver;
   }
   img{

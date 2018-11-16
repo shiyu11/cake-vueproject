@@ -40,7 +40,7 @@
           <el-menu-item index="会员中心" v-if="getName != null">会员中心</el-menu-item>
         </el-col>
         <el-col :span="4" class="topq" :offset="2">
-          <el-menu-item index=""  v-if="getName != null">欢迎<span class="username">*{{getName}}*</span>
+          <el-menu-item index=""  v-if="getName != null">欢迎<span class="username">{{getName}}</span>
             <a v-if="getName != null" @click="clearUser" class="out">[退出]</a>
           </el-menu-item>
         </el-col>
@@ -95,7 +95,7 @@
       },
       clearUser(){
         sessionStorage.clear();
-        window.location.href='http://10.40.4.15:8080/'
+        window.location.href='http://localhost:8080/'
       },
     },
   }
@@ -106,17 +106,19 @@
     display: block;
     width: 100%;
   }
-
   .topq {
     margin-top: 5px;
   }
-
   .username {
-    margin-top: 5px;
+    /*margin-top: 5px;*/
+    margin-left:5px;
     color:#8a6d3b;
+    font-family: "STXingkai";
+    font-size: 25px;
   }
   .out{
     cursor: pointer;
+
   }
 </style>
 <style scoped>

@@ -74,7 +74,7 @@
           this.$axios.get("updateor1/"+oid).then((res)=>{
             // console.log(res);
             // console.log("执行成功");
-            alert('确认收货成功')
+            // alert('确认收货成功')
             this.$router.push({path:'/usercenter/Myorder/review'})
           })
           }
@@ -88,7 +88,8 @@
   }
   .table th{
     text-align: center;
-    background-color:#B0926A;
+    background-color:rgb(176,146,106);
+    opacity: 0.8;
     font-size: 14px;
     color: white;
 
@@ -119,27 +120,10 @@
     text-decoration:none;
   }
   .btn_style3 {
-    border:1px solid white;
-    /*background:-moz-linear-gradient( center top, #bddbfa 4%, pink 97% );*/
-    background:-ms-linear-gradient( top, white 8%, #B0926A 97% );
-    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
-    background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, white), color-stop(97%, #B0926A) );
-    background-color:white;
-    color: rgba(99,32,29,0.95);
-    display:inline-block;
-    text-shadow:0px 0px 0px #B0926A;
-    -webkit-box-shadow:inset 0px 0px 0px -50px white;
-    -moz-box-shadow:inset 0px 0px 0px -50px white;
-    box-shadow:inset 0px 0px 0px -50px white;
-  }.btn_style3:hover {
-     /*background:-moz-linear-gradient( center top, pink 8%, #bddbfa 97% );*/
-     background:-ms-linear-gradient( top, #B0926A 8%, white 97% );
-     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
-     background:-webkit-gradient( linear, left top, left bottom, color-stop(8%, #B0926A), color-stop(97%, white) );
-     background-color:#B0926A;
-   }.btn_style3:active {
-      position:relative;
-      top:1px;
-    }
+    border-radius: 25px 0 25px 0;
+    background-color:rgb(176,146,106);
+    opacity: 0.8;
+    color: white;
+  }
 
 </style>

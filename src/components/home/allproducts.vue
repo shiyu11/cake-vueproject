@@ -72,7 +72,7 @@
       </el-row>
 
       <el-row class="space" justify="center" :gutter="20" v-else>
-        <transition-group enter-active-calss="animated tada" leave-active-class="animated tada">
+        <transition-group enter-active-class="animated tada" leave-active-class="animated tada">
           <el-col :sm="12" :md="6" :lg="6" :xl="6" v-for="(onep,index) in showReal" :key="index" >
             <el-card :body-style="{ padding: '2px' }" class="space">
               <!--<img src="../../assets/p1.jpg" class="image">-->

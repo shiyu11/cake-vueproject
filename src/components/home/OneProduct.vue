@@ -55,9 +55,6 @@
 </template>
 
 <script>
-  import addcart from '../home/addcart'
-
-
   export default {
     data() {
       return {
@@ -75,9 +72,6 @@
 
 
       }
-    },
-    components:{
-      'my-addcart':addcart
     },
     watch:{
       '$route':function(to,from){

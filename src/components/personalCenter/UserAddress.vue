@@ -145,4 +145,13 @@
     margin: 20px;
     margin-left: 10px;
   }
+  .tab{
+    font-size: 16px;
+    color: white;
+    border-radius: 25px 0 25px 0;
+    background-color:rgb(176,146,106);
+    opacity: 0.8;
+    margin-bottom: 12px;
+    padding:12px;
+  }
 </style>

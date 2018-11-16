@@ -48,7 +48,8 @@
     cursor: pointer
   }
   .list-group-item.active,.list-group-item.active:hover {
-    background-color: rgba(211,108,90,0.95);
+    background-color: #B0916A;;
+    opacity: 0.8;
     border-color: white;
     border-radius: 10px;
   }
