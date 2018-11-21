@@ -41,7 +41,6 @@
       </ul>
     </div>
 
-
     <!--数字按钮数量的变动-->
       <el-row>
       <el-col :span="2" :offset="4">
@@ -51,7 +50,6 @@
       <el-col :span="2">
      <el-button type="warning" plain @click="changeMoney(1)">+</el-button></el-col>
       </el-row>
-
 
     <!--磅数选择-->
     <el-row :gutter="20" class="el-row-bang">
@@ -77,7 +75,6 @@
         <el-button round type="warning" @click="buy()">立即购买</el-button>
       </el-col>
     </el-row>
-
   </div>
 </template>
 
@@ -112,7 +109,11 @@
       putCart() {
         //key+1 是磅数
         if (this.uname==null) {
-         alert('请先登录')
+          this.$message({
+            dangerouslyUseHTMLString: true,
+            message: '<span>请先登录</span>',
+            duration:1000
+          });
         }else{
         this.$axios.post('addcart', {
           uid: sessionStorage.getItem('uid'),
@@ -120,12 +121,20 @@
           pid: this.father.pid,
           pno: this.pno
         })
-        alert('加入购物车成功')
+          this.$message({
+            dangerouslyUseHTMLString: true,
+            message: '<span>小可爱已经在购物车</span>',
+            duration:1000
+          });
         }
       },
       buy() {
         if (this.uname==null) {
-          alert('请先登录')
+          this.$message({
+            dangerouslyUseHTMLString: true,
+            message: '<span>请先登录</span>',
+            duration:1000
+          });
         }else{
         let a = []
         a.push({
@@ -161,7 +170,11 @@
 
       putcollect() {
         if (this.uname == null) {
-          alert('请先登录')
+          this.$message({
+            dangerouslyUseHTMLString: true,
+            message: '<span>请先登录</span>',
+            duration:1000
+          });
         } else {
           //key+1 是磅数
           let _this = this
@@ -169,7 +182,10 @@
             uid: sessionStorage.getItem('uid'),
             pid: this.father.pid,
           })
-          alert('收藏成功')
+          this.$message({
+            message: '恭喜你，收藏成功',
+            duration:1000
+          });
           _this.a=1;
         }
       },
@@ -179,7 +195,10 @@
           _this.products = result.data.data;
           console.log(result.data)
         })
-        alert('取消收藏成功')
+        this.$message({
+          message: '你的小可爱不在收藏中了',
+          duration:1000
+        });
         _this.a=0;
       },
       aaa(){

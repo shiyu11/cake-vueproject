@@ -3,11 +3,10 @@
 <template>
   <div>
     <!--<h2>蛋糕{{mypid}}详情</h2>-->
-
     <el-row :gutter="20" name="top">
       <el-col :span="10" class="product-grid">
-        <img :src="product.xpic" alt="" class="pic-1">
-        <img :src="product.xxpic" alt="" class="pic-2">
+        <img :src="product.xpic" alt="" class="pic-1" style="border-radius: 25px">
+        <img :src="product.xxpic" alt="" class="pic-2" style="border-radius: 25px">
       </el-col>
 
       <el-col :span="10" :offset="1">
@@ -48,7 +47,7 @@
       </el-col>
     </el-row>
     <el-row class="moredes">
-      <img :src="product.dpic" alt="" class="p-img">
+      <img :src="product.dpic" alt="" class="p-img" style="border-radius: 25px">
       <!--json-->
       <!--<img :src="product[mypid-1].dpic" alt="" class="p-img">-->
     </el-row>

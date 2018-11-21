@@ -229,10 +229,10 @@
           <div class="dwidth">
             <el-carousel :interval="8000" type="card" height="500px">
               <el-carousel-item v-for="(onep,index) in products" v-if="onep.occasion==1" :key="index">
-                <el-card :body-style="{ padding: '2px' }" class="space">
+                <el-card :body-style="{ padding: '2px' }" class="space" >
 
                   <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
-                    <img :src="onep.ppic" class="image img-circle">
+                    <img :src="onep.ppic" class="image" >
                   </router-link>
                   <div style="padding:14px;">
                     <el-row>

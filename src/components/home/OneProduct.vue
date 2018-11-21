@@ -9,8 +9,8 @@
         <span class="maxtitle">{{occasion[myoccasion-1].occa}}</span><span class="mintitle">&nbsp;/专区</span>
       </span>
       <el-row class="space">
-        <el-col :span="24">
-          <img :src="occasion[myoccasion-1].pic" class="image">
+        <el-col :span="24" >
+          <img :src="occasion[myoccasion-1].pic" class="image" style="border-radius: 25px">
         </el-col>
       </el-row>
     </div>
@@ -21,24 +21,20 @@
 
       <el-col :sm="12" :md="6" :lg="6" :xl="6"  v-for="(onep,index) in mydata[myoccasion-1]" :key="index">
         <el-card :body-style="{ padding: '2px' }" class="space">
-          <!--<img src="../../assets/p1.jpg" class="image">-->
           <router-link :to="`/productDetail/${onep.pid}`" tag="a" type="text" class="thumbnail">
             <img :src="onep.ppic"  class="image">
           </router-link>
-          <!--<img  :src="imgSrc(nonep.img)"  class="image">-->
           <div class="shuom">
             <el-row>
               <el-col :span="24">
               <span class="pname">{{onep.pname}}</span>
               </el-col>
             </el-row>
-
             <el-row>
               <el-col :span="24">
                 <span class="ptaste">{{onep.taste}}</span>
               </el-col>
             </el-row>
-
             <el-row>
             <div class="bottom clearfix">
               <el-col :span="12">

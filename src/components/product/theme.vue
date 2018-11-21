@@ -43,7 +43,6 @@
         </div>
       </el-row>
       </div>
-
       <el-row class="text-center">
         <el-col :span="12" class="textr">
             <span class="span1">
@@ -58,11 +57,8 @@
             <img src="../../assets/yushou/ailisi.png" class="img-responsive tm">
             <span class="tiaozhuan">查看详情>></span>
           </router-link>
-
         </el-col>
       </el-row>
-
-
       <el-row class="text-center">
         <el-col :span="8" style="margin-left: 60px">
           <router-link to="/productDetail/5">

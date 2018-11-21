@@ -1,5 +1,6 @@
 <template>
    <div class="container">
+   <div class="hh">
     <div class="bei">
       <!--<img src="../../assets/home/pink.jpg" />-->
     </div>
@@ -11,6 +12,7 @@
         <div class="pin pin3"></div>
       </div>
    </div>
+   </div>
 </template>
 
 <script>
@@ -21,7 +23,7 @@
 
 <style>
   @import url("https://fonts.googleapis.com/css?family=Lato:400,400i,700");
-  .container{
+  .hh{
      position: relative;
   }
   .closed-signboard {
@@ -109,7 +111,7 @@
   }
   .bei{
     position: absolute;
-    /*top:80px;*/
+    top:-115px;
     /*left:-2px;*/
     width: 100%;
     height: 550px;

@@ -4,13 +4,13 @@
       <el-col :span="11">
         <router-link to="/yushou">
           <div><span class="ribbon2">即<br>将<br>上<br>市<br></span></div>
-          <img src="../../assets/home/yushou.jpg" alt="" class="image img-responsive">
+          <img src="../../assets/home/yushou.jpg" alt="" class="image img-responsive" style="border-radius: 25px">
         </router-link>
       </el-col>
       <el-col :span="11" :offset="2">
         <router-link to="/theme">
           <span class="ribbon4">主题蛋糕</span>
-          <img src="../../assets/home/meigui.jpg" alt="" class="image img-responsive">
+          <img src="../../assets/home/meigui.jpg" alt="" class="image img-responsive" style="border-radius: 25px">
         </router-link>
       </el-col>
     </el-row>

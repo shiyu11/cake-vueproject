@@ -18,7 +18,7 @@
             </td>
             <td>
               <div class="button">
-                <button v-on:click="del(product.pid)" class="button btn_style3">删除</button>
+                <button v-on:click="centerDialogVisible= true" @click="del(product.pid)" class="button btn_style3">删除</button>
               </div>
             </td>
           </tr>
@@ -36,7 +36,8 @@
         name: "Mycollection",
       data(){
           return{
-            products:[]
+            products:[],
+            centerDialogVisible: false,
           }
       },
       methods:{
@@ -46,6 +47,11 @@
             _this.products = result.data.data;
             _this.aaa()
             console.log(result.data)
+          })
+          this.$confirm('你将失去你的小可爱?', '提示', {
+            confirmButtonText: '确定',
+            cancelButtonText: '不忍心',
+            type: 'warning'
           })
       },
         aaa() {

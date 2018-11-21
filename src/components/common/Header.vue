@@ -17,13 +17,6 @@
           <el-menu-item index="首页">首页</el-menu-item>
         </el-col>
         <el-col :span="2" class="topq">
-          <!--<el-submenu index="2">-->
-            <!--<template slot="title">蛋糕馆</template>-->
-            <!--<el-menu-item index="新品">新品</el-menu-item>-->
-            <!--<el-menu-item index="儿童">儿童</el-menu-item>-->
-            <!--<el-menu-item index="生日">生日</el-menu-item>-->
-            <!--<el-menu-item index="聚会">聚会</el-menu-item>-->
-          <!--</el-submenu>-->
           <el-menu-item index="蛋糕馆">蛋糕馆</el-menu-item>
         </el-col>
         <el-col :span="2" class="topq">
@@ -41,7 +34,7 @@
         </el-col>
         <el-col :span="4" class="topq" :offset="2">
           <el-menu-item index=""  v-if="getName != null">欢迎<span class="username">{{getName}}</span>
-            <a v-if="getName != null" @click="clearUser" class="out">[退出]</a>
+            <a v-if="getName != null" @click="clearUser" class="out" ><img src="../../assets/home/111.png" alt="" style="width: 40px;height: 40px;"><span class="tuichu">退出</span></a>
           </el-menu-item>
         </el-col>
         <el-col :span="1" class="topq">
@@ -54,8 +47,6 @@
       </el-menu>
     </el-row>
   </div>
-
-
 </template>
 <script>
   export default {
@@ -124,6 +115,10 @@
 <style scoped>
   .header-text{
     font-size:25px;
+  }
+  .tuichu{
+    font-family:"Axure Handwriting";
+    color: #cd8d11;
   }
 /*.mac{*/
   /*background-image: url("../../assets/home/huaban.png");*/

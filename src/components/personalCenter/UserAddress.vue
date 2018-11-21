@@ -126,16 +126,12 @@
           address:this.form.address,
           defaultaddress:this.form.defaultaddress,
         }).then((res)=>{
-          alert('添加成功')
           _this.$router.go(0);
         })
       }
-
      }
    },
-    // components:{
-    //   'my-address':UsergetAddress
-    // }
+
   }
 </script>
 

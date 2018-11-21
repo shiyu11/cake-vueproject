@@ -121,13 +121,21 @@
         this.$axios.get(`users/getallphone/${_this.ruleForm.phoneNum}`).then((result) => {
           let info = eval("(" + result.request.response + ")");
           if (info.data.length != 0) {
-            alert("该用户已经注册,请直接登录!")
+            // alert("该用户已经注册,请直接登录!")
+            this.$message({
+              message: '该用户已经注册,请直接登录!',
+              duration:2000
+            })
           } else {
             _this.getcode = ''
             for (let i = 0; i < 6; i++) {
               _this.getcode += Math.floor(Math.random() * 10);
             }
-            alert(_this.getcode)
+            // alert(_this.getcode)
+            this.$message({
+              message:_this.getcode,
+              duration:8000
+            })
           }
         }, (err) => {
           console.log(result.err)
@@ -136,7 +144,10 @@
       submitForm(formName) {
         this.$refs[formName].validate((valid) => {
           if (valid) {
-            alert('注册成功!');
+            this.$message({
+              message: '注册成功',
+              duration:2000
+            })
             let _this = this
             this.$axios.post("users/register", {
               uphone: _this.ruleForm.phoneNum,
@@ -149,7 +160,10 @@
               console.log(result.err)
             })
           } else {
-            console.log('注册失败!!');
+            this.$message({
+              message: '注册失败',
+              duration:2000
+            })
             return false;
           }
         });

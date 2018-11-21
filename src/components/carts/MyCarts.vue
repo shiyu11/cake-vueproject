@@ -40,7 +40,7 @@
               <input type="checkbox" :checked="product.check" @click="checkBox(product)">
             </td>
             <td width="10%">
-              <img :src="product.ppic" style="width:80%;">
+              <img :src="product.ppic" style="width:80%;border-radius: 25px">
             </td>
             <td width="8%">
               <div class="info1">
@@ -174,14 +174,13 @@
         })
         sessionStorage.setItem('totalMoney1',this.totalMoney);
         sessionStorage.setItem('dingpid',JSON.stringify(a));
-        // console.log('我的'+JSON.stringify(a))
       },
       del: function (cid) {
         let _this = this
-        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+        this.$confirm('你将失去你的小可爱?', '提示', {
           confirmButtonText: '确定',
-          cancelButtonText: '取消',
-          type: 'warning'
+          cancelButtonText: '不忍心',
+
         }).then(() => {
           $.ajax({
             url:_this.url+"/deletecart/"+cid,
@@ -196,12 +195,14 @@
           })
           this.$message({
             type: 'success',
-            message: '删除成功!'
+            message: '删除成功!',
+            duration:1000
           });
         }).catch(() => {
           this.$message({
             type: 'info',
-            message: '已取消删除'
+            message: '已取消删除',
+            duration:1000
           });
         });
       },

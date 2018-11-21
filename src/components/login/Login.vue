@@ -38,7 +38,11 @@
     methods:{
       UserLogin() {
         if(this.phonenum == ''||this.password == ''){
-          alert('手机号和密码不能为空！')
+          // alert('手机号和密码不能为空！')
+          this.$message({
+            message: '手机号和密码不能为空！',
+            duration:2000
+          })
         }else {
           let _this = this;
           this.$axios.post('users/login',
@@ -49,9 +53,6 @@
             let info = eval("(" + result.request.response + ")");
             console.log(info)
             if (info.code == 200) {
-              alert('登录成功，即将跳转到首页');
-
-
               setTimeout(function () {
                 _this.$router.push('/')
               }.bind(this), 1000);
@@ -62,16 +63,16 @@
               window.location.href='http://localhost:8080/'
             }
             else {
-              alert('用户名或密码错误')
+              this.$message({
+                message: '用户名密码错误',
+                duration:2000
+              })
             }
           });
         }
       },
     },
-    // watch: {
-    //   '$route' (to, from) {
-    //     this.$router.go(0);
-    //   }},
+
   }
 
 </script>

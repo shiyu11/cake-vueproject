@@ -33,7 +33,7 @@
           <!--</el-form-item>-->
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('ruleForm')" class="button btn_style3">保存</el-button>
+          <el-button type="primary" :plain="true" @click="submitForm('ruleForm')">保存</el-button>
           <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
         </el-form-item>
       </el-form>
@@ -95,7 +95,9 @@
               birth:_this.ruleForm.birth,
               email: _this.ruleForm.email,
             })
-            alert('修改成功');
+            this.$message({
+              message: '恭喜你，修改成功',
+            });
           }
           // else {
           //   console.log('修改失败');
@@ -115,8 +117,7 @@
       let _this = this;
       this.$axios.get('users/getOneUsers/' + sessionStorage.getItem('uid'), {}).then((response) => {
         _this.ruleForm.uname = response.data.data[0].uname,
-        //   console.log('哈哈哈'+JSON.stringify(response.data.data) )
-        // console.log('猪头黄'+this.ruleForm.uname)
+
           _this.ruleForm.sex=response.data.data[0].sex,
           _this.ruleForm.birth=_this.changer(response.data.data[0].birth),
           _this.ruleForm.email = response.data.data[0].email
@@ -143,13 +144,7 @@
     color: lightslategrey;
     font-size: 12px;
   }
-  .btn_style3 {
-    border-radius: 25px 0 25px 0;
-    background-color:rgb(176,146,106);
-    opacity: 0.8;
-    color: white;
-    border: 1px solid white;
-  }
+
   span{
     font-size: 30px;
   }

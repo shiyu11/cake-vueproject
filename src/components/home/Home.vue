@@ -51,35 +51,33 @@
       <el-row :gutter="20"
               class="space">
         <el-col :span="6">
-          <el-card shadow="hover">
+          <el-card shadow="hover" style="border-radius: 25px">
             <router-link to="/productlist/1">
               <img src="../../assets/home/newlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card shadow="hover">
+          <el-card shadow="hover" style="border-radius: 25px">
             <router-link to="/productlist/3">
               <img src="../../assets/home/birthlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card shadow="hover">
-            <router-link to="/productlist/2">
+          <el-card shadow="hover" style="border-radius: 25px">
+            <router-link to="/productlist/2" >
               <img src="../../assets/home/childlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
         <el-col :span="6">
-          <el-card shadow="hover">
+          <el-card shadow="hover" style="border-radius: 25px">
             <router-link to="/productlist/4">
               <img src="../../assets/home/togetherlogo.png" alt="" class="image">
             </router-link>
           </el-card>
         </el-col>
-
-
       </el-row>
       <el-row>
         <img src="../../assets/home/title.png" alt="" class="image">
@@ -90,9 +88,7 @@
     <div>
     </div>
     <!--一部分-->
-
     <my-products></my-products>
-
     <!--预售-->
     <div class="yushou">
       <my-adddonghua></my-adddonghua>
@@ -143,27 +139,7 @@
     margin: 0;
   }
 
-  /*.el-carousel__item:nth-of-type(1)*/
-  /*{*/
-    /*background-image: url("../../assets/home/lunbo6.png");*/
-  /*}*/
-
-  /*.el-carousel__item:nth-of-type(2) {*/
-    /*background-image: url("../../assets/home/test2.jpg");*/
-  /*}*/
-
-  /*.el-carousel__item:nth-of-type(3) {*/
-    /*background-image: url("../../assets/home/lunbo2.jpg");*/
-  /*}*/
-  /*.el-carousel__item:nth-of-type(4) {*/
-    /*background-image: url("../../assets/home/test5.png");*/
-  /*}*/
-
-  /*.block {*/
-    /*margin-top: 10px;*/
-  /*}*/
-
-  /*#toum {*/
-    /*color:transparent*/
-  /*}*/
+ .tuoyuan{
+   border-radius: 25px
+ }
 </style>

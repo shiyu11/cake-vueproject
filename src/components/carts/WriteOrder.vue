@@ -289,7 +289,10 @@
       },
       submit() {
         if(this.ruleForm.name==''||this.ruleForm.phoneNum==''||this.ruleForm.address==''||this.$store.state.time1==''){
-          alert('请确认信息不能为空')
+          this.$message({
+            dangerouslyUseHTMLString: true,
+            message: '<span>请确认信息不能为空</span>'
+          });
        }else{
           sessionStorage.setItem('aname',this.ruleForm.name);
           sessionStorage.setItem('phone',this.ruleForm.phoneNum);
@@ -308,7 +311,7 @@
             }).then(function (result) {
               console.log(result.data)
             })
-            alert('订单提交成功')
+            // alert('订单提交成功')
             this.addproduct()
         }
         sessionStorage.setItem('product',JSON.stringify(this.mydata));
