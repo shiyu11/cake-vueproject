@@ -1,5 +1,4 @@
 <template>
-
   <div class="mcontainer">
     <div class="allRegidter">
       <el-row>
@@ -12,7 +11,7 @@
               <el-input type="password" v-model="password" placeholder="请输入密码" autocomplete="off"></el-input>
             </el-form-item>
             <el-form-item>
-              <button type="submit" class="btn btn-default" @click="UserLogin()">登录</button>
+              <el-button type="submit" class="btn btn-default" :plain="true" @click="UserLogin()">登录</el-button>
             </el-form-item>
           </el-form>
         </el-col>
@@ -38,12 +37,11 @@
     methods:{
       UserLogin() {
         if(this.phonenum == ''||this.password == ''){
-          // alert('手机号和密码不能为空！')
           this.$message({
-            message: '手机号和密码不能为空！',
-            duration:2000
-          })
-        }else {
+            message: '用户名或者密码不能为空',
+            duration:1000
+          });
+        } else {
           let _this = this;
           this.$axios.post('users/login',
             {
@@ -52,6 +50,7 @@
             }).then(function (result) {
             let info = eval("(" + result.request.response + ")");
             console.log(info)
+
             if (info.code == 200) {
               setTimeout(function () {
                 _this.$router.push('/')
@@ -61,18 +60,23 @@
               sessionStorage.setItem('sname',info.data.uname);
               sessionStorage.setItem('uid',info.data.uid);
               window.location.href='http://localhost:8080/'
+
             }
             else {
-              this.$message({
-                message: '用户名密码错误',
-                duration:2000
-              })
+            // alert('用户名或密码错误')
+              _this.$message({
+                message: '用户名或密码错误',
+                duration:1000
+              });
             }
           });
         }
       },
     },
-
+    // watch: {
+    //   '$route' (to, from) {
+    //     this.$router.go(0);
+    //   }},
   }
 
 </script>
